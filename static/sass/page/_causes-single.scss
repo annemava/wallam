@@ -1,0 +1,126 @@
+/*--------------------------------------------------------------
+	causes single page
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+#4.1	page-title
+--------------------------------------------------------------*/
+.causes-single-page {
+	.page-title-bg {
+		@include background-style("../images/page-title-bg/causes-pagetitle.jpg", center center, cover, no-repeat, local);
+	}
+}
+
+
+/*--------------------------------------------------------------
+#4.1	causes-single-wrapper
+--------------------------------------------------------------*/
+.causes-single-wrapper {
+	padding-bottom: 65px;
+
+	@include media-query(991px) {
+		padding-bottom: 5px;
+	}
+
+	.causes-single {
+		padding-bottom: 30px;
+		border-bottom: 1px solid lighten($black, 80%);
+		@include media-query(991px) {
+			margin-bottom: 80px;
+		}
+	}
+
+	.causes-list-box {
+		@include round-box-shadow(transparent, 0, 0);
+		@include media-query(767px) {
+			padding: 15px 0;
+		}
+	}
+
+	.title  {
+		width: 100%;
+		float: none;
+		padding: 32px 0;
+		position: relative;
+
+		@include media-query(767px) {
+			padding: 20px 0 32px;
+		}
+
+		h3 {
+			font-size: 30px;
+			@include media-query(991px) {
+				font-size: 30px;
+			}
+
+			@include media-query(767px) {
+				font-size: 25px;
+			}
+		}
+
+		.theme-btn {
+			position: absolute;
+			right: 5px;
+			top: 32px;
+
+			@include media-query(767px) {
+				position: static;
+				padding: 12px 15px;
+			}
+		}
+	}
+
+	.inner-details > p {
+		color: lighten($text-color, 10%);
+		margin: 0 0 1.38em;
+	}
+
+	.inner-details > ul {
+		margin-bottom: 50px;
+	}
+
+	.inner-details > ul li {
+		color: lighten($text-color, 10%);
+		margin-bottom: 0.5em;
+
+		i {
+			color: $theme-primary-color;
+		}
+	}
+
+	.inner-details > ul li:last-child {
+		margin-bottom: 0;
+	}
+
+	/*** related causes ***/
+	.related-causes {
+		padding-top: 90px;
+
+		.side-section-title h2 {
+			margin-bottom: 1.5em;
+		}
+
+		.latest-causes .title {
+			padding: 0;
+		}
+
+		.latest-causes .donate-amount ul li {
+			font-weight: bold;
+		}
+
+		.latest-causes .donate-amount ul li:first-child {
+			color: $heading-color;
+		}
+
+		@include media-query(991px) {
+			.latest-causes > .col {
+				margin-bottom: 60px;
+			}
+		}
+
+		@include media-query(580px) {
+			.latest-causes > .col {
+				width: 100%;
+			}
+		}
+	}
+}

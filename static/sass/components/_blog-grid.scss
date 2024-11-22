@@ -1,0 +1,94 @@
+.blog-grid {
+	img {
+		width: auto !important;
+		@include rounded-border(5px);
+	}
+
+	a:hover,
+	a:focus {
+		text-decoration: none;
+		color: $theme-primary-color;
+	}
+
+	h3 {
+		font-size: 18px;
+		margin: 0 0 0.5em;
+
+		a {
+			color: $heading-color;
+		}
+
+		@include media-query(767px) {
+			font-size: 17px;
+		}
+	}
+
+	.post {
+		.entry-media {
+			text-align: center;
+			img {
+				display: inline-block;
+			}
+		}
+
+		.entry-body {
+			padding: 20px;
+			@include round-box-shadow($shadow-color, 25px, 0);
+			@include set-border-radius(0, 0 ,5px, 5px);
+
+			@include media-query(767px) {
+				padding: 15px;
+			}
+		}
+
+		.entry-date-author ul {
+			margin-bottom: 30px;
+			overflow: hidden;
+
+			@include media-query(767px) {
+				margin-bottom: 20px;
+			}
+
+			li {
+				font-size: 13px;
+				float: left;
+				margin-right: 5px;
+				padding-right: 5px;
+				position: relative;
+
+				a {
+					color: lighten($black, 60%);
+				}
+
+				a:hover {
+					color: $theme-primary-color;
+				}
+			}
+
+			li:after {
+				content: "/";
+				color: lighten($black, 60%);
+				position: absolute;
+				right: -2px;
+				top: 0;
+			}
+
+			li:last-child:after {
+				display: none;
+			}
+		}
+
+		.read-more a {
+			font-size: 16px;
+			color: $theme-primary-color;
+
+			&:hover {
+				color: darken($theme-primary-color, 10%);
+			}
+
+			@include media-query(767px) {
+				font-size: 14px;
+			}
+		}
+	}
+}

@@ -1,0 +1,47 @@
+/*--------------------------------------------------------------
+	event 2 col page
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+#10.0	page-title
+--------------------------------------------------------------*/
+.event-2col {
+	.page-title-bg {
+		@include background-style("../images/page-title-bg/gallery-3col-pagetitle.jpg", center center, cover, no-repeat, local);
+	}
+}
+
+
+/*--------------------------------------------------------------
+#10.1	 event-2col-section
+--------------------------------------------------------------*/
+.event-2col {
+	
+	.event-2col-section {
+		padding-bottom: 95px;
+
+		@include media-query(767px) {
+			padding-bottom: 65px;
+		}
+
+		.event-grid-wrapper {
+			margin: 0 -15px;
+		}
+	}
+
+	.event-2col-section .event-grid {
+		width: 50%;
+		float: left;
+		padding: 5px 15px 30px;
+
+		@include media-query(600px) {
+			width: 100%;
+			float: none;
+		}
+	}
+
+	@include media-query(991px) {
+		.event-2col-section .sidebar-wrapper {
+			margin-top: 60px;
+		}
+	}
+}

@@ -1,0 +1,43 @@
+.theme-btn {
+	background-color: $theme-primary-color;
+	line-height: 0.66em;
+	color: $white;
+	padding: 15px;
+	border: 0;
+	text-transform: uppercase;
+	@include rounded-border(5px);
+	@include round-box-shadow(transparentize($black, 0.8), 10px, 1px);
+
+	&:hover,
+	&:focus,
+	&:active {
+		background-color: darken($theme-primary-color, 5%);
+		color: $white;
+	}
+
+	@include media-query(767px) {
+		padding: 12px;
+		font-size: 13px;
+	}
+}
+
+.theme-btn-s2 {
+	background-color: transparent;
+	line-height: auto;
+	font-size: 16px;
+	font-weight: bold;
+	color: $white;
+	border: 2px solid $white;
+	padding: 11px 30px;
+
+	&:hover {
+		color: $theme-primary-color;
+		border-color: $theme-primary-color;
+	}
+
+	@include media-query(767px) {
+		font-size: 15px;
+		border: 1px solid $white;
+		padding: 7px 30px;
+	}
+}

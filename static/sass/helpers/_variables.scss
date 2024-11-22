@@ -1,0 +1,59 @@
+/*---------------------------
+	Fonts
+----------------------------*/
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700|Noto+Sans|Work+Sans');
+
+// fonts
+$montserrat: 'Montserrat', sans-serif;
+$work-sans: 'Work Sans', sans-serif;
+$notosans: 'Noto Sans', sans-serif;
+
+$base-font: $montserrat;
+$section-title-font: $montserrat;
+$topbar-info-fonts: $work-sans; 
+$section-subtitle-font: $notosans;
+$blog-detail-font: $work-sans;
+$home2-urgent-details-font: $notosans;
+$home4-hero-subtitle-font : $notosans;
+$home4-paragraph-font : $notosans;
+
+
+// color
+$dark-gray: #3d424b;
+$dark-gray2: #2c2c2c;
+$white: #fff;
+$black: #000;
+$light-black: #15181d;
+$blue: #013dbd;
+$light-blue: #a9b0be;
+$orange: #fb5e1c;
+$blue: #0071ad;
+$light-pest: #f2f6f9;
+
+$theme-primary-color: $orange;
+$body-bg-color: $white;
+$section-bg-color: #f1f4f6;
+$text-color: #828791;
+$heading-color: $dark-gray;
+$header-bg: $light-black;
+$footer-bg: $light-black;
+$main-navigation-color: #525866;
+$cta-sectionbg: #15181d;
+$cta2-bg: #15181d;
+$volunteers-social-color: $blue;
+$facebook-color: #00529c;
+$twitter-color: #00acee;
+$googleplus-color: #d84d31;
+$linkedin-color: #0071ad;
+$instagram-color: #ba6200;
+$lowerfooter-bg: #111317; 
+$breadcrumb-color: $light-blue;
+$progressbar-color: $dark-gray;
+$volunteer-single-pgbg: $light-pest;
+$event-featured-bg-color: $light-black;
+$product-details-bg: $light-black;
+$sponsor-bg: $light-black;
+$error-404-serach-bg: $light-black;
+$home-style3-urgentdonation-bg: $light-black;
+$home-style5-banar-overlay-color: $dark-gray2;
+$shadow-color: #dbdbdb;

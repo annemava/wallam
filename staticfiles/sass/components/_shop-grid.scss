@@ -1,0 +1,103 @@
+/*** shop grid ***/
+.shop-content {
+	overflow: hidden;
+	margin-right: -25px;
+	margin-left: -5px;
+
+	.grid {
+		width: 33.33%;
+		float: left;
+		padding: 0 25px 30px 5px;
+		margin-bottom: 45px;
+
+		@include media-query(991px) {
+			width: 50%;
+		}
+
+		@include media-query(767px) {
+			margin-bottom: 15px;
+		}
+
+		@include media-query(500px) {
+			width: 100%;
+			float: none;
+		}
+
+		.img-holder {
+			text-align: center;
+			img {
+				display: inline-block;
+			}
+		}
+		
+		.details {
+			position: relative;
+			padding: 15px 22px 19px;
+			@include round-box-shadow(lighten($black, 80%), 15px, 1px);
+			@include rounded-border(2px);
+			@include transition-time(0.3s);
+		}
+
+		h3 {
+			font-size: 18px;
+			margin: 0 0 0.8em;
+			text-transform: capitalize;
+
+			a {
+				color: $heading-color;
+			}
+
+			@include media-query(991px) {
+				font-size: 16px;
+			}
+		}
+
+		.add-to-cart {
+			color: $theme-primary-color;
+			font-weight: bold;
+		}
+
+		.price {
+			background-color: $theme-primary-color;
+			width: 60px;
+			height: 60px;
+			text-align: center;
+			color: $white;
+			@include rounded-border();
+			position: absolute;
+			padding-top: 18px;
+			right: -8px;
+			bottom: -30px;
+
+			> span {
+				width: 100%;
+				text-align: center;
+				font-size: 18px;
+				display: block;
+			}
+
+			.old-price {
+				font-size: 12px;
+				text-decoration: line-through;
+				margin-top: -8px;
+			}
+		}
+
+		.box:hover .details {
+			background-color: $theme-primary-color;
+			h3 a {
+				color: $white;
+			}
+
+			.add-to-cart {
+				color: $heading-color;
+			}
+
+			.price {
+				background-color: $white;
+				color: $theme-primary-color;
+				@include round-box-shadow(lighten($black, 70%), 2px, 0);
+			}
+		}
+	}
+}

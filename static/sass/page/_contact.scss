@@ -1,0 +1,243 @@
+/*--------------------------------------------------------------
+	contact page
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+#16.0	page-title
+--------------------------------------------------------------*/
+.contact-page {
+	.page-title-bg {
+		@include background-style("../images/page-title-bg/shop-pagetitle.jpg", center center, cover, no-repeat, local);
+	}	
+}
+
+
+/*--------------------------------------------------------------
+#16.1	contact-main-content
+--------------------------------------------------------------*/
+.contact-page .contact-main-content {
+	padding-bottom: 0;
+
+	/*** contact info ***/
+	.contact-info {
+		text-align: center;
+		padding-bottom: 78px;
+
+		.col > div {
+			padding: 0 15px;
+
+			@include media-query(991px) {
+				padding: 0;
+			}
+		}
+
+		@include media-query(767px) {
+			> .col {
+				margin-bottom: 50px;
+			}
+
+			> .col:last-child {
+				margin-bottom: 0;
+			}
+		}		
+
+		.icon {
+			width: 70px;
+			height: 70px;
+			line-height: 63px;
+			font-size: 25px;
+			color: $theme-primary-color;
+			text-align: center;
+			border: 3px solid $heading-color;
+			display: inline-block;
+			@include rounded-border();
+
+			@include media-query(991px) {
+				width: 70px;
+				height: 70px;
+				line-height: 63px;
+				font-size: 20px;
+				border: 3px solid $heading-color;
+			}
+		}
+
+		h3 {
+			font-size: 22px;
+			margin: 0.53em 0 1.07em;
+			text-transform: uppercase;
+
+			@include media-query(1199px) {
+				font-size: 20px;
+			}
+
+			@include media-query(991px) {
+				font-size: 18px;
+			}
+		}
+
+		p {
+			font-size: 16px;
+			color: lighten($black, 60%);
+			margin: 0 0 5px;
+			line-height: 1.33em;
+
+			@include media-query(991px) {
+				font-size: 16px;
+			}
+
+			@include media-query(767px) {
+				font-size: 15px;
+			}
+		}
+	}
+
+	/*** map ***/
+	.map-concate-form {
+		margin-bottom: 600px;
+		position: relative;
+
+		@include media-query(991px) {
+			margin-bottom: 550px;
+		}
+
+		@include media-query(767px) {
+			margin-bottom: 0;
+		}
+	}
+
+	.map {
+		height: 600px;
+		@include media-query(767px) {
+			height: 350px;
+		}
+	}
+
+	/*** contact-form ***/
+	.contact-form {
+		width: 100%;
+		position: absolute;
+		top: 350px;
+
+		@include media-query(767px) {
+			position: static;
+		}
+	}
+
+	.contact-form > .container > .row {
+		background-color: $white;
+		@include round-box-shadow(lighten($black, 80%), 10px, 5px);
+
+		@include media-query(767px) {
+			box-shadow: none;
+
+			> .col {
+				clear: both;
+				border-top: 5px solid $theme-primary-color;
+			}
+		}
+
+	}
+
+	.contact-form .form-inner {
+		text-align: center;
+		padding: 60px 15px 65px;
+
+		@include media-query(991px) {
+			padding: 50px 45px 30px;
+		}
+
+		h3 {
+			font-size: 25px;
+			border-bottom: 1px solid lighten($black, 80%);
+			margin: 0;
+			padding: 0 0 1.17em;
+			text-transform: uppercase;
+
+			@include media-query(991px) {
+				font-size: 22px;
+			}
+
+			@include media-query(767px)  {
+				font-size: 20px;
+			}
+		}
+	}
+
+	.contact-form .form {
+		margin-top: 70px;
+
+		@include media-query(991px) {
+			margin-top: 40px;
+		}
+
+		input,
+		textarea {
+			background-color: lighten($black, 90%);
+			height: auto;
+			border: 0 !important;
+			padding: 15px 25px;
+			box-shadow: none;
+
+			@include media-query(767px)  {
+				padding: 10px 15px;
+			}
+		}
+
+		textarea {
+			height: 158px;
+		}
+
+		> div {
+			margin-bottom: 35px;
+		}
+
+		> div:last-child {
+			margin-bottom: 0;
+		}
+
+		.theme-btn {
+			padding: 20px 50px;
+			box-shadow: none;
+
+			@include media-query(767px)  {
+				padding: 15px 35px;
+			}
+		}
+
+		.error {
+			display: block;
+			font-size: 15px;
+			font-weight: normal;
+			color: red;
+			text-align: left;
+			margin-top: 5px;
+		}
+
+		#loader {
+			display: none;
+		}
+
+		#success,
+		#error {
+			//background-color: lighten($black, 80%);
+			color: $white;
+			padding: 5px 10px;
+			font-size: 16px;
+			display: none;
+
+			@include media-query(767px)  {
+				font-size: 15px;
+			}
+		}
+
+		#success {
+			background-color: lighten(green, 5%);
+			border-left: 5px solid green;
+			margin-bottom: 5px;
+		}
+
+		#error {
+			background-color: lighten(red, 5%);
+			border-left: 5px solid red;
+		}
+	}
+}

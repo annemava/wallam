@@ -1,0 +1,109 @@
+.sticky {
+	width: 100% !important;
+	position: fixed !important;
+	left: 0;
+	top: 0;
+	z-index: 9999 !important;
+
+
+	@include widther(992px) {
+		#navbar > ul > li > a {
+			padding: 25px 20px; 
+			text-transform: uppercase;
+		}
+	}
+
+	.social-links {
+		top: 23px;
+
+		@include media-query(991px) {
+			top: 12px;
+		}
+	}
+	
+	.mini-cart-wrapper {
+		top: 18px;
+		@include media-query(991px) {
+			top: 8px;
+		}
+	}
+
+	.mini-cart-wrapper .mini-cart {
+		top: 48px !important;
+		@include media-query(991px) {
+			top: 38px !important;
+		}
+	}
+}
+
+/*** header style tow ***/
+.header-style-two .sticky .navbar-brand {
+	height: 70px;
+	padding-top: 0;
+	padding-bottom: 0;
+
+	@include media-query(767px) {
+		height: auto;
+		padding-top: 15px;
+		padding-bottom: 15px;
+	}
+}
+
+.header-style-two .sticky .navbar-brand img {
+	@include scaleing(0.8,0.8,1);
+	@include media-query(767px) {
+		@include scaleing(1,1,1);
+	}
+}
+
+.header-style-two .sticky .social-links-mini-cart {
+	@include media-query(991px) {
+		top: 21px;
+	}
+
+	@include media-query(767px) {
+		top: 13px;
+	}
+}
+
+.header-style-two .sticky .navbar-header button {
+	top: 17px;
+
+	@include media-query(767px) {
+		top: 15px;
+	}
+}
+
+
+
+/*** header style four ***/
+.header-style-four .sticky #navbar > ul > li > a {
+	@include widther(992px) {
+		font-weight: bold;
+		color: lighten($black, 50%);
+		padding: 25px 30px 25px 25px;
+	}
+}
+
+.header-style-four .sticky .social-links-mini-cart {
+	@include widther(992px) {
+		top: 5px;
+	}
+}
+
+
+/*** header style five ***/
+.header-style-five .sticky .navbar-brand {
+	@include widther(992px) {
+		margin-top: 7px;
+		img  {
+			width: 220px;
+		}
+	}
+}
+
+.header-style-five .sticky #navbar > ul > li > a {
+	@include media-query(1199px) {
+		padding: 22px 27px 22px 15px;
+	}
+}

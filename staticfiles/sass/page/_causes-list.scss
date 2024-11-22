@@ -1,0 +1,410 @@
+/*--------------------------------------------------------------
+	causes list page
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+#3.0	page-title
+--------------------------------------------------------------*/
+.causes-list-page {
+	.page-title-bg {
+		@include background-style("../images/page-title-bg/causes-pagetitle.jpg", center center, cover, no-repeat, local);
+	}
+}
+
+
+/*--------------------------------------------------------------
+#3.1	causes list section
+--------------------------------------------------------------*/
+.causes-list-section {
+	.causes-list-box {
+		margin-bottom: 35px;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	.sidebar-wrapper {
+		padding-left: 45px;
+		padding-right: 20px;
+
+		@include media-query(1199px) {
+			padding-left: 45px;
+			padding-right: 10px;
+		}
+
+		@include media-query(991px) {
+			padding-left: 15px;
+			margin-top: 100px;
+		}
+
+		@include media-query(767px) {
+			margin-top: 60px;
+		}
+	}
+}
+
+
+/*--------------------------------------------------------------
+#3.2	urgent donation
+--------------------------------------------------------------*/
+.urgent-donation {
+	position: relative;
+	padding-bottom: 160px;
+
+	@include media-query(767px) {
+		padding-bottom: 110px;
+	}
+
+	.section-bg {
+		@include background-style("../images/urgent-donation-bg.jpg", center center, cover, no-repeat, local);
+		width: 100%;
+		height: 50%;
+		position: absolute;
+		left: 0;
+		top: 0;
+
+		&:before {
+			content: "";
+			@include overlay(transparentize($black, 0.5));
+		}
+
+		@include media-query(991px) {
+			height: 40%;
+		}
+	}
+
+	.urgent-inner {
+		padding-top: 100px;
+
+		@include media-query(767px) {
+			padding-top: 50px;
+		}
+	}
+
+	.urgent-slider {
+		img {
+			width: auto !important;
+		}
+
+		.owl-controls {
+			position: relative;
+			margin: 0;
+			//height: 1px;
+
+			@include media-query(767px) {
+				margin-top: 25px;
+			}
+		}
+
+		/*** owl controls ***/
+		.owl-controls .owl-nav {
+			width: 100%;
+			height: 0;
+			position: absolute;
+			left: 0;
+			top: -175px;
+
+			@include media-query(1199px) {
+				display: none;
+			}
+
+			> div {
+				background-color: transparent;
+				color: $heading-color;
+				font-size: 17px;
+				font-weight: bold;
+				position: absolute;
+			}
+
+			.owl-prev {
+				left: -95px;
+			}
+
+			.owl-next {
+				right: -95px;
+			}
+
+			> div:hover {
+				background-color: transparent;
+				color: lighten($black, 50%);
+			}
+		}
+
+		.owl-controls .owl-dots {
+			width: 100px;
+			padding-top: 50px;
+			position: absolute;
+			right: 28%;
+			z-index: 999;
+
+			@include media-query(767px) {
+				margin-top: 25px;
+				padding-top: 0;
+				right: auto;
+				left: 50%;
+				@include translatingX();
+			}
+		}
+
+		.owl-controls .owl-dots span {
+			background-color: $white;
+			border: 2px solid $black;
+			margin: 3px;
+		}
+
+		.owl-controls .owl-dots .active span {
+			width: 13px;
+			height: 13px;
+			border: 0;
+			margin: 2px 3px;
+			background-color: $theme-primary-color;
+		}
+	}
+
+	/*** urgent box ***/
+	.urgent-box {
+		background-color: $white;
+		overflow: hidden;
+
+		> div {
+			float: left;
+		}
+
+		.img-holder {
+			width: 40%;
+			text-align: right;
+
+			img {
+				display: inline-block;
+			}
+
+			@include media-query(767px) {
+				display: none;
+			}
+		}
+
+		.details {
+			background-color: $theme-primary-color;
+			width: 60%;
+			text-align: center;
+			padding: 58px 90px 60px;
+
+			@include media-query(991px) {
+				padding: 47px 20px 50px;
+			}
+
+			@include media-query(767px) {
+				width: 100%;
+				float: none;
+			}
+
+			 > span {
+			 	background-color: $heading-color;
+			 	font-size: 16px;
+			 	font-weight: bold;
+			 	color: $white;
+			 	display: inline-block;
+			 	padding: 5px 25px;
+			 	text-transform: uppercase;
+
+			 	@include media-query(991px) {
+					font-size: 15px;
+				}
+
+				@include media-query(767px) {
+					font-size: 14px;
+					padding: 4px 20px;
+				}
+			 }
+
+			 h2 {
+			 	font-size: 27px;
+			 	font-weight: bold;
+			 	margin: 0.83em 0 0;
+			 	text-transform: capitalize;
+
+			 	@include media-query(991px) {
+					font-size: 22px;
+				}
+
+				@include media-query(767px) {
+					font-size: 18px;
+					margin: 1.3em 0 0;
+				}
+			 }
+
+			 .remaing-date {
+			 	color: $white;
+			 	margin: 0;
+
+			 	@include media-query(991px) {
+					font-size: 16px;
+				}
+
+				@include media-query(767px) {
+					font-size: 14px;
+				}
+			 }
+
+			 .progress-wrapper {
+			 	margin-top: 80px;
+
+			 	@include media-query(991px) {
+					margin-top: 45px;
+				}
+			 }
+
+			 .progress {
+			 	background-color: $heading-color;
+			 	height: 15px;
+			 	position: relative;
+			 	overflow: visible;
+			 	@include rounded-border(20px);
+
+			 	@include media-query(767px) {
+					height: 12px;
+				}
+
+			 	.progress-bar {
+			 		background-color: $white;
+			 		line-height: 15px;
+			 		position: relative;
+			 		@include rounded-border(20px);
+
+			 		@include media-query(767px) {
+						line-height: 12px;
+					}
+			 	}
+			 }
+
+			 .progress-bar span {
+			 	background-color: $white;
+			 	font-size: 14px;
+			 	padding: 5px 10px;
+			 	color: $theme-primary-color;
+			 	position: absolute;
+			    right: -20px;
+			    top: -37px;
+			    @include rounded-border(5px);
+
+			    &:before {
+					content: "";
+					width: 0;
+					height: 0;
+					border-left: 5px solid transparent;
+					border-right: 5px solid transparent;
+					border-top: 7px solid $white;
+					position: absolute;
+					bottom: -7px;
+					left: 50%;
+					@include translatingX();
+				}
+			}
+
+			.goal-raised {
+				overflow: hidden;
+
+				span {
+					font-size: 14px;
+					font-weight: bold;
+					color: $white;
+					text-transform: uppercase;
+					@include media-query(991px) {
+						font-size: 12px;
+					}
+				}
+
+				h4 {
+					font-size: 24px;
+					margin: 0;
+
+					@include media-query(991px) {
+						font-size: 18px;
+					}
+				}
+
+				.goal {
+					float: left;
+				}
+
+				.raised {
+					float: right;
+				}
+			}
+
+			.form {
+				margin-top: 45px;
+
+				> div {
+					display: inline-block;
+					@include media-query(767px) {
+						display: block;
+					}
+				}
+
+				> div:last-child {
+					@include widther(768px) {
+						float: right;
+					}
+				}
+
+				input {
+					height: auto;
+					color: $theme-primary-color;
+					padding: 11px 20px;
+					@include rounded-border(5px);
+
+					@include media-query(991px) {
+						padding: 8px 15px;
+					}
+
+					@include media-query(767px) {
+						margin-bottom: 10px;
+						padding: 5px 15px;
+					}
+				}
+
+				.theme-btn {
+					border: 2px solid $heading-color;
+					color: $heading-color;
+					font-size: 18px;
+					padding: 15px 33px;
+					text-transform: none;
+
+					@include media-query(991px) {
+						font-size: 15px;
+						padding: 13px 27px;
+					}
+
+					@include media-query(767px) {
+						font-size: 14px;
+						padding: 12px 27px;
+					}
+				}
+
+				.theme-btn:hover {
+					border-color: $white;
+					background-color: $white;
+				}
+
+				@include placeholder-style( $theme-primary-color, 16px, normal );
+			}
+
+
+		}
+	}
+}
+
+
+/*--------------------------------------------------------------
+#3.3	newsletter
+--------------------------------------------------------------*/
+.newsletter {
+	background-color: darken($section-bg-color, 2%);
+
+	.children-holder-s2 {
+		@include background-style("../images/newsletter-children2.jpg", center center , cover, no-repeat, local);
+	}
+}
+
+

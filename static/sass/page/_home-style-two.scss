@@ -1,0 +1,328 @@
+/*--------------------------------------------------------------
+	home page style two
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+#20.0	urgent-donation
+--------------------------------------------------------------*/
+.urgent-donation-s2 {
+	background-color: $theme-primary-color;
+}
+
+/*** donation detalis ***/
+.urgent-donation-s2 .donation-details-wrapper {
+	@include background-style("../images/home-2-urgent-donation.jpg", center center, cover, no-repeat, local);
+	padding: 125px 0;
+	position: relative;
+
+	@include media-query(991px) {
+		border-top: 5px solid $theme-primary-color;
+	}
+
+	@include media-query(767px) {
+		padding: 60px 0;
+	}
+
+	&:before {
+		content: "";
+		@include overlay(transparentize($black, 0.3));
+	}
+
+	.donation-details {
+		position: relative;
+		z-index: 10;
+
+		@include widther(1200px) {
+			width: 600px;
+			margin: 0 auto;
+		}
+
+		@include media-query(1199px) {
+			padding: 0 45px;
+		}
+
+		@include media-query(767px) {
+			padding: 0 15px;
+		}
+	}
+
+	h2 {
+		font-size: 36px;
+		color: $white;
+		margin: 0 0 0.28em;
+
+		@include media-query(767px) {
+			font-size: 25px;
+		}
+	}
+
+	h2 + span {
+		color: $theme-primary-color;
+		font-weight: bold;
+		display: block;
+		margin-bottom: 1em;
+	}
+
+	p {
+		font-family: $home2-urgent-details-font;
+		color: $white;
+		margin: 0 0 2.2em;
+	}
+
+	.theme-btn-s2 {
+		@include media-query(767px) {
+			margin-bottom: 5px;
+		}
+	}
+}
+
+
+/*** donation meter part ***/
+.urgent-donation-s2 .donation-meter-wrapper {
+	padding: 90px 0 0 70px;
+
+	@include widther(1200px) {
+		width: 485px;
+		margin: 0 auto;
+	}
+
+	@include media-query(1199px) {
+		padding: 90px 0 0 35px;
+	}
+
+	@include media-query(991px) {
+		width: 485px;
+		margin: 0 auto;
+		padding: 90px 35px;
+	}
+
+	@include media-query(767px) {
+		width: 400px;
+		padding: 50px 15px;
+	}
+
+	@include media-query(400px) {
+		width: 100%;
+	}
+}
+
+/*** donation meter ***/
+.urgent-donation-s2 .donation-meter-details {
+	> div {
+		display: inline-block;
+		text-align: center;
+
+		@include media-query(400px) {
+			display: block;
+			text-align: center;
+		}
+	}
+
+	.raised span,
+	.goal span {
+		font-size: 14px;
+		font-weight: bold;
+		color: $white;
+		text-transform: uppercase;
+
+		@include media-query(767px) {
+			font-size: 12px;
+		}
+	}
+
+	.raised h3,
+	.goal h3 {
+		font-size: 24px;
+		color: $black;
+		margin: 0;
+
+		@include media-query(767px) {
+			font-size: 20px;
+		}
+	}
+
+	.meter2 {
+		width: 60%;
+
+		@include media-query(400px) {
+			width: 100%;
+			margin: 25px 0;
+		}
+
+		position: relative;
+
+		span {
+			font-size: 36px;
+			font-weight: bold;
+			color: $black;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			@include center-by-translating();
+
+			@include media-query(767px) {
+				font-size: 27px;
+			}
+		}
+
+		p {
+			font-size: 14px;
+			color: $white;
+			position: absolute;
+			top: 65%;
+			left: 50%;
+			@include center-by-translating();
+
+			@include media-query(767px) {
+				font-size: 12px;
+			}
+		}
+
+		@include media-query(767px) {
+			canvas {
+				width: 70%;
+				margin: 0 auto;
+			}
+		}
+
+		@include media-query(400px) {
+			canvas {
+				width: 50%;
+			}
+		}
+	}
+}
+
+.urgent-donation-s2 .donation-form {
+	margin-top: 70px;
+	@include media-query(400px) {
+		margin-top: 40px;
+	}
+
+	form {
+		overflow: hidden;
+	}
+
+	form > div:first-child {
+		width: 50%;
+		float: left;
+		text-align: right;
+	}
+
+	form > div:last-child {
+		width: 45%;
+		float: left;
+		text-align: left;
+		margin-left: 5px;
+	}
+
+	@include media-query(400px) {
+		form > div {
+			width: 100% !important;
+			float: none !important;
+		}
+	}
+
+	form input {
+		height: auto;
+		border: 0;
+		padding: 10px 40px;
+		font-weight: bold;
+		box-shadow: none;
+	}
+
+	form .theme-btn-s2 {
+		font-size: 14px;
+		padding: 9px 35px;
+		text-transform: uppercase;
+
+		&:hover {
+			background-color: $white;
+			border-color: white;
+		}
+
+		@include media-query(400px) {
+			display: block;
+			margin: 15px auto 0;
+		}
+	}
+}
+
+
+/*--------------------------------------------------------------
+#20.1	cta-4
+--------------------------------------------------------------*/
+.home-style-two .cta-4 {
+	background-color: lighten($black, 92%);
+	padding: 110px 0;
+
+	@include media-query(991px) {
+		padding: 90px 0;
+	}
+
+	@include media-query(767px) {
+		padding: 80px 0;
+	}
+}
+
+
+/*--------------------------------------------------------------
+#20.2	events-nearby
+--------------------------------------------------------------*/
+.home-style-two .events-nearby,
+.home-style-three .events-nearby {
+	padding: 120px 0;
+
+	@include media-query(991px) {
+		padding: 80px 0;
+	}
+
+	.section-title-s2 h2 {
+		margin: 0 0 0.64em;
+	}
+
+	.event-grid {
+		padding: 5px 15px;
+	}
+
+	.event-grid-wrapper {
+		margin: 0 -15px;
+		@include media-query(991px) {
+			margin: 0;
+		}
+	}
+
+	.events-nearby-slider .owl-controls {
+		margin: 50px 0 0;
+
+		@include media-query(991px) {
+			margin: 40px 0 0;
+		}
+	}
+
+	.owl-dots span {
+		width: 12px;
+		height: 12px;
+		margin: 0 12px 0 0;
+	}
+
+	.owl-dots .active span,
+	.owl-dots span:hover {
+		background-color: $theme-primary-color;
+	}
+}
+
+
+/*** others ***/
+.home-style-two .popular-campaign .theme-btn-s2 {
+	border-color: $theme-primary-color;
+	color: $theme-primary-color;
+
+	&:hover {
+		background-color: $theme-primary-color;
+		color: $white;
+	}
+}
+
+.home-style-two .cta-2 .join-us:before {
+	display: none;
+}

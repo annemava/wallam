@@ -1,0 +1,171 @@
+/*--------------------------------------------------------------
+	event 3 col page
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+#11.0	page-title
+--------------------------------------------------------------*/
+.event-3col {
+	.page-title-bg {
+		@include background-style("../images/page-title-bg/gallery-3col-pagetitle.jpg", center center, cover, no-repeat, local);
+	}
+}
+
+
+/*--------------------------------------------------------------
+#11.1	 event-3col-section
+--------------------------------------------------------------*/
+.event-3col {
+	
+	.event-3col-section {
+		padding-bottom: 95px;
+
+		@include media-query(991px) {
+			padding-bottom: 55px;
+		}
+
+		@include media-query(767px) {
+			padding-bottom: 60px;
+		}
+	}
+
+	.event-3col-section .event-grid {
+		width: 33.33%;
+		float: left;
+		padding: 5px 15px 30px;
+
+		@include media-query(991px) {
+			width: 50%;
+		}
+
+		@include media-query(600px) {
+			width: 100%;
+			float: none;
+			padding: 5px 0 30px;
+		}
+	}
+
+	/** featured section ***/
+	.featured {
+		background-color: $event-featured-bg-color;
+		border-bottom: 1px solid $black;
+
+		.featured-promo {
+			@include background-style("../images/beat-cancer-bg.jpg", center center, cover, no-repeat, local);
+			padding: 85px 15px;
+			text-align: center;
+			position: relative;
+
+			&:before {
+				content: "";
+				@include overlay(transparentize($theme-primary-color, 0.15));
+			}
+			
+			img {
+				display: inline-block;
+				position: relative;
+				z-index: 10;
+			}
+		}
+
+		.countdown-wrapper {
+			padding: 65px 15px 65px 75px;
+			
+			@include widther(1200px) {
+				width: 585px;
+			}
+
+			@include media-query(1199px) {
+				padding: 65px 15px 65px 45px;
+			}
+
+			@include media-query(767px) {
+				height:  auto !important;
+				padding: 65px 15px 65px 15px;
+			}
+
+			h3,
+			p {
+				color: lighten($heading-color, 40%);
+			}
+
+			h3 {
+				font-size: 28px;
+				margin: 0 0 0.32em;
+				
+				@include media-query(767px) {
+					font-size: 22px;
+				}
+			}
+
+			p {
+				font-size: 14px;
+				margin: 0 0 1.79em;
+			}
+
+			h3 + ul {
+				overflow: hidden;
+				margin-bottom: 18px;
+
+				li {
+					font-size: 14px;
+					color: lighten($heading-color, 20%);
+					float: left;
+					margin-right: 20px;
+				}
+
+				li:last-child {
+					margin-right: 0;
+				}
+
+				li i {
+					color: $theme-primary-color;
+				}
+			}
+
+			/*** colock style ***/
+			#countdown {
+				margin-left: -10px;
+
+				@include media-query(767px) {
+					margin-left: 0;
+				}
+			}
+
+			.ClassyCountdown-value > div {
+				font-size: 28px;
+				font-weight: bold;
+				color: $theme-primary-color !important;
+
+				@include media-query(991px) {
+					font-size: 20px;
+				}
+
+				@include media-query(400px) {
+					font-size: 15px;
+				}
+			}
+
+			.ClassyCountdown-value > span {
+				font-size: 13px; 
+				font-weight: bold; 
+				color: $white;
+
+				@include media-query(767px) {
+					font-size: 12px !important;
+				}
+			}
+
+			@include media-query(991px) {
+				.ClassyCountdown-wrapper > div {
+					margin: 5px;
+				}
+			}
+
+			@include media-query(400px) {
+				.ClassyCountdown-wrapper > div {
+					// /margin: 1px;
+				}
+			}
+		}
+	}
+}

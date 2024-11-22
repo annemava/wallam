@@ -1,0 +1,33 @@
+/*--------------------------------------------------------------
+	gallery 4 col
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+#8.0	page-title
+--------------------------------------------------------------*/
+.gallery-4col {
+	.page-title-bg {
+		@include background-style("../images/page-title-bg/gallery-3col-pagetitle.jpg", center center, cover, no-repeat, local);
+	}
+}
+
+
+/*--------------------------------------------------------------
+#8.1	gallery-4col-content
+--------------------------------------------------------------*/
+.gallery-4col-content,
+.gallery-fullwidth-content {
+	
+	@include media-query(767px) {
+		padding-bottom: 80px;
+	}
+
+	.gallery-container .box {
+		width: 25%;
+		float: left;
+		@include media-query(991px) {
+			width: 50%;
+		}
+	}
+}
+
+

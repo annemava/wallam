@@ -1,0 +1,102 @@
+.sidebar {
+	.widget {
+		margin-bottom: 65px;
+
+		@include media-query(991px) {
+			margin-bottom: 50px;
+		}
+
+		@include media-query(767px) {
+			margin-bottom: 45px;
+		}
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+
+		a {
+			color: $heading-color;
+		}
+
+		a:hover,
+		a:focus {
+			text-decoration: none;
+			color: $theme-primary-color;
+		}
+
+		> div {
+			margin-bottom: 25px;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+
+		h3 {
+			font-size: 22px;
+			margin: 0 0 1em;
+			text-transform: capitalize;
+
+			@include media-query(767px) {
+				font-size: 20px;
+			}
+		}
+
+		h4 {
+			font-size: 16px;
+			margin: 0 0 0.2em;
+
+			@include media-query(767px) {
+				font-size: 15px;
+			}
+
+			a {
+				color: lighten($heading-color, 10%);				
+			}
+		}
+
+		.date,
+		.remaing-date {
+			font-size: 14px;
+			color: lighten($black, 50%);
+			margin: 0;
+		}
+	}
+
+	.search-widget {
+		form div {
+			position: relative;
+
+			@include placeholder-style($theme-primary-color, 12px, normal);
+
+			input {
+				height: auto;
+				color: $theme-primary-color;
+				padding: 7px 45px 7px 25px;
+				border-color: lighten($black, 80%);
+				@include rounded-border(20px);
+
+			}
+
+			input:focus {
+				border-color: $theme-primary-color;
+            	box-shadow: none;
+			}
+
+			.btn {
+				background: transparent;
+				color: $theme-primary-color;
+				position: absolute;
+				right: 0;
+				top: 0;
+			}
+
+			.btn:hover,
+			.btn:focus {
+				outline: none;
+				border: 0;
+				box-shadow: 0;
+			}
+		}
+	}
+}

@@ -1,0 +1,43 @@
+/*--------------------------------------------------------------
+	event 2 col page
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+#12.0	page-title
+--------------------------------------------------------------*/
+.shop-page {
+	.page-title-bg {
+		@include background-style("../images/page-title-bg/shop-pagetitle.jpg", center center, cover, no-repeat, local);
+	}	
+}
+
+
+/*--------------------------------------------------------------
+#12.0	shop-main-content
+--------------------------------------------------------------*/
+
+.shop-page .shop-main-content {
+	@include widther(992px) {
+		padding-bottom: 110px;
+	}
+	.shop-content {
+		@include media-query(991px) {
+			margin-bottom: 0;
+		}
+
+		@include media-query(767px) {
+			margin-bottom: 20px;
+		}
+	}
+
+	@include widther(1200px) {
+		.pagination-wrapper {
+			margin-top: 45px;
+		}
+	}
+	@include media-query(991px) {
+		.pagination-wrapper {
+			margin-bottom: 45px;
+		}
+	}
+}
+

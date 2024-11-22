@@ -1,0 +1,89 @@
+.causes-list-box {
+	overflow: hidden;
+
+	@include round-box-shadow(lighten($black, 90%), 15px, 5px);
+
+	@include media-query(767px) {
+		padding: 15px;
+	}
+
+	.img-holder {
+		width: 45%;
+		float: left;
+	}
+
+	.details,
+	> .title {
+		width: 55%;
+		float: right;
+		padding: 45px 90px 45px 40px;
+
+		@include media-query(1199px) {
+			padding: 30px 20px 30px 30px;
+		}
+
+		@include media-query(767px) {
+			padding: 30px 0 10px 0;
+		}
+
+		h3 {
+			font-size: 27px;
+			margin: 0 0 0.9em;
+
+			@include media-query(1199px) {
+				font-size: 22px;
+			}
+		}
+
+		.progress {
+			background-color: $progressbar-color;
+			max-width: 300px;
+			height: 13px;
+			@include rounded-border(10px);
+
+			.progress-bar {
+				background-color: $theme-primary-color;
+				line-height: 13px;
+				font-size: 10px;
+
+				@include rounded-border(10px);
+			}
+		}
+
+		h4 {
+			font-size: 17px;
+			font-weight: 600;
+			margin: 0 0 1.47em;
+
+			@include media-query(1199px) {
+				font-size: 15px;
+			}
+
+			span {
+				color: $theme-primary-color;
+			}
+		}
+
+		p {
+			color: lighten($text-color, 10%);
+			margin: 0 0 1.5em;
+		}
+
+		.theme-btn {
+			font-weight: bold;
+			padding: 17px 30px;
+
+			@include media-query(1199px) {
+				padding: 14px 27px;
+			}
+		}
+	}
+
+	@include media-query(767px) {
+		.img-holder,
+		.details {
+			width: 100%;
+			float: none;
+		}
+	}
+}

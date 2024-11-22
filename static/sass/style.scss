@@ -1,0 +1,262 @@
+/*------------------------------------------------------------------
+[Master Stylesheet]
+Theme Name: 	Charity Plus - Nonprofit, Crowdfunding & Charity HTML5 Template
+Version:        1.0.0
+Author:         themexriver
+URL:            http://themeforest.net/user/themexriver
+-------------------------------------------------------------------*/
+
+
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+#0.1  Theme Reset Style
+#0.2  Global Elements
+#0.3  header
+#0.4  hero-slider
+#0.5  footer
+#0.6  popular-campaign
+#0.7  help
+#0.8  cta
+#0.9  latest-causes
+#1.0  cta-2
+#1.1  volunteers
+#1.2  evnets
+#1.3  cta-3
+#1.4  latest news
+#1.5  news letter
+
+-----------------------------------------------------------------
+>>> causes grid page
+-----------------------------------------------------------------
+#2.0  page-title
+
+
+-----------------------------------------------------------------
+>>> causes list page
+-----------------------------------------------------------------
+#3.0  page-title
+#3.1  causes list section
+#3.2  urgent donation
+#3.3  newsletter
+
+
+-----------------------------------------------------------------
+>>> causes single page
+-----------------------------------------------------------------
+#4.0  page-title
+#4.1  causes-single-wrapper
+
+
+-----------------------------------------------------------------
+>>> volunteers
+-----------------------------------------------------------------
+#5.0  page-title
+#5.1  cta-2
+
+
+-----------------------------------------------------------------
+>>> volunteer single page
+-----------------------------------------------------------------
+#6.0  page-title
+#6.1  Volunteer single section
+
+
+-----------------------------------------------------------------
+>>> gallery 3 col page
+-----------------------------------------------------------------
+#7.0  page-title
+#7.1  gallery-3col-content
+
+
+-----------------------------------------------------------------
+>>> gallery 4 col page
+-----------------------------------------------------------------
+#8.0  page-title
+#8.1  gallery-4col-content
+
+
+-----------------------------------------------------------------
+>>> gallery fullwidth page
+-----------------------------------------------------------------
+#9.0  page-title
+#9.2  gallery-fullwidth-content
+
+
+-----------------------------------------------------------------
+>>> event 2 col page
+-----------------------------------------------------------------
+#10.0  page-title
+#10.1  event-2col-section
+
+
+-----------------------------------------------------------------
+>>> event 3 col page
+-----------------------------------------------------------------
+#11.0  page-title
+#11.1  event-2col-section
+
+
+-----------------------------------------------------------------
+>>> shop page
+-----------------------------------------------------------------
+#12.0  page-title
+#12.1  shop-main-content
+
+
+-----------------------------------------------------------------
+>>> shop single page
+-----------------------------------------------------------------
+#13.0  page-title
+#13.1  shop-details-main-content
+
+
+-----------------------------------------------------------------
+>>> blog page
+-----------------------------------------------------------------
+#14.0  page-title
+#14.1  blog-main-content
+
+
+-----------------------------------------------------------------
+>>> blog detail page
+-----------------------------------------------------------------
+#15.0  page-title
+#15.1  blog-detail-main-content
+
+
+-----------------------------------------------------------------
+>>> contact page
+-----------------------------------------------------------------
+#16.0  page-title
+#16.1  contact-main-content
+
+
+-----------------------------------------------------------------
+>>> about page
+-----------------------------------------------------------------
+#17.0  page-title
+#17.1  about-details
+#17.2  cta-4
+
+
+-----------------------------------------------------------------
+>>> event single page
+-----------------------------------------------------------------
+#18.0  page-title
+#18.1  event-single-main-content
+
+
+-----------------------------------------------------------------
+>>> error 404 page
+-----------------------------------------------------------------
+#19.0  error-404-content
+#19.1  search-something
+
+
+-----------------------------------------------------------------
+>>> home page style two
+-----------------------------------------------------------------
+#20.0  urgent-donation
+#20.1  cta-4
+#20.2  events-nearby
+
+
+-----------------------------------------------------------------
+>>> home page style three
+-----------------------------------------------------------------
+#21.0  urgent-donation
+#21.1  cta-4
+#21.2  shop slider
+
+
+-----------------------------------------------------------------
+>>> home page style four
+-----------------------------------------------------------------
+#22.0  cta-4
+#22.1  important-causes
+#22.2  next-event-section
+#22.3  about style 2
+#22.4  recent news
+#22.5  fun fact
+#22.6  gallery style 2
+#22.7  testimonials
+#22.8  partner
+
+
+
+-----------------------------------------------------------------
+>>> home page style five
+-----------------------------------------------------------------
+#23.0  urgent-causes
+#23.1  main-banar
+#23.2  cta-5
+#23.3  important-causes
+#23.4  events-nearby-s2
+#23.5  about-st3
+
+
+
+
+----------------------------------------------------------------*/
+
+// helpers
+@import "helpers/variables";
+@import "helpers/mixins";
+
+// base
+@import "base/base";
+
+
+// components
+@import "components/preloader";
+@import "components/section-title";
+@import "components/side-section-title";
+@import "components/buttons";
+@import "components/form";
+@import "components/sticky-header";
+@import "components/social-links";
+@import "components/_volunteers-grid";
+@import "components/blog-grid";
+@import "components/page-title";
+@import "components/causes-list-box";
+@import "components/sidebar";
+@import "components/share";
+@import "components/pagination";
+@import "components/gallery-grid";
+@import "components/event-grid";
+@import "components/shop-sidebar";
+@import "components/shop-grid";
+@import "components/important-causes-grid";
+
+// layout
+@import "layout/header";
+@import "layout/hero-slider";
+@import "layout/footer";
+
+// page
+@import "page/home-default";
+@import "page/causes-grid";
+@import "page/causes-list";
+@import "page/causes-single";
+@import "page/volunteers";
+@import "page/volunteer-single";
+@import "page/gallery-3col";
+@import "page/gallery-4col";
+@import "page/gallery-fullwidth";
+@import "page/event-2col";
+@import "page/event-3col";
+@import "page/shop";
+@import "page/shop-details";
+@import "page/blog";
+@import "page/blog-detail";
+@import "page/contact";
+@import "page/about";
+@import "page/event-single";
+@import "page/error-404";
+@import "page/home-style-two";
+@import "page/home-style-three";
+@import "page/home-style-four";
+@import "page/home-style-five";
+
+

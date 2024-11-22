@@ -1,0 +1,116 @@
+/***********************
+	gallery grid
+***********************/	
+.gallery {
+	a:hover,
+	a:focus {
+		text-decoration: none !important;
+	}
+
+	.gallery-filters {
+		text-align: center;
+		margin-bottom: 36px;
+
+		@include media-query(991px) {
+			margin-bottom: 25px;
+		}
+
+		ul {
+			display: inline-block;
+			overflow: hidden;
+			margin-top: -5px;
+		}
+
+		ul li {
+			float: left;
+			margin-right: 25px;
+			padding-right: 25px;
+			position: relative;
+
+			@include media-query(991px) {
+				margin-right: 10px;
+				padding-right: 10px;
+			}
+
+			&:after {
+				content: "/";
+				color: lighten($black, 70%);
+				font-size: 20px;
+				font-weight: bold;
+				position: absolute;
+				right: 0;
+				top: 0;
+
+				@include media-query(991px) {
+					font-size: 14px;
+				}
+			}
+		}
+
+		ul li:last-child {
+			margin: 0;
+			padding: 0;
+		}
+
+		ul li:last-child:after {
+			display: none;
+		}
+
+		ul li a {
+			font-size: 17px;
+			font-weight: bold;
+			color: lighten($black, 70%);
+			display: block;
+			text-transform: uppercase;
+
+			@include media-query(991px) {
+				font-size: 14px;
+			}
+		}
+
+		ul li a:hover,
+		ul li .current {
+			color: $theme-primary-color;
+		}
+	}
+
+	.gallery-container {
+		overlay: hidden;
+	}
+
+	.gallery-container .box {
+		> a {
+			display: block;
+			position: relative;
+		}
+
+		> a:before {
+			content: "";
+			opacity: 0;
+			@include overlay(transparentize($theme-primary-color, 0.15));
+			@include scaleing(0.5, 0.5, 1);
+			@include transition-time(0.4s);
+		}
+
+		> a:after {
+			font-family: "FontAwesome";
+			content: "\f00e";
+			font-size: 22px;
+			color: $white;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			@include center-by-translating();
+			opacity: 0;
+		}
+
+		> a:hover:before {
+			opacity: 1;
+			@include scaleing(1, 1, 1);
+		}
+
+		> a:hover:after {
+			opacity: 1;
+		}
+	}
+}

@@ -1,0 +1,162 @@
+/*--------------------------------------------------------------
+#0.5    footer
+--------------------------------------------------------------*/
+footer {
+	background-color: $footer-bg;
+
+	.upper-footer {
+		padding: 90px 0 80px;
+
+		@include media-query(991px) {
+			padding-bottom: 5px;
+		}
+
+		@include media-query(767px) {
+			padding: 60px 0 35px;
+		}
+
+		a {
+			color: $text-color;
+		}
+
+		a:hover {
+			text-decoration: none;
+			color: $theme-primary-color;
+		}
+
+		.widget h3 {
+			font-size: 20px;
+			color: $light-blue;
+			margin: 0.5em 0 2.3em;
+			text-transform: uppercase;
+
+			@include media-query(991px) {
+				margin: 0.5em 0 1em;
+			}
+
+			@include media-query(767px) {
+				font-size: 18px;
+			}
+		}
+
+		.widget h3 + ul {
+			li {
+				margin-bottom: 13px;
+			}
+
+			li:last-child {
+				margin-bottom: 0;
+			}
+		}
+
+		.about-widget {
+			padding-right: 45px;
+
+			p {
+				line-height: 1.5em;
+			}
+
+			.logo {
+				margin-bottom: 15px;
+				img {
+					display: inline-block;
+				}
+			}
+
+			.details {
+				padding-left: 70px;
+				@include media-query(991px) {
+					padding-left: 0;
+				}
+			}
+
+			.copyright {
+				margin: 1.8em 0 1.3em;
+
+				span {
+					display: block;
+				}
+
+				a {
+					color: lighten($theme-primary-color, 5%);
+				}
+			}
+
+			.social-links {
+				li {
+					margin-right: 10px;
+				}
+			}
+		}
+
+		.contact-widget {
+			input,
+			textarea {
+				background-color: darken($footer-bg, 5%);
+				width: 100%;
+				border: 0;
+				padding: 2px 15px 5px;
+				font-size: 15px;
+				@include rounded-border(5px);
+			}
+
+			textarea {
+				height: 110px;
+			}
+
+			input:focus,
+			textarea:focus {
+				 @include round-box-shadow( darken($footer-bg, 10%), 5px, 0 );
+			}
+
+			form > div {
+				margin-bottom: 15px;
+
+				&:last-child {
+					margin-bottom: 0;
+				}
+			}
+
+			.theme-btn {
+				font-size: 16px;
+				padding: 12px 33px;
+
+				@include media-query(767px) {
+					font-size: 14px;
+					padding: 10px 20px;
+				}
+			}
+		}
+
+		@include media-query(991px) {
+			> .col {
+				min-height: 305px;
+				margin-bottom: 55px;
+			}
+		}
+
+		@include media-query(767px) {
+			> .col {
+				width: 100%;
+				min-height: auto;
+			}
+		}
+	}
+
+	.lower-footer {
+		background-color: $lowerfooter-bg;
+		padding: 10px 0;
+		text-align: center;
+
+		p {
+			color: lighten($text-color, 10%);
+			margin: 0;
+			font-size: 13px;
+
+			span,
+			a {
+				color: $theme-primary-color;
+			}
+		}
+	}
+}

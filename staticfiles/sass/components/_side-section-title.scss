@@ -1,0 +1,15 @@
+.side-section-title {
+	h2 {
+		font-size: 36px;
+		margin: 0 0 1em;
+		text-transform: capitalize;
+
+		span {
+			color: $theme-primary-color;
+		}
+
+		@include media-query(767px) {
+			font-size: 25px;
+		}
+	}
+}

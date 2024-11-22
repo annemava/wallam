@@ -1,0 +1,208 @@
+/*--------------------------------------------------------------
+	home page style three
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+#21.0	urgent-donation
+--------------------------------------------------------------*/
+.home-style-three .urgent-donation {
+	padding: 0;
+	margin-top: -100px;
+
+	@include media-query(991px) {
+		margin: 40px 0 0;
+	}
+
+	.urgent-inner {
+		padding: 0;
+
+		.owl-controls {
+			position: relative;
+		    margin: 0;
+		    height: 1px;
+
+		    @include media-query(767px) {
+				margin-top: 25px;
+			}
+		}
+
+		.owl-controls .owl-nav {
+			top: -175px;
+		}
+
+		.owl-controls .owl-dots {
+			margin: 0;
+			padding-top: 0;
+		}
+
+		.owl-controls .owl-dots .active span {
+			border: 2px solid $black;
+		}
+	}
+
+	.urgent-box {
+		background-color: transparent;
+	}
+
+	.urgent-box {
+
+		.details {
+			background-color: $home-style3-urgentdonation-bg;
+		}
+
+		.details > span {
+			background-color: $white;
+			color: $theme-primary-color;
+		}
+
+		.details h2 {
+			color: $theme-primary-color;
+		}
+
+		.details .remaing-date {
+			color: lighten($text-color, 10%);
+		}
+
+		.details .progress .progress-bar {
+			background-color: $theme-primary-color;
+		}
+
+		.details .progress-bar span {
+			background-color: $theme-primary-color;
+			color: $white;
+		}
+
+		.details .progress-bar span:before {
+			border-top-color: $theme-primary-color;
+		}
+
+		.details .goal-raised span {
+			color: lighten($text-color, 10%);
+		}
+
+		.details .goal-raised h4 {
+			color: $white;
+		}
+
+		.details .form input {
+			background-color: $theme-primary-color;
+			color: $white;
+			border-color: $theme-primary-color;
+
+			&:focus {
+				box-shadow: none;
+			}
+		}
+
+		.details .form .theme-btn {
+			background-color: transparent;
+			border-color: $white;
+			color: $white;
+
+			&:hover {
+				background-color: $theme-primary-color;
+				border-color: $theme-primary-color;
+			}
+		}
+
+		.details .form {
+			@include placeholder-style($white, 14px, normal);
+		}
+	}
+}
+
+
+/*--------------------------------------------------------------
+#21.1	cta-4
+--------------------------------------------------------------*/
+.home-style-three .cta-4 {
+	background-color: lighten($black, 95%);
+	margin-top: 80px;
+}
+
+.home-style-three .cta-4 .col > div {
+	background-color: $white;
+	padding: 40px 35px;
+}
+
+
+.home-style-three .cta-2 .join-us:before {
+	display: none;
+}
+
+.home-style-three .cta-2 .join-us {
+	@include background-style("../images/join-us-bg-2.jpg", center center, cover, no-repeat, local);
+}
+
+
+/*--------------------------------------------------------------
+#21.1	cta-4
+--------------------------------------------------------------*/
+.home-style-three .cta-3 {
+	background: $black;
+	position: relative;
+
+	&:before {
+		content: "";
+		@include background-style("../images/cta-3-animal.jpg", center center, cover, no-repeat, local);
+		width: 40%;
+		height: 100%;
+		position: absolute;
+		left: 0;
+		top: 0;
+
+		@include media-query(991px) {
+			display: none;
+		}
+	}	
+}
+
+.home-style-three .cta h2 span {
+	color: $theme-primary-color;
+}
+
+/*--------------------------------------------------------------
+#21.2	shop slider
+--------------------------------------------------------------*/
+.home-style-three .shop-main-content {
+	@include media-query(991px) {
+		padding: 100px 0;
+	}
+
+	@include media-query(767px) {
+		padding: 70px 0;
+	}
+}
+
+.home-style-three .latest-product-slider .grid {
+	width: auto;
+	float: none;
+}
+
+.home-style-three .latest-product-slider .owl-controls {
+	margin: 0;
+}
+
+.home-style-three .latest-product-slider .owl-dots span {
+	background-color: $white;
+	width: 12px;
+	height: 12px;
+	border: 2px solid $black;
+	margin: 0 15px 0 0;
+}
+
+.home-style-three .latest-product-slider .owl-dot:hover span {
+	background-color: $theme-primary-color;
+}
+
+.home-style-three .latest-product-slider .owl-dots .active span {
+	width: 15px;
+	height: 15px;
+	background-color: $theme-primary-color;
+	margin-bottom: -1px;
+}
+
+
+/*** news letter ***/
+.home-style-three .newsletter .children-holder {
+	@include background-style("../images/newsletter-elephant.jpg", center center, cover, no-repeat, local);	
+}

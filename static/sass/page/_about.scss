@@ -1,0 +1,261 @@
+/*--------------------------------------------------------------
+	about page
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+#17.0	page-title
+--------------------------------------------------------------*/
+.about-page {
+	.page-title-bg {
+		@include background-style("../images/page-title-bg/causes-pagetitle.jpg", center center, cover, no-repeat, local);
+	}	
+}
+
+
+/*--------------------------------------------------------------
+#17.1	about-details
+--------------------------------------------------------------*/
+/*** about details ***/
+.about-us-st {
+	background-color: lighten($black, 97%);
+	h2 {
+		font-size: 36px;
+		margin: 0 0 100px;
+		text-align: center;
+
+		@include media-query(767px) {
+			font-size: 28px;
+			margin: 0 0 40px;
+		}
+
+		span {
+			color: $theme-primary-color;
+		}
+	}
+
+	.company {
+		margin-bottom: 25px;
+	}
+
+	.company h3 {
+		font-size: 27px;
+		margin: 0 0 0.2em;
+		span {
+			color: $theme-primary-color;
+		}
+
+		@include media-query(767px) {
+			font-size: 22px;
+		}
+	}
+
+	.company > span {
+		font-size: 16px;
+		color: lighten($black, 75%);
+		letter-spacing: 0.5px;
+	}
+
+	.company + p {
+		margin-bottom: 1.67em;
+	}
+
+	/*** accordian ***/
+	#accordion .panel-default {
+		border: 0;
+		border-radius: 0;
+		margin: 0 0 10px;
+		@include round-box-shadow(lighten($black, 80%), 10px, 0);
+
+		&:last-child {
+			margin: 0;
+		}
+	}
+
+	#accordion .panel-heading {
+		background-color: $white;
+		@include rounded-border(0);
+		@include transition-time(0.2s);
+	}
+
+	#accordion .panel-heading:hover {
+		background-color: $theme-primary-color;
+		a {
+			color: $white;
+		}
+	}
+
+	#accordion .panel-heading a {
+		display: block;
+		color: $text-color;
+		font-weight: bold;
+		position: relative;
+	}
+
+	#accordion .panel-heading a i {
+		position: absolute;
+		right: 0;
+		top: 4px;
+		@include transition-time(0.3s);
+	}
+
+	#accordion .current {
+		.panel-heading {
+			background-color: $theme-primary-color;
+		}
+
+		.panel-heading a {
+			color: $white;
+		}
+
+		.panel-heading i {
+			-webkit-transform: rotate(180deg);
+			-moz-transform: rotate(180deg);
+			-o-transform: rotate(180deg);
+			-ms-transform: rotate(180deg);
+			transform: rotate(180deg);
+		}
+	}
+
+	#accordion .panel-body {
+		border: 0;
+		padding: 25px 25px 15px 130px;
+		position: relative;
+
+		@include media-query(991px) {
+			padding-bottom: 40px;
+		}
+
+		@include media-query(767px) {
+			position: static;
+			padding: 25px 15px 15px;
+
+			.img-holder {
+				margin-bottom: 10px;
+			}
+		}
+	}
+
+	#accordion .panel-body .img-holder {
+		width: 70px;
+		position: absolute;
+		left: 25px;
+
+		@include media-query(767px) {
+			position: static;
+		}
+	}
+
+	#accordion .panel-body p {
+		font-size: 16px;
+		line-height: 1.6em;
+	}
+
+	/*** right col ***/
+	.right-col {
+		position: relative;
+		margin-top: 20px;
+
+		@include media-query(991px) {
+			margin-top: 80px;
+		}
+
+		@include media-query(767px) {
+			text-align: center;
+		}
+
+		.video {
+			@include media-query(767px) {
+				display: inline-block;
+			}
+		}
+	}
+
+	.right-col a {
+		background-color: $theme-primary-color;
+		width: 80px;
+		height: 80px;
+		line-height: 80px;
+		font-size: 35px;
+		text-align: center;
+		color: $white;
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		@include rounded-border();
+		@include center-by-translating();
+
+		@include media-query(767px) {
+			width: 50px;
+			height: 50px;
+			line-height: 50px;
+			font-size: 25px;
+		}
+	}
+} 
+
+
+/*--------------------------------------------------------------
+#17.2	cta-4
+--------------------------------------------------------------*/
+.cta-4 {
+	padding: 115px 0;
+	text-align: center;
+
+	@include media-query(991px) {
+		padding: 70px 0;
+	}
+
+	.col {
+		@include media-query(991px) {
+			padding: 0 5px;
+		}
+
+		@include media-query(767px) {
+			padding: 0 15px;
+			margin-bottom: 50px;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+
+	.col > div {
+		padding: 0 15px;
+
+		@include media-query(991px) {
+			padding: 0;
+		}
+	}
+
+	.icon i {
+		color: $theme-primary-color;
+	}
+
+	.icon i:before {
+		font-size: 40px;
+
+		@include media-query(767px) {
+			font-size: 28px;
+		}
+	}
+
+	h3 {
+		font-size: 20px;
+		margin: 0.5em 0 0.65em;
+		text-transform: capitalize;
+
+		@include media-query(767px) {
+			font-size: 18px;
+		}
+	}
+
+	p {
+		color: lighten($black, 50%);
+		margin: 0 0 1.28em;
+	}
+
+	.read-more {
+		font-weight: bold;
+		color: $theme-primary-color;
+	}
+}

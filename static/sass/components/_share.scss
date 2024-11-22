@@ -1,0 +1,60 @@
+.share {
+	padding-bottom: 10px;
+
+	> ul,
+	> span {
+		display: inline-block;
+	}
+
+	span {
+		font-size: 18px;
+		font-weight: bold;
+		color: $heading-color;
+		text-transform: uppercase;
+		margin-right: 25px;
+	}
+
+	ul {
+		position: relative;
+		top: 10px;
+		overflow: hidden;
+
+
+		li {
+			background-color: $facebook-color;
+			width: 30px;
+			height: 30px;
+			line-height: 30px;
+			float: left;
+			margin-right: 12px;
+			opacity: 0.9;
+			@include rounded-border(2px);
+			@include transition-time(0.2s);
+		}
+
+		li:hover {
+			opacity: 1;
+		}
+
+		li:nth-child(2) {
+			background-color: $twitter-color;
+		}
+
+		li:nth-child(3) {
+			background-color: $googleplus-color;
+		}
+
+		li:last-child {
+			background-color: $linkedin-color;
+			margin-right: 0;
+		}
+
+		li a {
+			display: block;
+			font-size: 20px;
+			color: $white;
+			text-align: center;
+		}	
+	}
+}
+

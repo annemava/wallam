@@ -1,0 +1,39 @@
+/*--------------------------------------------------------------
+	gallery fullwidth page
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+#9.0	page-title
+--------------------------------------------------------------*/
+.gallery-fullwidth {
+	.page-title-bg {
+		@include background-style("../images/page-title-bg/gallery-3col-pagetitle.jpg", center center, cover, no-repeat, local);
+	}
+}
+
+
+/*--------------------------------------------------------------
+#9.1	gallery-fullwidth-content
+--------------------------------------------------------------*/
+.gallery-fullwidth-content {
+	.container-fluid {
+		padding: 0;
+	}
+
+	.gallery-container .box {
+		@include media-query(991px) {
+			width: 25%;
+		}
+
+		@include media-query(767px) {
+			width: 50%;
+		}
+
+		@include widther(1367px)  {
+			img {
+				width: 100%;
+			}
+		}
+	}
+}
+
+

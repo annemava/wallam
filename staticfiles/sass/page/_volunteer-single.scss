@@ -1,0 +1,226 @@
+/*--------------------------------------------------------------
+	volunteer single page
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+#6.0	page-title
+--------------------------------------------------------------*/
+.volunteer-single {
+	.page-title-bg {
+		@include background-style("../images/page-title-bg/volunteers-pagetitle-bg.jpg", center center, cover, no-repeat, local);
+	}
+}
+
+
+/*--------------------------------------------------------------
+#6.1	Volunteer single section
+--------------------------------------------------------------*/
+.volunteer-single-section {
+	background-color: $volunteer-single-pgbg;
+	
+	/*** volunteer profile title ***/
+	.volunteer-profile-title {
+		background-color: $white;
+		text-align: center;
+		padding: 80px 15px 35px;
+		border-bottom: 2px solid lighten($black, 80%);
+
+		@include media-query(767px) {
+			padding: 50px 15px 15px;
+		}
+
+		.img-holder {
+			position: absolute;
+			left: 50%;
+			top: -95px;
+			@include translatingX();
+			z-index: 100;
+
+			@include media-query(767px) {
+				width: 80px;
+				height: 80px;
+				top: -42px;
+			}
+		}
+
+		img {
+			display: inline-block;
+			border: 2px solid $white;
+			@include rounded-border();
+		}
+
+		h3 {
+			font-size: 30px;
+			text-transform: capitalize;
+			margin: 0;
+
+			@include media-query(767px) {
+				font-size: 20px;
+			}
+		}
+
+		p {
+			text-transform: capitalize;
+			span {
+				color: $theme-primary-color;
+			}
+		}
+	}
+
+
+	/*** volunteer-content ***/
+	.volunteer-content {
+		padding: 30px 0 125px;
+
+		@include media-query(991px) {
+			padding-bottom: 90px;
+		}
+
+		@include media-query(767px) {
+			padding-bottom: 60px;
+		}
+
+		.info,
+		.bio,
+		.similar-profile {
+			background-color: $white;
+			border-bottom: 2px solid lighten($black, 80%);
+			padding: 40px 60px;
+
+			@include media-query(767px) {
+				padding: 30px;
+			}
+		}
+
+		.box-title {
+			margin-bottom: 30px;
+
+			h3 {
+				font-size: 24px;
+				margin: 0;
+				padding-bottom: 1em;
+				border-bottom: 1px solid lighten($black, 90%);
+
+				@include media-query(767px) {
+					font-size: 20px;
+				}
+			}
+
+			h3 i {
+				color: $theme-primary-color;
+			}
+		}
+
+		/*** info ***/
+		.info {
+			padding: 40px 35px 79px;	
+
+			@include media-query(991px)	 {
+				padding: 40px 35px;	
+				margin-bottom: 35px;
+			}
+
+			@include media-query(767px) {
+				padding: 30px;
+			}
+		}
+
+		.info-details span,
+		.social span {
+			display: block;
+		}
+
+		.info-details > li {
+			font-size: 16px;
+			font-weight: bold;
+			margin-bottom: 35px;
+
+			@include media-query(767px) {
+				font-size: 15px;
+			}
+		}
+
+		.info-details > li:last-child {
+			margin-bottom: 0;
+		}
+
+		.info-details > li span:first-child,
+		.social span {
+			color: lighten($black, 75%);
+			margin-bottom: 2px;
+			font-weight: bold;
+		}
+
+		.social {
+			margin-top: 40px;
+
+			ul {
+				overflow: hidden;
+			}
+
+			ul li {
+				float: left;
+				margin-right: 15px;
+			}
+
+			ul li a {
+				font-size: 18px;
+				color: $facebook-color;
+			}
+
+			ul li:nth-child(2) a {
+				color: $twitter-color;
+			}
+
+			ul li:nth-child(3) a {
+				color: $googleplus-color;
+			}
+
+			ul li:nth-child(4) a {
+				color: $linkedin-color;
+			}
+
+			ul li:last-child a {
+				color: $instagram-color;
+			}
+		}
+
+		/*** bio ***/
+		.bio {
+			margin-bottom: 35px;
+
+			> p {
+				line-height: 1.6em;
+				margin-bottom: 1.5em;
+			}
+
+			> p:last-child {
+				margin-bottom: 0;
+			}
+		}
+
+		.similar-profile ul {
+			overflow: hidden;
+			li {
+				float: left;
+				margin-right: 6px;
+				margin-bottom: 5px;
+				
+			}
+
+			li img {
+				display: block;
+				@include rounded-border(4px);
+				@include transition-time(0.2s);
+			}
+
+			li:last-child {
+				margin-right: 0;
+			}
+
+			li:hover img {
+				-webkit-filter: grayscale(100%);
+				filter: grayscale(100%);
+			}
+		}
+	}
+}

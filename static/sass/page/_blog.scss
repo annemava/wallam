@@ -1,0 +1,35 @@
+/*--------------------------------------------------------------
+	blog page
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+#14.0	page-title
+--------------------------------------------------------------*/
+.blog-page {
+	.page-title-bg {
+		@include background-style("../images/page-title-bg/shop-pagetitle.jpg", center center, cover, no-repeat, local);
+	}	
+}
+
+
+/*--------------------------------------------------------------
+#14.1	blog-main-content
+--------------------------------------------------------------*/
+.blog-page .blog-main-content {
+	padding-bottom: 70px;
+
+	@include media-query(991px) {
+		padding-bottom: 35px;
+	}
+
+	@include media-query(767px) {
+		padding-bottom: 25px;
+	}
+
+	.blog-grid > .col {
+		margin-bottom: 55px;
+
+		@include media-query(500px) {
+			width: 100%;
+		}
+	}
+}

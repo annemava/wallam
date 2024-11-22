@@ -1,0 +1,64 @@
+.preloader {
+	background: $white;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 999999;
+
+	.middle {
+		width: 80px;
+		height: 80px;
+		line-height: 80px;
+		text-align: center;
+		color: $theme-primary-color;
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		@include center-by-translating();
+		@include rounded-border();
+
+		i:before {
+			font-size: 45px;
+		}
+
+		&:before {
+			content: "";
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			left: 0;
+			top: 0;
+			border: 4px solid lighten($black, 80%);
+			border-top: 4px solid $theme-primary-color;
+			border-bottom: 4px solid $theme-primary-color;
+			@include rounded-border();
+			-webkit-animation: proloaderAnimation 0.8s linear infinite;
+			animation: proloaderAnimation 0.8s linear infinite;
+		}
+	}
+}
+
+/*** proloader animation ***/
+@-webkit-keyframes proloaderAnimation {
+  form {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes proloaderAnimation {
+  form {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
