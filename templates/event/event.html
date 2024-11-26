@@ -1,10 +1,150 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'default.html' %}
+{% load static %}
+{% block title %} Wallam | Evènement {% endblock %}
+
+{% block content %}
+<!-- start page-wrapper -->
+    <div class="page-wrapper event-3col">
+
+        <!-- start page-title -->
+        <section class="page-title">
+            <div class="page-title-bg"></div>
+            <div class="container">
+                <div class="title-box">
+                    <h1>Evènement</h1>
+                    <ol class="breadcrumb">
+                        <li><a href="{% url 'index' %}">Accueil</a></li>
+                        <li class="active"><a href="{% url 'event' %}">Evènements</a></li>
+                    </ol>
+                </div>
+            </div> <!-- end container -->
+        </section>
+        <!-- end page-title -->
+
+
+        <!-- start event-2col-section -->
+        <section class="event-3col-section section-padding">
+
+            <div class="container">
+                <div class="post-body">
+                    <p>
+                        <h4>Profitez d’une billetterie 100% gratuit et vendez vos billets !</h4>
+                    </p>
+                    <p>Lancez un événement en ligne et laissez Wallam vous Faciliter la vie en générant des billets sécurisés et fiables.
+                        Conçu pour les associations, wallam délivre des reçus et bien plus encore.
+                    </p>
+                    <p>
+
+                    </p>
+                </div>
+                <div class="row">
+                    <div class="col col-xs-12 event-content event-grid-wrapper">
+                        <div class="event-grid wow slideInUpSlow">
+                            <div class="event-box">
+                                <div class="img-holder">
+                                    <img src="{% static 'images/event/img-1.jpg' %}" alt class="img img-responsive">
+                                </div>
+                                <div class="event-details">
+                                    <span class="date">27,oct</span>
+                                    <h3><a href="#">Water pump setting</a></h3>
+                                    <span class="location"><i class="fa fa-map-marker"></i> Ambriz, africa</span>
+                                    <a href="#" class="btn">Join event</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="event-grid wow slideInUpSlow" data-wow-delay="0.2s">
+                            <div class="event-box">
+                                <div class="img-holder">
+                                    <img src="{% static 'images/event/img-1.jpg' %}" alt class="img img-responsive">
+                                </div>
+                                <div class="event-details">
+                                    <span class="date">27,oct</span>
+                                    <h3><a href="#">Clear water africa</a></h3>
+                                    <span class="location"><i class="fa fa-map-marker"></i> Ambriz, africa</span>
+                                    <a href="#" class="btn">Join event</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="event-grid wow slideInUpSlow" data-wow-delay="0.4s">
+                            <div class="event-box">
+                                <div class="img-holder">
+                                    <img src="{% static 'images/event/img-1.jpg' %}" alt class="img img-responsive">
+                                </div>
+                                <div class="event-details">
+                                    <span class="date">27,oct</span>
+                                    <h3><a href="#">Refugee help</a></h3>
+                                    <span class="location"><i class="fa fa-map-marker"></i> Ambriz, africa</span>
+                                    <a href="#" class="btn">Join event</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="event-grid wow slideInUpSlow">
+                            <div class="event-box">
+                                <div class="img-holder">
+                                    <img src="{% static 'images/event/img-1.jpg' %}" alt class="img img-responsive">
+                                </div>
+                                <div class="event-details">
+                                    <span class="date">27,oct</span>
+                                    <h3><a href="#">Indian water purify</a></h3>
+                                    <span class="location"><i class="fa fa-map-marker"></i> Ambriz, africa</span>
+                                    <a href="#" class="btn">Join event</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="event-grid wow slideInUpSlow" data-wow-delay="0.2s">
+                            <div class="event-box">
+                                <div class="img-holder">
+                                    <img src="{% static 'images/event/img-1.jpg' %}" alt class="img img-responsive">
+                                </div>
+                                <div class="event-details">
+                                    <span class="date">27,oct</span>
+                                    <h3><a href="#">Barn owl reserve</a></h3>
+                                    <span class="location"><i class="fa fa-map-marker"></i> Ambriz, africa</span>
+                                    <a href="#" class="btn">Join event</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="event-grid wow slideInUpSlow" data-wow-delay="0.4s">
+                            <div class="event-box">
+                                <div class="img-holder">
+                                    <img src="{% static 'images/event/img-1.jpg' %}" alt class="img img-responsive">
+                                </div>
+                                <div class="event-details">
+                                    <span class="date">27,oct</span>
+                                    <h3><a href="#">Stop forest destruction</a></h3>
+                                    <span class="location"><i class="fa fa-map-marker"></i> Ambriz, africa</span>
+                                    <a href="#" class="btn">Join event</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- end event-content -->
+                </div> <!-- end row -->
+            </div> <!-- end container -->
+        </section>
+        <!-- end event-2col-section -->
+
+
+        <!-- start featured -->
+        <section class="featured">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col col-sm-6 featured-promo">
+                        <img src="images/cancer-text.png" alt class="img img-responsive">
+                    </div>
+                    <div class="col col-sm-6 countdown-wrapper">
+                        <div class="countdown">
+                            <h3>Pro cycling to beat the cancer</h3>
+                            <ul>
+                                <li><i class="fa fa-calendar"></i> Charity event</li>
+                                <li><i class="fa fa-map-marker"></i> Amsterdam</li>
+                            </ul>
+                            <p>Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                            <div id="countdown" class="wow fadeInRightSlow"></div>
+                        </div>
+                    </div>
+                </div> <!-- end row -->
+            </div> <!-- end container -->
+        </section>
+        <!-- end featured -->
+    </div>
+{% endblock %}
