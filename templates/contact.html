@@ -1,0 +1,94 @@
+{% extends 'default.html' %}
+{% load static %}
+{% block title %} Wallam | Garanties et sécurité {% endblock %}
+
+{% block content %}
+<!-- start page-wrapper -->
+    <div class="page-wrapper contact-page">
+
+        <!-- start page-title -->
+        <section class="page-title">
+            <div class="page-title-bg"></div>
+            <div class="container">
+                <div class="title-box">
+                    <h1>Contact us</h1>
+                    <ol class="breadcrumb">
+                        <li><a href="{% url 'index' %}">Accueil</a></li>
+                        <li class="active">Nous contacter</li>
+                    </ol>
+                </div>
+            </div> <!-- end container -->
+        </section>
+        <!-- end page-title -->
+
+
+        <!-- start contact-main-content -->
+        <section class="contact-main-content section-padding">
+            <div class="container">
+                <div class="row contact-info">
+                    <div class="col col-sm-4">
+                        <div class="wow slideInUpSlow">
+                            <span class="icon"><i class="fa fa-map-marker"></i></span>
+                            <h3>Adresse</h3>
+                            <p>A definir laminou ...</p>
+                        </div>
+                    </div>
+                    <div class="col col-sm-4">
+                        <div class="wow slideInUpSlow" data-wow-delay="0.2s">
+                            <span class="icon"><i class="fa fa-envelope-o"></i></span>
+                            <h3>Email</h3>
+                            <p>contact@wallam.cm</p>
+                        </div>
+                    </div>
+                    <div class="col col-sm-4">
+                        <div class="wow slideInUpSlow" data-wow-delay="0.4s">
+                            <span class="icon"><i class="fa fa-fax"></i></span>
+                            <h3>Téléphone</h3>
+                            <p>+237 620 210 029</p>
+                        </div>
+                    </div>
+                </div> <!-- end contact info -->
+            </div> <!-- end container -->
+
+            <div class="row map-concate-form">
+                <div class="col col-xs-12">
+                    <div class="map" id="map"></div>
+                </div>
+                <div class="contact-form">
+                    <div class="container">
+                        <div class="row  wow bounceInUp">
+                            <div class="col col-md-10 col-md-offset-1 form-inner">
+                                <h3>Laisser nous un message</h3>
+                                <form class="form row" id="contact-form">
+                                    <div class="col col-md-6">
+                                        <input type="text" class="form-control" name="name" placeholder="votre nom..">
+                                    </div>
+                                    <div class="col col-md-6">
+                                        <input type="email" class="form-control" name="email" placeholder="votre email..">
+                                    </div>
+                                    <div class="col col-md-12">
+                                        <input type="text" class="form-control" name="subject" placeholder="objet..">
+                                    </div>
+                                    <div class="col col-md-12">
+                                        <textarea class="form-control" name="message" placeholder="Ecrire ici.."></textarea>
+                                    </div>
+                                    <div class="col col-md-12">
+                                        <button type="submit" class="bnt theme-btn">Send</button>
+                                        <span id="loader"><img src="{% static 'images/contact-ajax-loader.gif' %}" alt="Loader"></span>
+                                    </div>
+                                    <div class="col col-md-12">
+                                        <div id="success">Merci </div>
+                                        <div id="error"> Une erreur est survenue pendant l'envoi du mail. S'il vous plait essayer plus tard. </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div> <!-- end row -->
+                    </div> <!-- end container -->
+                </div>
+            </div>
+        </section>
+        <!-- end contact-main-content -->
+
+    </div>
+    <!-- end of page-wrapper -->
+{% endblock %}

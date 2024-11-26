@@ -1,935 +1,546 @@
+{% extends 'default.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <!-- Meta Tags -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Charity++ Responsive HTML Template">
-    <meta name="author" content="themexriver">
+{% block title %} Wallam | Accueil {% endblock %}
+{% block navi %}
+<div class="container">
+    <div class="navbar-header">
+        <button type="button" class="open-btn">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+        <button class="close-navbar"><i class="fa fa-close"></i></button>
+        <ul class="nav navbar-nav">
+            <li class="current">
+                <a href="{% url 'index' %}">Accueil</a>
+            </li>
+            <li>
+                <a href="#">Créer une cagnotte</a>
+            </li>
+            <li>
+                <a href="{% url 'annonce' %}">Créer une annonce</a>
+            </li>
+            <li>
+                <a href="{% url 'works' %}">COMMENT CA MARCHE ?</a>
+            </li>
+            <li><a href="{% url 'contact' %}">CONTACT</a></li>
+        </ul>
+    </div><!-- end of nav-collapse -->
 
-    <!-- Page Title -->
-    <title>Wallam</title>
+    <div class="navbar-right social-links-mini-cart">
+        <ul class="mini-cart-wrapper">
+            <li>
+                <a href="#" class="mini-cart-btn">
+                    <i class="fi flaticon-bag-1"></i>
+                    <span class="item-count">21</span>
+                </a>
+                <ul class="mini-cart">
+                    <li class="item">
+                        <div class="product-img">
+                            <img src="{% static 'images/shop/thumb/img-1.jpg' %}" alt="">
+                        </div>
+                        <div class="product-details">
+                            <h6>Name of the product</h6>
+                            <p>$255.5</p>
+                            <a href="#"><i class="fi flaticon-garbage"></i></a>
+                        </div>
+                    </li>
+                    <li class="item">
+                        <div class="product-img">
+                            <img src="{% static 'images/shop/thumb/img-2.jpg' %}" alt="">
+                        </div>
+                        <div class="product-details">
+                            <h6>Name of the product</h6>
+                            <p>$155.5</p>
+                            <a href="#"><i class="fi flaticon-garbage"></i></a>
+                        </div>
+                    </li>
+                    <li class="minicart-price-total">
+                        <div class="price-total">
+                            <span class="label-price-total">Subtotal</span>
+                            <div class="price-total-w">
+                                <span>255.5</span>
+                            </div>
+                        </div>
 
-    <!-- Favicon and Touch Icons -->
-    <link href="{% static 'images/favicon.png' %}" rel="shortcut icon" type="image/png">
-    <link href="{% static 'images/apple-touch-icon.png' %}" rel="apple-touch-icon">
-    <link href="{% static 'images/apple-touch-icon-72x72.png' %}" rel="apple-touch-icon" sizes="72x72">
-    <link href="{% static 'images/apple-touch-icon-114x114.png' %}" rel="apple-touch-icon" sizes="114x114">
-    <link href="{% static 'images/apple-touch-icon-144x144.png' %}" rel="apple-touch-icon" sizes="144x144">
-
-    <!-- Icon fonts -->
-    <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
-    <link href="{% static 'css/flaticon.css' %}" rel="stylesheet">
-
-    <!-- Bootstrap core CSS -->
-    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-
-    <!-- Plugins for this template -->
-    <link href="{% static 'css/animate.css' %}" rel="stylesheet">
-    <link href="{% static 'css/owl.carousel.css' %}" rel="stylesheet">
-    <link href="{% static 'css/owl.theme.css' %}" rel="stylesheet">
-    <link href="{% static 'css/owl.transitions.css' %}" rel="stylesheet">
-    <link href="{% static 'css/jquery.fancybox.css' %}" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="{% static 'css/style.css' %}" rel="stylesheet">
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-</head>
-
-<body>
-
-    <!-- start page-wrapper -->
-    <div class="page-wrapper home-style-three">
-
-        <!-- start preloader -->
-        <div class="preloader">
-            <div class="middle">
-                <i class="fi flaticon-animal"></i>
+                        <div class="checkout-btn">
+                            <a class="btn theme-btn">Proceed to checkout</a>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+        </ul> <!-- end mini-cart -->
+    </div>
+</div><!-- end of container -->
+{% endblock %}
+{% block content %}
+<!-- start of hero -->
+<section class="hero hero-style-three hero-slider-wrapper">
+    <div class="hero-slider">
+        <div class="slide">
+            <img src="{% static 'images/slider/slide-3.jpg' %}" alt>
+            <div class="container">
+                <div class="col col-sm-8 slider-title">
+                    <h1>The most elegant <span>creature</span> is in grave <span>danger.</span></h1>
+                    <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere.</p>
+                    <a href="#" class="btn theme-btn">Case study</a>
+                </div>
             </div>
         </div>
-        <!-- end preloader -->
-
-        <!-- Start header -->
-        <header id="header" class="header-style-three">
-            <div class="topbar">
-                <div class="upper-topbar">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col col-sm-9">
-                                <div class="contact-info">
-                                    <ul>
-                                        <li><i class="fa fa-mobile"></i> +237 620 21 00 29</li>
-                                        <li><i class="fa fa-envelope-o"></i> contact@wallam.cm</li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="col col-sm-3">
-                                <div class="social">
-                                    <ul>
-                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> <!-- end upper-topbar -->
-
-                <div class="lower-topbar">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col col-md-4">
-                                <div class="logo">
-                                    <a href="index.html"><img src="images/logo-2.png" alt class="img img-responsive"></a>
-                                </div>
-                            </div>
-                            <div class="col col-md-8">
-                                <div class="next-event">
-                                    <div class="subject">
-                                        <img src="images/cycling.png" alt>
-                                        <h5>Lancement <span>2024</span></h5>
-                                    </div>
-                                    <div id="clock"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> <!-- end lower-topbar -->
-
-            </div> <!-- end top-bar -->
-
-            <nav class="navigation navbar navbar-default" id="main-navigation">
-                <div class="container">
-                    <div class="navbar-header">
-                        <button type="button" class="open-btn">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                    </div>
-                    <div id="navbar" class="navbar-collapse collapse">
-                        <button class="close-navbar"><i class="fa fa-close"></i></button>
-                        <ul class="nav navbar-nav">
-                            <li class="current">
-                                <a href="#">QUI SOMMES NOUS</a>
-                            </li>
-                            <li>
-                                <a href="#">CREER UNE CAGNOTTE</a>
-                            </li>
-                            <li>
-                                <a href="#">CREER UNE ANNONCE </a>
-                            </li>
-                            <li>
-                                <a href="#">CREER UN EVENEMENT</a>
-                            </li>
-                            <li>
-                                <a href="#">COMMENT CA MARCHE ?</a>
-                            </li>
-                            <li><a href="#">GARANTIES ET SECURITE</a></li>
-                            <li><a href="#">CONTACT</a></li>
-                        </ul>
-                    </div><!-- end of nav-collapse -->
-
-                    <div class="navbar-right social-links-mini-cart">
-                        <ul class="mini-cart-wrapper">
-                            <li>
-                                <a href="#" class="mini-cart-btn">
-                                    <i class="fi flaticon-bag-1"></i>
-                                    <span class="item-count">21</span>
-                                </a>
-                                <ul class="mini-cart">
-                                    <li class="item">
-                                        <div class="product-img">
-                                            <img src="images/shop/thumb/img-1.jpg" alt="">
-                                        </div>
-                                        <div class="product-details">
-                                            <h6>Name of the product</h6>
-                                            <p>$255.5</p>
-                                            <a href="#"><i class="fi flaticon-garbage"></i></a>
-                                        </div>
-                                    </li>
-                                    <li class="item">
-                                        <div class="product-img">
-                                            <img src="images/shop/thumb/img-2.jpg" alt="">
-                                        </div>
-                                        <div class="product-details">
-                                            <h6>Name of the product</h6>
-                                            <p>$155.5</p>
-                                            <a href="#"><i class="fi flaticon-garbage"></i></a>
-                                        </div>
-                                    </li>
-                                    <li class="minicart-price-total">
-                                        <div class="price-total">
-                                            <span class="label-price-total">Subtotal</span>
-                                            <div class="price-total-w">
-                                                <span>255.5</span>
-                                            </div>
-                                        </div>
-
-                                        <div class="checkout-btn">
-                                            <a class="btn theme-btn">Proceed to checkout</a>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul> <!-- end mini-cart -->
-                    </div>
-                </div><!-- end of container -->
-            </nav>
-        </header>
-        <!-- end of header -->
-
-
-        <!-- start of hero -->
-        <section class="hero hero-style-three hero-slider-wrapper">
-            <div class="hero-slider">
-                <div class="slide">
-                    <img src="images/slider/slide-3.jpg" alt>
-                    <div class="container">
-                        <div class="col col-sm-8 slider-title">
-                            <h1>The most elegant <span>creature</span> is in grave <span>danger.</span></h1>
-                            <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere.</p>
-                            <a href="#" class="btn theme-btn">Case study</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="slide">
-                    <img src="images/slider/slide-2.jpg" alt>
-                    <div class="container">
-                        <div class="col col-sm-8 slider-title">
-                            <h1>The most elegant <span>creature</span> is in grave <span>danger.</span></h1>
-                            <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere.</p>
-                            <a href="#" class="btn theme-btn">Case study</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="slide">
-                    <img src="images/slider/slide-1.jpg" alt>
-                    <div class="container">
-                        <div class="col col-sm-8 slider-title">
-                            <h1>The most elegant <span>creature</span> is in grave <span>danger.</span></h1>
-                            <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere.</p>
-                            <a href="#" class="btn theme-btn">Case study</a>
-                        </div>
-                    </div>
+        <div class="slide">
+            <img src="{% static 'images/slider/slide-2.jpg' %}" alt>
+            <div class="container">
+                <div class="col col-sm-8 slider-title">
+                    <h1>The most elegant <span>creature</span> is in grave <span>danger.</span></h1>
+                    <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere.</p>
+                    <a href="#" class="btn theme-btn">Case study</a>
                 </div>
             </div>
-        </section>
-        <!-- end of hero slider -->
-
-
-        <!-- start urgent-donation -->
-        <section class="urgent-donation">
+        </div>
+        <div class="slide">
+            <img src="{% static 'images/slider/slide-1.jpg' %}" alt>
             <div class="container">
-                <div class="row urgent-inner">
-                    <div class="col col-lg-10 col-lg-offset-1">
-                        <div class="urgent-slider">
-                            <div class="urgent-box">
-                                <div class="img-holder">
-                                    <img src="images/urgent-slider/img-2.jpg" alt class="img img-responsive">
-                                </div>
-                                <div class="details">
-                                    <span>Urgent</span>
-                                    <h2>Kids promenade party</h2>
-                                    <p class="remaing-date">3 days remaining</p>
-                                    <div class="progress-wrapper">
-                                        <div class="progress">
-                                            <div class="progress-bar" data-percent="85"></div>
-                                        </div>
-                                    </div>
-                                    <div class="goal-raised">
-                                        <div class="goal">
-                                            <span>Goal</span>
-                                            <h4>12,500</h4>
-                                        </div>
-                                        <div class="raised">
-                                            <span>Raised</span>
-                                            <h4>12,500</h4>
-                                        </div>
-                                    </div>
-                                    <form action="#" class="form">
-                                        <div>
-                                            <input type="text" class="form-control" placeholder="- ENTER AMOUNT -" required>
-                                        </div>
-                                        <div>
-                                            <button type="submit" class="btn theme-btn">Donate</button>
-                                        </div>
-                                    </form>
+                <div class="col col-sm-8 slider-title">
+                    <h1>The most elegant <span>creature</span> is in grave <span>danger.</span></h1>
+                    <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere.</p>
+                    <a href="#" class="btn theme-btn">Case study</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end of hero slider -->
+
+
+<!-- start urgent-donation -->
+<section class="urgent-donation">
+    <div class="container">
+        <div class="row urgent-inner">
+            <div class="col col-lg-10 col-lg-offset-1">
+                <div class="urgent-slider">
+                    <div class="urgent-box">
+                        <div class="img-holder">
+                            <img src="{% static 'images/urgent-slider/img-2.jpg' %}" alt class="img img-responsive">
+                        </div>
+                        <div class="details">
+                            <span>Urgent</span>
+                            <h2>Kids promenade party</h2>
+                            <p class="remaing-date">3 days remaining</p>
+                            <div class="progress-wrapper">
+                                <div class="progress">
+                                    <div class="progress-bar" data-percent="85"></div>
                                 </div>
                             </div>
-
-                            <div class="urgent-box">
-                                <div class="img-holder">
-                                    <img src="images/urgent-slider/img-2.jpg" alt class="img img-responsive">
+                            <div class="goal-raised">
+                                <div class="goal">
+                                    <span>Goal</span>
+                                    <h4>12,500</h4>
                                 </div>
-                                <div class="details">
-                                    <span>Urgent</span>
-                                    <h2>Kids promenade party</h2>
-                                    <p class="remaing-date">3 days remaining</p>
-                                    <div class="progress-wrapper">
-                                        <div class="progress">
-                                            <div class="progress-bar" data-percent="85"></div>
-                                        </div>
-                                        <div class="goal-raised">
-                                            <div class="goal">
-                                                <span>Goal</span>
-                                                <h4>12,500</h4>
-                                            </div>
-                                            <div class="raised">
-                                                <span>Raised</span>
-                                                <h4>12,500</h4>
-                                            </div>
-                                        </div>
-                                        <form action="#" class="form">
-                                            <div>
-                                                <input type="text" class="form-control" placeholder="- Enter Amount -" required>
-                                            </div>
-                                            <div>
-                                                <button type="submit" class="btn theme-btn">Donate</button>
-                                            </div>
-                                        </form>
-                                    </div>
+                                <div class="raised">
+                                    <span>Raised</span>
+                                    <h4>12,500</h4>
                                 </div>
                             </div>
-                        </div> <!-- end urgent-slider -->
-                    </div> <!-- end col -->
-                </div> <!-- end row -->
-            </div> <!-- end container -->
-        </section>
-        <!-- end urgent-donation -->
-
-
-        <!-- start cta-4 -->
-        <section class="cta-4 section-padding">
-            <h2 class="hidden">CTA 4</h2>
-            <div class="container">
-                <div class="row">
-                    <div class="col col-sm-4">
-                        <div class="wow fadeInLeftSlow">
-                            <span class="icon"><i class="fi flaticon-money-1"></i></span>
-                            <h3>Démarrer une cagnotte</h3>
-                            <p>Collecter de l’argent pour toutes les causes</p>
-                            <a href="#" class="read-more">En savoir plus ...</a>
-                        </div>
-                    </div>
-                    <div class="col col-sm-4">
-                        <div class="wow fadeInLeftSlow" data-wow-delay="0.5s">
-                            <span class="icon"><i class="fi flaticon-heart"></i></span>
-                            <h3>Faire une annonce</h3>
-                            <p>Donnez vos objets inutilisés</p>
-                            <a href="#" class="read-more">En savoir plus ...</a>
-                        </div>
-                    </div>
-                    <div class="col col-sm-4">
-                        <div class="wow fadeInLeftSlow" data-wow-delay="1s">
-                            <span class="icon"><i class="fi flaticon-business-1"></i></span>
-                            <h3>Créer un évènement</h3>
-                            <p>Lancez votre prochaine activité</p>
-                            <a href="#" class="read-more">En savoir plus ...</a>
-                        </div>
-                    </div>
-                </div> <!-- end row -->
-            </div> <!-- end container -->
-        </section>
-        <!-- end cta-4 -->
-
-
-        <!-- start latest-causes -->
-        <section class="latest-causes section-padding">
-            <div class="container">
-                <div class="row section-title-s2">
-                    <div class="col col-xs-12">
-                        <h2><span>Causes</span> Récentes</h2>
-                    </div>
-                </div> <!-- end section-title -->
-
-                <div class="row content">
-                    <div class="col col-md-4 col-xs-6">
-                        <div class="title">
-                            <ul>
-                                <li><h3>Kids playground</h3></li>
-                                <li><i class="fa fa-map-marker"></i> Boston, Texas</li>
-                            </ul>
-                        </div>
-                        <div class="img-progress">
-                            <div class="img-holder">
-                                <img src="images/latest-causes/img-1.jpg" alt class="img img-responsive">
-                            </div>
-                            <div class="progress">
-                                <div class="progress-bar" data-percent="85"></div>
-                            </div>
-                        </div>
-                        <div class="donate-amount">
-                            <ul>
-                                <li>Raised: <span>$52,872</span> / $70,000</li>
-                                <li><i class="fa fa-clock-o"></i> 95 days</li>
-                            </ul>
-                        </div>
-                        <div class="text">
-                            <p>Iste natus error sit voluptatem accusantium dolo remque laudantium.</p>
-                            <a href="#" class="btn theme-btn">Donate now</a>
+                            <form action="#" class="form">
+                                <div>
+                                    <input type="text" class="form-control" placeholder="- ENTER AMOUNT -" required>
+                                </div>
+                                <div>
+                                    <button type="submit" class="btn theme-btn">Donate</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
 
-                    <div class="col col-md-4 col-xs-6">
-                        <div class="title">
-                            <ul>
-                                <li><h3>Kids playground</h3></li>
-                                <li><i class="fa fa-map-marker"></i> Boston, Texas</li>
-                            </ul>
+                    <div class="urgent-box">
+                        <div class="img-holder">
+                            <img src="{% static 'images/urgent-slider/img-2.jpg' %}" alt class="img img-responsive">
                         </div>
-                        <div class="img-progress">
-                            <div class="img-holder">
-                                <img src="images/latest-causes/img-2.jpg" alt class="img img-responsive">
-                            </div>
-                            <div class="progress">
-                                <div class="progress-bar" data-percent="55"></div>
-                            </div>
-                        </div>
-                        <div class="donate-amount">
-                            <ul>
-                                <li>Raised: <span>$52,872</span> / $70,000</li>
-                                <li><i class="fa fa-clock-o"></i> 95 days</li>
-                            </ul>
-                        </div>
-                        <div class="text">
-                            <p>Iste natus error sit voluptatem accusantium dolo remque laudantium.</p>
-                            <a href="#" class="btn theme-btn">Donate now</a>
-                        </div>
-                    </div>
-
-                    <div class="col col-md-4 col-xs-6">
-                        <div class="title">
-                            <ul>
-                                <li><h3>Kids playground</h3></li>
-                                <li><i class="fa fa-map-marker"></i> Boston, Texas</li>
-                            </ul>
-                        </div>
-                        <div class="img-progress">
-                            <div class="img-holder">
-                                <img src="images/latest-causes/img-3.jpg" alt class="img img-responsive">
-                            </div>
-                            <div class="progress">
-                                <div class="progress-bar" data-percent="25"></div>
-                            </div>
-                        </div>
-                        <div class="donate-amount">
-                            <ul>
-                                <li>Raised: <span>$52,872</span> / $70,000</li>
-                                <li><i class="fa fa-clock-o"></i> 95 days</li>
-                            </ul>
-                        </div>
-                        <div class="text">
-                            <p>Iste natus error sit voluptatem accusantium dolo remque laudantium.</p>
-                            <a href="#" class="btn theme-btn">Donate now</a>
-                        </div>
-                    </div>
-
-                    <div class="col col-md-4 col-xs-6">
-                        <div class="title">
-                            <ul>
-                                <li><h3>Kids playground</h3></li>
-                                <li><i class="fa fa-map-marker"></i> Boston, Texas</li>
-                            </ul>
-                        </div>
-                        <div class="img-progress">
-                            <div class="img-holder">
-                                <img src="images/latest-causes/img-4.jpg" alt class="img img-responsive">
-                            </div>
-                            <div class="progress">
-                                <div class="progress-bar" data-percent="95"></div>
-                            </div>
-                        </div>
-                        <div class="donate-amount">
-                            <ul>
-                                <li>Raised: <span>$52,872</span> / $70,000</li>
-                                <li><i class="fa fa-clock-o"></i> 95 days</li>
-                            </ul>
-                        </div>
-                        <div class="text">
-                            <p>Iste natus error sit voluptatem accusantium dolo remque laudantium.</p>
-                            <a href="#" class="btn theme-btn">Donate now</a>
-                        </div>
-                    </div>
-
-                    <div class="col col-md-4 col-xs-6">
-                        <div class="title">
-                            <ul>
-                                <li><h3>Kids playground</h3></li>
-                                <li><i class="fa fa-map-marker"></i> Boston, Texas</li>
-                            </ul>
-                        </div>
-                        <div class="img-progress">
-                            <div class="img-holder">
-                                <img src="images/latest-causes/img-5.jpg" alt class="img img-responsive">
-                            </div>
-                            <div class="progress">
-                                <div class="progress-bar" data-percent="70"></div>
-                            </div>
-                        </div>
-                        <div class="donate-amount">
-                            <ul>
-                                <li>Raised: <span>$52,872</span> / $70,000</li>
-                                <li><i class="fa fa-clock-o"></i> 95 days</li>
-                            </ul>
-                        </div>
-                        <div class="text">
-                            <p>Iste natus error sit voluptatem accusantium dolo remque laudantium.</p>
-                            <a href="#" class="btn theme-btn">Donate now</a>
-                        </div>
-                    </div>
-
-                    <div class="col col-md-4 col-xs-6">
-                        <div class="title">
-                            <ul>
-                                <li><h3>Kids playground</h3></li>
-                                <li><i class="fa fa-map-marker"></i> Boston, Texas</li>
-                            </ul>
-                        </div>
-                        <div class="img-progress">
-                            <div class="img-holder">
-                                <img src="images/latest-causes/img-6.jpg" alt class="img img-responsive">
-                            </div>
-                            <div class="progress">
-                                <div class="progress-bar" data-percent="15"></div>
-                            </div>
-                        </div>
-                        <div class="donate-amount">
-                            <ul>
-                                <li>Raised: <span>$52,872</span> / $70,000</li>
-                                <li><i class="fa fa-clock-o"></i> 95 days</li>
-                            </ul>
-                        </div>
-                        <div class="text">
-                            <p>Iste natus error sit voluptatem accusantium dolo remque laudantium.</p>
-                            <a href="#" class="btn theme-btn">Donate now</a>
-                        </div>
-                    </div>
-                </div> <!-- end content -->
-            </div> <!-- end container -->
-        </section>
-        <!-- end latest-causes -->
-
-
-        <!-- start cta -->
-        <section class="cta">
-            <div class="container">
-                <div class="row">
-                    <div class="col col-md-5 col-sm-5">
-                        <img src="images/cta-cartoon.png" alt class="img img-responsive">
-                    </div>
-
-                    <div class="col col-md-6 col-md-offset-1 col-sm-7">
-                        <div class="cta-details wow fadeInRightSlow">
-                            <h2>Rejoignez la communauté de <span>cagnotte</span> WALLAM.</h2>
-                            <p>le lancement d’une collecte de fonds sur wallam est gratuit. Wallam vous donne
-                                les moyens nécessaires pour réunir les fonds dont vous avez besoins en toute
-                                sécurité.
-                            </p>
-                            <a href="#" class="btn theme-btn">DEMARREZ UNE CAMPAGNE MAINTENANT !</a>
-                        </div>
-                    </div>
-                </div> <!-- end row -->
-            </div> <!-- end container -->
-        </section>
-        <!-- end cta -->
-
-
-        <!-- start about-details -->
-        <section class="about-us-st section-padding">
-            <div class="container">
-                <h2><span>Qui Sommes</span> nous</h2>
-                <div class="row">
-                    <div class="col col-md-6">
-                        <div class="left-col">
-                            <div class="company">
-                                <h3>We are <span>Charity++</span></h3>
-                                <span>Making the world a better place</span>
-                            </div>
-                            <p>WALLAM est la première plateforme de DON pour les causes sociales, solidaire et humanitaire en faveur des associations et des particuliers. Wallam permet :</p>
-
-                            <div class="panel-group" id="accordion">
-                                <div class="panel panel-default current">
-                                    <div class="panel-heading" id="headingOne">
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true">Lancer une campagne de collecte de fonds pour les causes caritatives <i class="fa fa-angle-down"></i></a>
+                        <div class="details">
+                            <span>Urgent</span>
+                            <h2>Kids promenade party</h2>
+                            <p class="remaing-date">3 days remaining</p>
+                            <div class="progress-wrapper">
+                                <div class="progress">
+                                    <div class="progress-bar" data-percent="85"></div>
+                                </div>
+                                <div class="goal-raised">
+                                    <div class="goal">
+                                        <span>Goal</span>
+                                        <h4>12,500</h4>
                                     </div>
-                                    <div id="collapseOne" class="panel-collapse collapse in">
-                                        <div class="panel-body">
-                                            <div class="img-holder">
-                                                <img src="images/about/thumb/img-1.jpg" alt>
-                                            </div>
-                                            <div class="details">
-                                                <p>Wallam vous donne la possibilité de collecter facilement de l’argent en toute sécurité.</p>
-                                            </div>
-                                        </div>
+                                    <div class="raised">
+                                        <span>Raised</span>
+                                        <h4>12,500</h4>
                                     </div>
                                 </div>
-
-                                <div class="panel panel-default">
-                                    <div class="panel-heading" id="headingTwo">
-                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Donner et/ou récupérer gratuitement de la nourriture et des objets <i class="fa fa-angle-down"></i></a>
-                                    </div>
-                                    <div id="collapseTwo" class="panel-collapse collapse">
-                                        <div class="panel-body">
-                                            <div class="img-holder">
-                                                <img src="images/about/thumb/img-1.jpg" alt>
-                                            </div>
-                                            <div class="details">
-                                                <p>Wallam vous donne les moyens nécessaires de faire des dons en toute tranquillité.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="panel panel-default">
-                                    <div class="panel-heading" id="headingThree">
-                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">De créer des événements associatifs et sociales, et de vendre les billets. <i class="fa fa-angle-down"></i></a>
-                                    </div>
-                                    <div id="collapseThree" class="panel-collapse collapse">
-                                        <div class="panel-body">
-                                            <div class="img-holder">
-                                                <img src="images/about/thumb/img-1.jpg" alt>
-                                            </div>
-                                            <div class="details">
-                                                <p>Profitez d’une billetterie en ligne 100% gratuite et en quelques clics pour vendre vos billets.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> <!-- end left-col -->
-                    </div> <!-- end col -->
-
-                    <div class="col col-md-6">
-                        <div class="right-col">
-                            <div class="video">
-                                <img src="images/about/video-poster-2.jpg" alt="" class="img img-responsive">
-                                <a href="https://www.youtube.com/embed/opj24KnzrWo?autoplay=1" class="video-btn" data-type="iframe"><i class="fa fa-play"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div> <!-- end row -->
-            </div> <!-- end container -->
-        </section>
-        <!-- end about-details -->
-
-
-        <!-- start cta-2 -->
-        <section class="cta-2">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col col-md-5 col-sm-4 join-us"></div>
-
-                    <div class="col col-md-7 col-sm-8 sing-up  wow fadeInRightSlow">
-                        <h3><span><img src="images/sing-up-icon.png" alt></span> Inscrivez-vous au programme de bénévolat</h3>
-                        <span>Servir l'humanité</span>
-                        <p>découvrez toutes les actions sociales et engagez-vous en participant à une activité, en devenant bénévole, en soutenant des projets et en vivant une expérience d’engagement qui vous ressemble.</p>
-                        <a href="#" class="btn theme-btn">S'inscrire</a>
-                    </div>
-                </div> <!-- end row -->
-            </div> <!-- end container -->
-        </section>
-        <!-- end cta-2 -->
-
-
-        <!-- start events-nearby -->
-        <section class="events-nearby section-padding">
-            <div class="container">
-                <div class="row section-title-s2">
-                    <div class="col col-md-8 col-md-offset-2">
-                        <h2><span>Evènements</span> A Proximité</h2>
-                        <p>retrouvez toutes les activités uniques proposés par les associations et particuliers près de chez vous.</p>
-                    </div>
-                </div> <!-- end section-title -->
-
-                <div class="row">
-                    <div class="col col-xs-12">
-                        <div class="events-nearby-slider event-grid-wrapper">
-                            <div class="event-grid">
-                                <div class="event-box">
-                                    <div class="img-holder">
-                                        <img src="images/event/img-1.jpg" alt="" class="img img-responsive">
-                                    </div>
-                                    <div class="event-details">
-                                        <span class="date">27,oct</span>
-                                        <h3><a href="#">Water pump setting</a></h3>
-                                        <span class="location"><i class="fa fa-map-marker"></i> Ambriz, africa</span>
-                                        <a href="#" class="btn">Join event</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="event-grid">
-                                <div class="event-box">
-                                    <div class="img-holder">
-                                        <img src="images/event/img-2.jpg" alt="" class="img img-responsive">
-                                    </div>
-                                    <div class="event-details">
-                                        <span class="date">27,oct</span>
-                                        <h3><a href="#">Water pump setting</a></h3>
-                                        <span class="location"><i class="fa fa-map-marker"></i> Ambriz, africa</span>
-                                        <a href="#" class="btn">Join event</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="event-grid">
-                                <div class="event-box">
-                                    <div class="img-holder">
-                                        <img src="images/event/img-3.jpg" alt="" class="img img-responsive">
-                                    </div>
-                                    <div class="event-details">
-                                        <span class="date">27,oct</span>
-                                        <h3><a href="#">Water pump setting</a></h3>
-                                        <span class="location"><i class="fa fa-map-marker"></i> Ambriz, africa</span>
-                                        <a href="#" class="btn">Join event</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="event-grid">
-                                <div class="event-box">
-                                    <div class="img-holder">
-                                        <img src="images/event/img-4.jpg" alt="" class="img img-responsive">
-                                    </div>
-                                    <div class="event-details">
-                                        <span class="date">27,oct</span>
-                                        <h3><a href="#">Water pump setting</a></h3>
-                                        <span class="location"><i class="fa fa-map-marker"></i> Ambriz, africa</span>
-                                        <a href="#" class="btn">Join event</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> <!-- end events-nearby-slider -->
-                    </div> <!-- end col -->
-                </div> <!-- end row -->
-            </div> <!-- end container -->
-        </section>
-        <!-- end events-nearby -->
-
-
-        <!-- start cta-3 -->
-        <section class="cta-3">
-            <div class="container">
-                <div class="row">
-                    <div class="col col-md-7 col-md-offset-5 details-text">
-                        <div class="wow fadeInRightSlow">
-                            <h2>Votre geste <span>signifie</span> beaucoup</h2>
-                            <p>la charité fait beaucoup plus de bien à celui qui donne qu’à celui qui reçoit. Wallam rend le don accessible à tous et partout en Afrique.</p>
-                            <a href="#" class="btn theme-btn">Faites un don maintenant</a>
-                        </div>
-                    </div>
-                </div> <!-- end row -->
-            </div> <!-- end container -->
-        </section>
-        <!-- end cta-3 -->
-
-
-        <!-- start shop-main-content -->
-        <section class="shop-main-content section-padding">
-            <div class="container">
-                <div class="row">
-                    <div class="col col-md-12">
-                        <div class="shop-content latest-product-slider">
-                            <div class="grid">
-                                <div class="box">
-                                    <div class="img-holder">
-                                        <img src="images/shop/img-1.jpg" alt class="img img-responsive">
-                                    </div>
-                                    <div class="details">
-                                        <h3><a href="#">Skincare Product</a></h3>
-                                        <a href="#" class="add-to-cart"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        <div class="price">
-                                            <span class="old-price">$45</span>
-                                            <span class="current-price">$35</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="grid">
-                                <div class="box">
-                                    <div class="img-holder">
-                                        <img src="images/shop/img-2.jpg" alt class="img img-responsive">
-                                    </div>
-                                    <div class="details">
-                                        <h3><a href="#">Skincare Product</a></h3>
-                                        <a href="#" class="add-to-cart"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        <div class="price">
-                                            <span class="current-price">$35</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="grid">
-                                <div class="box">
-                                    <div class="img-holder">
-                                        <img src="images/shop/img-3.jpg" alt class="img img-responsive">
-                                    </div>
-                                    <div class="details">
-                                        <h3><a href="#">Skincare Product</a></h3>
-                                        <a href="#" class="add-to-cart"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        <div class="price">
-                                            <span class="current-price">$35</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="grid">
-                                <div class="box">
-                                    <div class="img-holder">
-                                        <img src="images/shop/img-4.jpg" alt class="img img-responsive">
-                                    </div>
-                                    <div class="details">
-                                        <h3><a href="#">Skincare Product</a></h3>
-                                        <a href="#" class="add-to-cart"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        <div class="price">
-                                            <span class="current-price">$35</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="grid">
-                                <div class="box">
-                                    <div class="img-holder">
-                                        <img src="images/shop/img-5.jpg" alt class="img img-responsive">
-                                    </div>
-                                    <div class="details">
-                                        <h3><a href="#">Skincare Product</a></h3>
-                                        <a href="#" class="add-to-cart"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        <div class="price">
-                                            <span class="current-price">$35</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="grid">
-                                <div class="box">
-                                    <div class="img-holder">
-                                        <img src="images/shop/img-6.jpg" alt class="img img-responsive">
-                                    </div>
-                                    <div class="details">
-                                        <h3><a href="#">Skincare Product</a></h3>
-                                        <a href="#" class="add-to-cart"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        <div class="price">
-                                            <span class="current-price">$35</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> <!-- end shop-content -->
-                    </div> <!-- end col -->
-                </div> <!-- end row -->
-            </div> <!-- end container -->
-        </section>
-        <!-- end shop-main-content -->
-
-
-        <!-- start footer -->
-        <footer>
-            <div class="container">
-                <div class="row upper-footer">
-                    <div class="col col-md-5 col-xs-6">
-                        <div class="widget about-widget">
-                            <div class="logo">
-                                <img src="images/logo.png" alt class="img img-responsive">
-                            </div>
-
-                            <div class="details">
-                                <p>Praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint.</p>
-                                <p class="copyright">
-                                    2024 &copy; Tous droits réservés par <span><a href="">lamda</a></span>
-                                </p>
-                                <ul class="social-links">
-                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col col-md-2 col-xs-6">
-                        <div class="widget">
-                            <h3>Entreprise</h3>
-                            <ul>
-                                <li><a href="#">Qui sommes-nous</a></li>
-                                <li><a href="#">Campagnes populaires</a></li>
-                                <li><a href="#">Annonces disponibles</a></li>
-                                <li><a href="#">Comment ça marche</a></li>
-                                <li><a href="#">Tarifs</a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="col col-md-2 col-xs-6">
-                        <div class="widget">
-                            <h3>Aide</h3>
-                            <ul>
-                                <li><a href="#">FAQ</a></li>
-                                <li><a href="#">CGU</a></li>
-                                <li><a href="#">Politique d'utilisation</a></li>
-                                <li><a href="#">Mention légale</a></li>
-                                <li><a href="#">Garantie et sécurité</a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="col col-md-3 col-xs-6">
-                        <div class="widget contact-widget">
-                            <h3>Contact</h3>
-                            <div>
                                 <form action="#" class="form">
                                     <div>
-                                        <input type="text" class="form-control" placeholder="Votre nom" required>
+                                        <input type="text" class="form-control" placeholder="- Enter Amount -" required>
                                     </div>
                                     <div>
-                                        <input type="email" class="form-control" placeholder="Addresse email" required>
-                                    </div>
-                                    <div>
-                                        <textarea placeholder="Ecrire"></textarea>
-                                    </div>
-                                    <div>
-                                        <button class="btn theme-btn" type="submit">Envoyer</button>
+                                        <button type="submit" class="btn theme-btn">Donate</button>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
-                </div> <!-- end upper-footer -->
-            </div> <!-- end container -->
+                </div> <!-- end urgent-slider -->
+            </div> <!-- end col -->
+        </div> <!-- end row -->
+    </div> <!-- end container -->
+</section>
+<!-- end urgent-donation -->
 
-            <div class="row lower-footer">
-                <div class="col col-xs-12">
-                    <p>Fabriqué avec <span><i class="fa fa-heart"></i></span> par <a href="#">Romain SAME</a></p>
+
+<!-- start cta-4 -->
+<section class="cta-4 section-padding">
+    <h2 class="hidden">CTA 4</h2>
+    <div class="container">
+        <div class="row">
+            <div class="col col-sm-4">
+                <div class="wow fadeInLeftSlow">
+                    <span class="icon"><i class="fi flaticon-money-1"></i></span>
+                    <h3>Démarrer une cagnotte</h3>
+                    <p>Collecter de l’argent en toute tranquillité</p>
+                    <a href="#" class="read-more">En savoir plus ...</a>
                 </div>
             </div>
-        </footer>
-        <!-- end footer -->
-    </div>
-    <!-- end of page-wrapper -->
+            <div class="col col-sm-4">
+                <div class="wow fadeInLeftSlow" data-wow-delay="0.5s">
+                    <span class="icon"><i class="fi flaticon-heart"></i></span>
+                    <h3>Soutenir une cause</h3>
+                    <p>Faite un don en toute sécurité</p>
+                    <a href="#" class="read-more">En savoir plus ...</a>
+                </div>
+            </div>
+            <div class="col col-sm-4">
+                <div class="wow fadeInLeftSlow" data-wow-delay="1s">
+                    <span class="icon"><i class="fi flaticon-business-1"></i></span>
+                    <h3>Offrir un objet</h3>
+                    <p>Donnez vos objets inutilisés</p>
+                    <a href="#" class="read-more">En savoir plus ...</a>
+                </div>
+            </div>
+        </div> <!-- end row -->
+    </div> <!-- end container -->
+</section>
+<!-- end cta-4 -->
+<!-- start cta -->
+<section class="cta">
+    <div class="container">
+        <div class="row">
+            <div class="col col-md-5 col-sm-5">
+                <img src="{% static 'images/cta-cartoon.png' %}" alt class="img img-responsive">
+            </div>
+
+            <div class="col col-md-6 col-md-offset-1 col-sm-7">
+                <div class="cta-details wow fadeInRightSlow">
+                    <h2>Rejoignez la communauté de <span>cagnotte</span> WALLAM.</h2>
+                    <p>Le lancement d’une collecte de fonds sur wallam est 100% gratuit.
+                        Wallam vous donne les moyens nécessaires pour réunir les fonds dont
+                        vous avez besoins en toute sécurité.
+                    </p>
+                    <a href="#" class="btn theme-btn">LANCEZ UNE CAGNOTTE MAINTENANT !</a>
+                </div>
+            </div>
+        </div> <!-- end row -->
+    </div> <!-- end container -->
+</section>
+<!-- end cta -->
+
+<!-- start latest-causes -->
+<section class="latest-causes section-padding">
+    <div class="container">
+        <div class="row section-title-s2">
+            <div class="col col-xs-12">
+                <h2><span>Causes</span> Récentes</h2>
+            </div>
+        </div> <!-- end section-title -->
+
+        <div class="row content">
+            <div class="col col-md-4 col-xs-6">
+                <div class="title">
+                    <ul>
+                        <li><h3>Kids playground</h3></li>
+                        <li><i class="fa fa-map-marker"></i> Boston, Texas</li>
+                    </ul>
+                </div>
+                <div class="img-progress">
+                    <div class="img-holder">
+                        <img src="{% static 'images/latest-causes/img-1.jpg' %}" alt class="img img-responsive">
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" data-percent="85"></div>
+                    </div>
+                </div>
+                <div class="donate-amount">
+                    <ul>
+                        <li>Raised: <span>$52,872</span> / $70,000</li>
+                        <li><i class="fa fa-clock-o"></i> 95 days</li>
+                    </ul>
+                </div>
+                <div class="text">
+                    <p>Iste natus error sit voluptatem accusantium dolo remque laudantium.</p>
+                    <a href="#" class="btn theme-btn">Donate now</a>
+                </div>
+            </div>
+
+            <div class="col col-md-4 col-xs-6">
+                <div class="title">
+                    <ul>
+                        <li><h3>Kids playground</h3></li>
+                        <li><i class="fa fa-map-marker"></i> Boston, Texas</li>
+                    </ul>
+                </div>
+                <div class="img-progress">
+                    <div class="img-holder">
+                        <img src="{% static 'images/latest-causes/img-1.jpg' %}" alt class="img img-responsive">
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" data-percent="55"></div>
+                    </div>
+                </div>
+                <div class="donate-amount">
+                    <ul>
+                        <li>Raised: <span>$52,872</span> / $70,000</li>
+                        <li><i class="fa fa-clock-o"></i> 95 days</li>
+                    </ul>
+                </div>
+                <div class="text">
+                    <p>Iste natus error sit voluptatem accusantium dolo remque laudantium.</p>
+                    <a href="#" class="btn theme-btn">Donate now</a>
+                </div>
+            </div>
+
+            <div class="col col-md-4 col-xs-6">
+                <div class="title">
+                    <ul>
+                        <li><h3>Kids playground</h3></li>
+                        <li><i class="fa fa-map-marker"></i> Boston, Texas</li>
+                    </ul>
+                </div>
+                <div class="img-progress">
+                    <div class="img-holder">
+                        <img src="{% static 'images/latest-causes/img-1.jpg' %}" alt class="img img-responsive">
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" data-percent="25"></div>
+                    </div>
+                </div>
+                <div class="donate-amount">
+                    <ul>
+                        <li>Raised: <span>$52,872</span> / $70,000</li>
+                        <li><i class="fa fa-clock-o"></i> 95 days</li>
+                    </ul>
+                </div>
+                <div class="text">
+                    <p>Iste natus error sit voluptatem accusantium dolo remque laudantium.</p>
+                    <a href="#" class="btn theme-btn">Donate now</a>
+                </div>
+            </div>
+
+            <div class="col col-md-4 col-xs-6">
+                <div class="title">
+                    <ul>
+                        <li><h3>Kids playground</h3></li>
+                        <li><i class="fa fa-map-marker"></i> Boston, Texas</li>
+                    </ul>
+                </div>
+                <div class="img-progress">
+                    <div class="img-holder">
+                        <img src="{% static 'images/latest-causes/img-1.jpg' %}" alt class="img img-responsive">
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" data-percent="95"></div>
+                    </div>
+                </div>
+                <div class="donate-amount">
+                    <ul>
+                        <li>Raised: <span>$52,872</span> / $70,000</li>
+                        <li><i class="fa fa-clock-o"></i> 95 days</li>
+                    </ul>
+                </div>
+                <div class="text">
+                    <p>Iste natus error sit voluptatem accusantium dolo remque laudantium.</p>
+                    <a href="#" class="btn theme-btn">Donate now</a>
+                </div>
+            </div>
+
+            <div class="col col-md-4 col-xs-6">
+                <div class="title">
+                    <ul>
+                        <li><h3>Kids playground</h3></li>
+                        <li><i class="fa fa-map-marker"></i> Boston, Texas</li>
+                    </ul>
+                </div>
+                <div class="img-progress">
+                    <div class="img-holder">
+                        <img src="{% static 'images/latest-causes/img-1.jpg' %}" alt class="img img-responsive">
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" data-percent="70"></div>
+                    </div>
+                </div>
+                <div class="donate-amount">
+                    <ul>
+                        <li>Raised: <span>$52,872</span> / $70,000</li>
+                        <li><i class="fa fa-clock-o"></i> 95 days</li>
+                    </ul>
+                </div>
+                <div class="text">
+                    <p>Iste natus error sit voluptatem accusantium dolo remque laudantium.</p>
+                    <a href="#" class="btn theme-btn">Donate now</a>
+                </div>
+            </div>
+
+            <div class="col col-md-4 col-xs-6">
+                <div class="title">
+                    <ul>
+                        <li><h3>Kids playground</h3></li>
+                        <li><i class="fa fa-map-marker"></i> Boston, Texas</li>
+                    </ul>
+                </div>
+                <div class="img-progress">
+                    <div class="img-holder">
+                        <img src="{% static 'images/latest-causes/img-1.jpg' %}" alt class="img img-responsive">
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar" data-percent="15"></div>
+                    </div>
+                </div>
+                <div class="donate-amount">
+                    <ul>
+                        <li>Raised: <span>$52,872</span> / $70,000</li>
+                        <li><i class="fa fa-clock-o"></i> 95 days</li>
+                    </ul>
+                </div>
+                <div class="text">
+                    <p>Iste natus error sit voluptatem accusantium dolo remque laudantium.</p>
+                    <a href="#" class="btn theme-btn">Donate now</a>
+                </div>
+            </div>
+        </div> <!-- end content -->
+    </div> <!-- end container -->
+</section>
+<!-- end latest-causes -->
+
+<!-- start cta-3 -->
+<section class="cta-3">
+    <div class="container">
+        <div class="row">
+            <div class="col col-md-7 col-md-offset-5 details-text">
+                <div class="wow fadeInRightSlow">
+                    <h2>Votre petite <span>attention</span> signifie beaucoup</h2>
+                    <p>La charité fait beaucoup plus de bien à celui qui donne qu’à celui qui reçoit.
+                        Wallam rend le don accessible à tous et partout en Afrique. </p>
+                    <a href="#" class="btn theme-btn">Offrez un objet maintenant !</a>
+                </div>
+            </div>
+        </div> <!-- end row -->
+    </div> <!-- end container -->
+</section>
+<!-- end cta-3 -->
 
 
-    <!-- All JavaScript files
-    ================================================== -->
-    <script src="{% static 'js/jquery.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-
-    <!-- Plugins for this template -->
-    <script src="{% static 'js/jquery-plugin-collection.js' %}"></script>
-
-    <!-- Custom script for this template -->
-    <script src="{% static 'js/script.js' %}"></script>
-</body>
-</html>
+<!-- start shop-main-content -->
+<section class="shop-main-content section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col col-md-12">
+                <div class="shop-content latest-product-slider">
+                    <div class="grid">
+                        <div class="box">
+                            <div class="img-holder">
+                                <img src="{% static 'images/shop/img-1.jpg' %}" alt class="img img-responsive">
+                            </div>
+                            <div class="details">
+                                <h3><a href="#">Skincare Product</a></h3>
+                                <a href="#" class="add-to-cart"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                                <div class="price">
+                                    <span class="old-price">$45</span>
+                                    <span class="current-price">$35</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid">
+                        <div class="box">
+                            <div class="img-holder">
+                                <img src="{% static 'images/shop/img-1.jpg' %}" alt class="img img-responsive">
+                            </div>
+                            <div class="details">
+                                <h3><a href="#">Skincare Product</a></h3>
+                                <a href="#" class="add-to-cart"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                                <div class="price">
+                                    <span class="current-price">$35</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid">
+                        <div class="box">
+                            <div class="img-holder">
+                                <img src="{% static 'images/shop/img-1.jpg' %}" alt class="img img-responsive">
+                            </div>
+                            <div class="details">
+                                <h3><a href="#">Skincare Product</a></h3>
+                                <a href="#" class="add-to-cart"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                                <div class="price">
+                                    <span class="current-price">$35</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid">
+                        <div class="box">
+                            <div class="img-holder">
+                                <img src="{% static 'images/shop/img-1.jpg' %}" alt class="img img-responsive">
+                            </div>
+                            <div class="details">
+                                <h3><a href="#">Skincare Product</a></h3>
+                                <a href="#" class="add-to-cart"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                                <div class="price">
+                                    <span class="current-price">$35</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid">
+                        <div class="box">
+                            <div class="img-holder">
+                                <img src="{% static 'images/shop/img-1.jpg' %}" alt class="img img-responsive">
+                            </div>
+                            <div class="details">
+                                <h3><a href="#">Skincare Product</a></h3>
+                                <a href="#" class="add-to-cart"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                                <div class="price">
+                                    <span class="current-price">$35</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid">
+                        <div class="box">
+                            <div class="img-holder">
+                                <img src="{% static 'images/shop/img-1.jpg' %}" alt class="img img-responsive">
+                            </div>
+                            <div class="details">
+                                <h3><a href="#">Skincare Product</a></h3>
+                                <a href="#" class="add-to-cart"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                                <div class="price">
+                                    <span class="current-price">$35</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- end shop-content -->
+            </div> <!-- end col -->
+        </div> <!-- end row -->
+    </div> <!-- end container -->
+</section>
+<!-- end shop-main-content -->
+{% endblock %}
