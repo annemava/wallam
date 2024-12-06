@@ -17,3 +17,11 @@ class ContactPageView(TemplateView):
 
 class AnnoncePageView(TemplateView):
     template_name = 'annonce.html'
+
+
+class WarrantPageView(TemplateView):
+    template_name = 'warrantly_security.html'
+
+
+class CagnottePageView(TemplateView):
+    template_name = 'cagnotte.html'
