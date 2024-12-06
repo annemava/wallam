@@ -18,7 +18,7 @@
                 <a href="{% url 'index' %}">Accueil</a>
             </li>
             <li>
-                <a href="#">Créer une cagnotte</a>
+                <a href="{% url 'cagnotte' %}">Créer une cagnotte</a>
             </li>
             <li>
                 <a href="{% url 'annonce' %}">Créer une annonce</a>
@@ -101,7 +101,7 @@
             <div class="container">
                 <h2><span>Comment</span> ça marche ?</h2>
                 <div class="row">
-                    <div class="col col-md-6">
+                    <div class="col col-md-7">
                         <div class="left-col">
                             <div class="panel-group" id="accordion">
                                 <div class="panel panel-default current">
@@ -191,14 +191,10 @@
                         </div> <!-- end left-col -->
                     </div> <!-- end col -->
 
-                    <div class="col col-md-6 wow fadeInRightSlow">
-                        <div class="right-col">
-                            <div class="video">
-                                <img src="{% static 'images/about/video-poster.jpg' %}" alt="" class="img img-responsive">
-                                <a href="https://www.youtube.com/embed/opj24KnzrWo?autoplay=1"  class="video-btn" data-type="iframe"><i class="fa fa-play"></i></a>
-                            </div>
-                        </div>
+                    <div class="col col-md-5">
+                        <img src="{% static 'images/cta-t-shirt.png' %}" alt class="img img-responsive">
                     </div>
+
                 </div> <!-- end row -->
             </div> <!-- end container -->
         </section>
@@ -206,36 +202,10 @@
 
 
         <!-- start cta-4 -->
-        <section class="cta-4 section-padding">
-            <h2 class="hidden">CTA 4</h2>
-            <div class="container">
-                <div class="row">
-                    <div class="col col-sm-4">
-                        <div class="wow fadeInLeftSlow">
-                            <span class="icon"><i class="fi flaticon-money-1"></i></span>
-                            <h3>Donate money</h3>
-                            <p>Perspiciatis unde omnis iste natus error sit vo luptatem</p>
-                            <a href="#" class="read-more">Read more</a>
-                        </div>
-                    </div>
-                    <div class="col col-sm-4">
-                        <div class="wow fadeInLeftSlow" data-wow-delay="0.3s">
-                            <span class="icon"><i class="fi flaticon-heart"></i></span>
-                            <h3>Become volunteer</h3>
-                            <p>Perspiciatis unde omnis iste natus error sit vo luptatem</p>
-                            <a href="#" class="read-more">Read more</a>
-                        </div>
-                    </div>
-                    <div class="col col-sm-4">
-                        <div class="wow fadeInLeftSlow" data-wow-delay="0.6s">
-                            <span class="icon"><i class="fi flaticon-business-1"></i></span>
-                            <h3>Sponsorship</h3>
-                            <p>Perspiciatis unde omnis iste natus error sit vo luptatem</p>
-                            <a href="#" class="read-more">Read more</a>
-                        </div>
-                    </div>
-                </div> <!-- end row -->
-            </div> <!-- end container -->
+        <section class="popular-campaign">
+            <div class="view-all" style="padding-bottom: 3% !important">
+                <a href="#" class="btn theme-btn-s2">FAITES UN DON MAINTENANT ! <i class="fa fa-long-arrow-right"></i></a>
+            </div>
         </section>
         <!-- end cta-4 -->
 
