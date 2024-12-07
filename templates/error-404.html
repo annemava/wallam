@@ -1,10 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'default.html' %}
+{% load static %}
+{% block title %} Wallam | Page Introuvable {% endblock %}
+{% block menu %}
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row error-404-content">
+        <div class="col col-xs-12">
+            <img src="images/error-404.png" alt class="img img-reponsive">
+            <h1>Error 404</h1>
+            <p>The page you requested can’t be found in our system</p>
+            <a href="index.html" class="btn theme-btn"><i class="fa fa-angle-left"></i> Go Back</a>
+        </div>
+    </div>
+</div> <!-- end container -->
+{% endblock %}
