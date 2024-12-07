@@ -17,3 +17,11 @@ class CagnottePageView(TemplateView):
 
 class ErrorPageView(TemplateView):
     template_name = 'error-404.html'
+
+
+class LoginPageView(TemplateView):
+    template_name = 'account/login.html'
+
+
+class RegisterPageView(TemplateView):
+    template_name = 'account/register.html'

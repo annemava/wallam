@@ -17,8 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from core import urls as core_url
+from core.views import LoginPageView, RegisterPageView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(core_url)),
+    path('connexion', LoginPageView.as_view(), name='login'),
+    path('enregistrement', LoginPageView.as_view(), name='register'),
 ]

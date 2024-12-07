@@ -2,6 +2,15 @@
 {% load static %}
 {% block title %} Wallam | Créer une annonce {% endblock %}
 {% block menu %}
+<ul class="nav navbar-nav">
+    <li>
+        <a href="{% url 'annonce' %}">Accueil</a>
+    </li>
+    <li>
+        <a href="{% url 'cagnotte' %}">Créer une cagnotte</a>
+    </li>
+    <li class="current"><a href="{% url 'annonce' %}">Créer une annonce</a></li>
+</ul>
 {% endblock %}
 {% block content %}
 {% endblock %}

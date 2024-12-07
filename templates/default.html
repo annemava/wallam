@@ -52,57 +52,28 @@
         <!-- end preloader -->
 
         <!-- Start header -->
-        <header id="header" class="header-style-three">
-            <div class="topbar">
-                <div class="upper-topbar">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col col-sm-9">
-                                <div class="contact-info">
-                                    <ul>
-                                        <!-- <li><i class="fa fa-map-marker"></i> Orlando, FL 32830, United States</li> -->
-                                        <li><i class="fa fa-mobile"></i> +237 620 21 00 29</li>
-                                        <li><i class="fa fa-envelope-o"></i> contact@wallam.cm</li>
-                                    </ul>
-                                </div>
+        <header id="header" class="header-style-four">
+            <div class="top-bar">
+                <div class="container">
+                    <div class="row">
+                        <div class="col col-lg-6 col-md-5 col-sm-5">
+                            <div class="logo">
+                                <a href="index.html"><img src="{% static 'images/logo-2.png' %}" alt class="img img-responsive"></a>
                             </div>
-
-                            <div class="col col-sm-3">
-                                <div class="social">
-                                    <ul>
-                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                        <!-- <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-instagram"></i></a></li> -->
-                                    </ul>
-                                </div>
+                        </div>
+                        <div class="col col-lg-6 col-md-7 col-sm-7 social-links-btns">
+                            <div class="social">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="btns">
+                                <a href="{% url 'login' %}" class="btn theme-btn-s2"><i class="fi flaticon-black"></i> Se connecter</a>
+                                <a href="{% url 'register' %}" class="btn theme-btn-s2"><i class="fi flaticon-register"></i> S'enregistrer</a>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="lower-topbar">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col col-md-4">
-                                <div class="logo">
-                                    <a href="index.html"><img src="{% static 'images/logo-2.png' %}" alt class="img img-responsive"></a>
-                                </div>
-                            </div>
-                            <div class="col col-md-8">
-                                <div class="next-event">
-                                    <div class="subject">
-                                        <img src="{% static 'images/cycling.png' %}" alt>
-                                        <h5>Wallam <span>2024</span></h5>
-                                    </div>
-                                    <div id="clock"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div> <!-- end top-bar -->
 
             <nav class="navigation navbar navbar-default" id="main-navigation">
@@ -120,12 +91,12 @@
                         {% block menu %}
                         <ul class="nav navbar-nav">
                             <li class="current">
-                                <a href="#">Accueil</a>
+                                <a href="{% url 'annonce' %}">Accueil</a>
                             </li>
                             <li class="">
-                                <a href="#">Créer une cagnotte</a>
+                                <a href="{% url 'cagnotte' %}">Créer une cagnotte</a>
                             </li>
-                            <li><a href="#">Créer une annonce</a></li>
+                            <li><a href="{% url 'annonce' %}">Créer une annonce</a></li>
                         </ul>
                         {% endblock %}
                     </div><!-- end of nav-collapse -->
