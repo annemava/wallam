@@ -17,11 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from core import urls as core_url
-from event import urls as event_url
-from core.views import HomePageView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(core_url)),
-    path('', include(event_url)),
 ]
