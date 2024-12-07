@@ -13,3 +13,7 @@ class AnnoncePageView(TemplateView):
 
 class CagnottePageView(TemplateView):
     template_name = 'cagnotte.html'
+
+
+class ErrorPageView(TemplateView):
+    template_name = 'error-404.html'

@@ -20,16 +20,32 @@ class CustomUser(AbstractUser):
         return self.email
 
 
-class Profile(models.Model):
-    USER_TYPE_CHOICES = [
-        ('ASSOCIATION', 'Association'),
-        ('PARTICULIER', 'Particulier'),
-    ]
+class Personne(models.Model):
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    date_naiss_creation = models.DateField(null=True, blank=True)
+    adresse = models.CharField(max_length=255, null=True, blank=True)
+    accept_cgu = models.BooleanField(default=False)
+    created_at = models.DateField(auto_now_add=True)
 
-    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, related_name='profile')
-    user_type = models.CharField(max_length=15, choices=USER_TYPE_CHOICES)
-    association = models.CharField(max_length=255, blank=True, null=True)  # Pour les associations
-    cgu_validation = models.BooleanField(default=False)  # Pour les particuliers et les associations
+    class Meta:
+        abstract = True
+
+
+class Association(Personne):
+    nom_association = models.CharField(max_length=255)
+    num_enregistrement = models.CharField(max_length=50, null=True, blank=True)
+    type_association = models.CharField(max_length=50, null=True, blank=True)
+    contact = models.CharField(max_length=100, null=True, blank=True)
+    logo = models.ImageField(upload_to='logos/', null=True, blank=True)
+    document_justificatif = models.FileField(upload_to='documents/', null=True, blank=True)
 
     def __str__(self):
-        return f"{self.user.email} - {self.get_user_type_display()}"
+        return self.nom_association
+
+
+class Particulier(Personne):
+    profession = models.CharField(max_length=100, null=True, blank=True)
+    avatar = models.ImageField(upload_to='avatars/', null=True, blank=True)
+
+    def __str__(self):
+        return self.user.email
