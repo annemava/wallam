@@ -1,10 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'account/default.html' %}
+{% load static %}
+{% block connexion %}
+<div class="form-items">
+    <h3>Get more things done with Loggin platform.</h3>
+    <div class="page-links">
+        <a href="{% url 'login' %}" >Connexion</a><a href="{% url 'register' %}" class="active">Enregistrement</a>
+    </div>
 
-</body>
-</html>
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li class="{{ message.tags }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <form action="{% url 'register' %}" method="post">
+        {% csrf_token %}
+        <!-- Boutons radio pour le choix de l'utilisateur -->
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="user_type" id="inlineRadio1" value="association" required>
+            <label class="form-check-label" for="inlineRadio1">Association</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="user_type" id="inlineRadio2" value="particulier" checked required>
+            <label class="form-check-label" for="inlineRadio2">Particulier</label>
+        </div>
+
+        <!-- Champs de texte -->
+        <input class="form-control" type="text" name="firstname" placeholder="Votre Nom" required>
+        <input class="form-control" type="text" name="lastname" placeholder="Votre Prénom" required>
+        <div id="nomassoc-container" style="display: none;">
+            <input class="form-control" type="text" name="nomassoc" placeholder="Le nom de l'association">
+        </div>
+        <input class="form-control" type="text" name="email" placeholder="Votre Email" required>
+        <input class="form-control" type="text" name="phone" placeholder="Votre numéro de téléphone" required>
+        <input class="form-control" type="password" name="password" placeholder="Votre mot de passe" required>
+        <input class="form-control" type="password" name="confirmpassword" placeholder="Confirmer votre mot de passe" required>
+
+        <!-- Bouton de soumission -->
+        <div class="form-button">
+            <button id="submit" type="submit" class="ibtn">Enregistrer</button>
+        </div>
+    </form>
+</div>
+<script>
+    // Gérer l'affichage du champ "nomassoc"
+    document.addEventListener("DOMContentLoaded", function() {
+        const radioAssociation = document.getElementById("inlineRadio1");
+        const radioParticulier = document.getElementById("inlineRadio2");
+        const nomAssocContainer = document.getElementById("nomassoc-container");
+
+        function toggleNomAssoc() {
+            if (radioAssociation.checked) {
+                nomAssocContainer.style.display = "block";
+            } else {
+                nomAssocContainer.style.display = "none";
+            }
+        }
+
+        // Ajouter des écouteurs d'événements pour les radios
+        radioAssociation.addEventListener("change", toggleNomAssoc);
+        radioParticulier.addEventListener("change", toggleNomAssoc);
+
+        // Initialiser l'état au chargement
+        toggleNomAssoc();
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% block content %}
+<div class="container mt-5">
+    <h2>Faire un don pour la campagne : {{ campaign.title }}</h2>
+    <p><strong>Objectif :</strong> {{ campaign.goal|default:"Non défini" }}</p>
+    <p><strong>Bénéficiaire :</strong> {{ campaign.beneficiary }}</p>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Faire un don</button>
+    </form>
+
+    <hr>
+    <h4>Visibilité de la campagne :</h4>
+    <p>{{ campaign.get_visibility_display }}</p>
+</div>
+{% endblock %}

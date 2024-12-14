@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion | Enregistrement</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'account/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'account/css/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'account/css/iofrm-style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'account/css/iofrm-theme1.css' %}">
+</head>
+    <div class="form-body">
+        <div class="website-logo">
+            <a href="{% url 'index' %}">
+                <div class="logo">
+                    <img class="logo-size" src="{% static 'wallam/images/wallam-logo.jpg' %}" alt="">
+                </div>
+            </a>
+        </div>
+        <div class="iofrm-layout">
+            <div class="img-holder">
+                <div class="bg"></div>
+                <div class="info-holder">
+
+                </div>
+            </div>
+            <div class="form-holder">
+                <div class="form-content">
+                    {% block connexion %}
+
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="{% static 'account/js/jquery.min.js' %}"></script>
+<script src="{% static 'account/js/popper.min.js' %}"></script>
+<script src="{% static 'account/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'account/js/main.js' %}"></script>
+</body>
+</html>
