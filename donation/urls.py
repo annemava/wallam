@@ -1,6 +1,7 @@
 from django.urls import path
-from .views import DonateView
+from .views import *
 
 urlpatterns = [
-    path('campaign/<int:pk>/donate/', DonateView.as_view(), name='campaign_donate'),
+    path('announce', announce, name='announce'),
+    path('donation/<int:pk>/', donation_detail_view, name='donation_detail'),
 ]

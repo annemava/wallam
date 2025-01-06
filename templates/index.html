@@ -4,12 +4,12 @@
 {% block menu %}
 <ul class="nav navbar-nav">
     <li class="current">
-        <a href="#">Accueil</a>
+        <a href="{% url 'index' %}">Accueil</a>
     </li>
     <li class="">
         <a href="{% url 'create_campaign' %}">Créer une cagnotte</a>
     </li>
-    <li><a href="#">Créer une annonce</a></li>
+    <li><a href="{% url 'announce' %}">Créer une annonce</a></li>
 </ul>
 {% endblock %}
 {% block content %}
@@ -81,15 +81,21 @@
                                     <h4>{{ urgent.amount_collected }}</h4>
                                 </div>
                             </div>
+                            {% if user.is_authenticated %}
                             <form action="{% url 'campaign_donate' pk=urgent.pk %}" class="form" method="post">
                                 {% csrf_token %}
                                 <div>
-                                    <input type="number" name="amount" class="form-control" placeholder="- ENTER AMOUNT -" required>
+                                    <input type="number" name="amount" class="form-control" placeholder="- ENTRER LE MONTANT -" required>
                                 </div>
                                 <div>
                                     <button type="submit" class="btn theme-btn">Donation</button>
                                 </div>
                             </form>
+                            {% else %}
+                            <div style="text-align: right; margin-top:15%;">
+                                <a href="{% url 'campaign_donate' pk=urgent.pk %}" class="btn theme-btn">FAIRE UN DON</a>
+                            </div>
+                            {% endif %}
                         </div>
                     </div>
                     {% endfor %}
@@ -113,7 +119,6 @@
                     <span class="icon"><i class="fi flaticon-money-1"></i></span>
                     <h3>Démarrer une cagnotte</h3>
                     <p>Collecter en toute tranquillité</p>
-                    <a href="#" class="read-more">En savoir plus ...</a>
                 </div>
             </div>
             <div class="col col-sm-4">
@@ -121,7 +126,6 @@
                     <span class="icon"><i class="fi flaticon-heart"></i></span>
                     <h3>Soutenir une cause</h3>
                     <p>Faite un don en toute sécurité</p>
-                    <a href="#" class="read-more">En savoir plus ...</a>
                 </div>
             </div>
             <div class="col col-sm-4">
@@ -129,7 +133,6 @@
                     <span class="icon"><i class="fi flaticon-business-1"></i></span>
                     <h3>Offrir un objet</h3>
                     <p>Donnez vos objets inutilisés</p>
-                    <a href="#" class="read-more">En savoir plus ...</a>
                 </div>
             </div>
         </div> <!-- end row -->
@@ -226,84 +229,20 @@
         <div class="row">
             <div class="col col-md-12">
                 <div class="shop-content latest-product-slider">
+                    {% for announce in announces %}
                     <div class="grid">
                         <div class="box">
                             <div class="img-holder">
                                 <img src="{% static 'images/shop/img-1.jpg' %}" alt class="img img-responsive">
                             </div>
                             <div class="details">
-                                <h3><a href="#">Skincare Product</a></h3>
-                                <a href="#" class="add-to-cart"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                <div class="price">
-                                </div>
+                                <h3><a href="{% url 'donation_detail' pk=announce.pk %}">{{ announce.title }}</a></h3>
+                                <a href="#" class="add-to-cart">Etat : </i> {{ announce.condition.title }}</a>
+
                             </div>
                         </div>
                     </div>
-                    <div class="grid">
-                        <div class="box">
-                            <div class="img-holder">
-                                <img src="{% static 'images/shop/img-1.jpg' %}" alt class="img img-responsive">
-                            </div>
-                            <div class="details">
-                                <h3><a href="#">Skincare Product</a></h3>
-                                <a href="#" class="add-to-cart"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                <div class="price">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="grid">
-                        <div class="box">
-                            <div class="img-holder">
-                                <img src="{% static 'images/shop/img-1.jpg' %}" alt class="img img-responsive">
-                            </div>
-                            <div class="details">
-                                <h3><a href="#">Skincare Product</a></h3>
-                                <a href="#" class="add-to-cart"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                <div class="price">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="grid">
-                        <div class="box">
-                            <div class="img-holder">
-                                <img src="{% static 'images/shop/img-1.jpg' %}" alt class="img img-responsive">
-                            </div>
-                            <div class="details">
-                                <h3><a href="#">Skincare Product</a></h3>
-                                <a href="#" class="add-to-cart"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                <div class="price">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="grid">
-                        <div class="box">
-                            <div class="img-holder">
-                                <img src="{% static 'images/shop/img-1.jpg' %}" alt class="img img-responsive">
-                            </div>
-                            <div class="details">
-                                <h3><a href="#">Skincare Product</a></h3>
-                                <a href="#" class="add-to-cart"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                <div class="price">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="grid">
-                        <div class="box">
-                            <div class="img-holder">
-                                <img src="{% static 'images/shop/img-1.jpg' %}" alt class="img img-responsive">
-                            </div>
-                            <div class="details">
-                                <h3><a href="#">Skincare Product</a></h3>
-                                <a href="#" class="add-to-cart"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                <div class="price">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div> <!-- end shop-content -->
             </div> <!-- end col -->
         </div> <!-- end row -->

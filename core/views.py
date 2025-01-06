@@ -4,15 +4,18 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .models import CustomUser, Association, Particulier
 from campaign.models import Campaign
+from donation.models import ObjectDonation
 
 
 # Create your views here.
 def homepage(request):
     campaigns = Campaign.objects.filter(status="encours")
     urgents = Campaign.objects.filter(status="encours", urgent=True)
+    announces = ObjectDonation.objects.filter(active=True)
     context = {
         "campaigns": campaigns,
-        "urgents": urgents
+        "urgents": urgents,
+        "announces": announces
     }
     return render(request, 'index.html', context)
 

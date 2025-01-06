@@ -1,0 +1,89 @@
+{% extends 'default.html' %}
+{% load static %}
+{% block title %} Wallam | Créer une annonce {% endblock %}
+{% block menu %}
+<ul class="nav navbar-nav">
+    <li>
+        <a href="{% url 'index' %}">Accueil</a>
+    </li>
+    <li>
+        <a href="{% url 'create_campaign' %}">Créer une cagnotte</a>
+    </li>
+    <li class="current"><a href="{% url 'announce' %}">Créer une annonce</a></li>
+</ul>
+{% endblock %}
+{% block content %}
+<!-- start contact-main-content -->
+<section class="contact-main-content section-padding">
+    <div class="container">
+        <div class="row contact-info">
+
+        </div> <!-- end contact info -->
+    </div> <!-- end container -->
+
+    <div class="row map-concate-form">
+        <div class="col col-xs-12">
+            <div class="map" id="map"></div>
+        </div>
+        <div class="contact-form">
+            <div class="container">
+                <div class="row  wow bounceInUp">
+                    <div class="col col-md-10 col-md-offset-1 form-inner">
+                        <h3 style="text-align: center; margin:2%;">Don d'objet</h3>
+                        <form action="#" class="form row" method="post">
+                            {% csrf_token %}
+                            <div class="col col-md-6">
+                                <input class="form-control" type="text" name="title" placeholder="Titre de l'annonce" required style="padding:1%; margin:1%; border-radius:5px !important;">
+                            </div>
+                            <div class="col col-md-6">
+                                <select class="form-control" name="category" required style="padding:1%; margin:1%; border-radius:5px !important;">
+                                    <option value="0">Sélectionnez la catégorie de votre don</option>
+                                    {% for categorie in categories %}
+                                    <option value="{{ categorie.pk }}">{{ categorie.title }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="col col-md-6">
+                                <select class="form-control" name="availability" required style="padding:1%; margin:1%; border-radius:5px !important;">
+                                    <option value="0">Sélectionnez votre periode de disponibilité</option>
+                                    {% for availability in availabilities %}
+                                    <option value="{{ availability.pk }}">{{ availability.title }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="col col-md-6">
+                                <select class="form-control" name="condition" required style="padding:1%; margin:1%; border-radius:5px !important;">
+                                    <option value="0">Sélectionnez la condition / l'état de votre don</option>
+                                    {% for condition in conditions %}
+                                    <option value="{{ condition.pk }}">{{ condition.title }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="col col-md-6">
+                                <input class="form-control" type="date" name="expiration_date" style="padding:1%; margin:1%; border-radius:5px !important;">
+                            </div>
+                            <div class="col col-md-6">
+                                <input class="form-control" type="text" name="location" placeholder="Votre localisation" style="padding:1%; margin:1%; border-radius:5px !important;">
+                            </div>
+                            <div class="col col-md-12">
+                                <textarea class="form-control" name="description" style="padding:1%; margin:1%; border-radius:5px !important;">Faites une brève description de votre Objet / Nourriture</textarea>
+                            </div>
+                            <div class="col col-md-12">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="terms_accepted" id="terms" required style="margin:1%">
+                                    <label class="form-check-label" for="terms">J'accepte les CGU</label>
+                                </div>
+                            </div>
+                            <div class="col col-md-12" style="text-align: right">
+                                <button type="submit" class="bnt theme-btn">Enregistrer</button>
+                            </div>
+                        </form>
+                    </div>
+                </div> <!-- end row -->
+            </div> <!-- end container -->
+        </div>
+    </div>
+</section>
+<!-- end contact-main-content -->
+
+{% endblock %}
