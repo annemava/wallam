@@ -7,14 +7,6 @@
         <a href="{% url 'login' %}" >Connexion</a><a href="{% url 'register' %}" class="active">Enregistrement</a>
     </div>
 
-    {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-                <li class="{{ message.tags }}">{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-
     <form action="{% url 'register' %}" method="post">
         {% csrf_token %}
         <!-- Boutons radio pour le choix de l'utilisateur -->

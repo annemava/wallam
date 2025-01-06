@@ -4,92 +4,103 @@
 {% block menu %}
 <ul class="nav navbar-nav">
     <li>
-        <a href="{% url 'annonce' %}">Accueil</a>
+        <a href="{% url 'index' %}">Accueil</a>
     </li>
     <li class="current">
-        <a href="{% url 'cagnotte' %}">Créer une cagnotte</a>
+        <a href="{% url 'create_campaign' %}">Créer une cagnotte</a>
     </li>
     <li><a href="{% url 'annonce' %}">Créer une annonce</a></li>
 </ul>
 {% endblock %}
 {% block content %}
-<!-- start page-wrapper -->
-<div class="page-wrapper contact-page">
-    <!-- start contact-main-content -->
-    <section class="contact-main-content section-padding">
-        <div class="container">
-            <div class="row contact-info">
+{% if user.is_authenticated %}
+<!-- start contact-main-content -->
+<section class="contact-main-content section-padding">
+    <div class="container">
+        <div class="row contact-info">
 
-            </div> <!-- end contact info -->
-        </div> <!-- end container -->
+        </div> <!-- end contact info -->
+    </div> <!-- end container -->
 
-        <div class="row map-concate-form">
-
-            <div class="contact-form">
-                <div class="container">
-                    <div class="row">
-                        <div class="col col-md-10 col-md-offset-1 form-inner">
-                            <h3>Créer une campagne de levée de fonds</h3>
-                            <form class="form row" id="contact-form">
-                                <div class="col col-md-6">
-                                    <input class="form-control" type="text" name="title" placeholder="Titre de la campagne" required>
-                                </div>
-                                <div class="col col-md-6">
-                                    <input class="form-control" type="text" name="beneficiary" placeholder="Bénéficiaire" required>
-                                </div>
-                                <div class="col col-md-6">
-                                    <input class="form-control" type="text" name="beneficiary_phone" placeholder="Numéro du bénéficiaire" required>
-                                </div>
-                                <div class="col col-md-6">
-                                    <input class="form-control" type="number" step="0.01" name="goal" placeholder="Objectif (optionnel)">
-                                </div>
-                                <div class="col col-md-6">
-                                    <input class="form-control" type="text" name="code" placeholder="Code à communiquer (optionnel)">
-                                </div>
-                                <div class="col col-md-6">
-                                    <select class="form-control" name="category" required>
-                                        <option value="solidaire">Solidaire</option>
-                                        <option value="sante">Santé</option>
-                                        <option value="urgence">Urgence</option>
-                                        <option value="association">Association</option>
-                                    </select>
-                                </div>
-                                <div class="col col-md-6">
-                                    <textarea class="form-control" name="description" placeholder="Description" required></textarea>
-                                </div>
-                                <div class="col col-md-12">
-                                    <input class="form-control" type="file" name="uploaded_files">
-                                </div>
-
-                                <div class="col col-md-12">
-                                    <select class="form-control" name="visibility" required>
-                                        <option value="public">Publique</option>
-                                        <option value="private">Privée</option>
-                                    </select>
-                                </div>
-
-                                <div class="col col-md-12">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="terms_accepted" id="terms" required>
-                                        <label class="form-check-label" for="terms">J'accepte les CGU</label>
-                                    </div>
-                                </div>
-
-                                <div class="col col-md-12">
-                                    <button type="submit" class="bnt theme-btn">Send</button>
-                                    <span id="loader"><img src="images/contact-ajax-loader.gif" alt="Loader"></span>
-                                </div>
-                                <div class="col col-md-12">
-                                    <div id="success">Thank you</div>
-                                    <div id="error"> Error occurred while sending email. Please try again later. </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div> <!-- end row -->
-                </div> <!-- end container -->
-            </div>
+    <div class="row map-concate-form">
+        <div class="col col-xs-12">
+            <div class="map" id="map"></div>
         </div>
-    </section>
-    <!-- end contact-main-content -->
-</div>
+        <div class="contact-form">
+            <div class="container">
+                <div class="row  wow bounceInUp">
+                    <div class="col col-md-10 col-md-offset-1 form-inner">
+                        <h3 style="text-align: center; margin:2%;">Créer une campagne de levée de fonds</h3>
+                        <form action="{% url 'create_campaign' %}" class="form row" method="post">
+                            {% csrf_token %}
+                            <div class="col col-md-6">
+                                <input class="form-control" type="text" name="title" placeholder="Titre de la campagne" required style="padding:1%; margin:1%; border-radius:5px !important;">
+                            </div>
+                            <div class="col col-md-6">
+                                <input class="form-control" type="text" name="beneficiary" placeholder="Bénéficiaire" required style="padding:1%; margin:1%; border-radius:5px !important;">
+                            </div>
+                            <div class="col col-md-6">
+                                <input class="form-control" type="text" name="beneficiary_phone" placeholder="Numéro du bénéficiaire" required style="padding:1%; margin:1%; border-radius:5px !important;">
+                            </div>
+                            <div class="col col-md-6">
+                                <input class="form-control" type="number" step="0.01" name="goal" placeholder="Objectif (optionnel)" style="padding:1%; margin:1%; border-radius:5px !important;">
+                            </div>
+                            <div class="col col-md-6">
+                                <input class="form-control" type="text" name="code" placeholder="Code à communiquer (optionnel)" style="padding:1%; margin:1%; border-radius:5px !important;">
+                            </div>
+                            <div class="col col-md-6">
+                                <select class="form-control" name="category" required style="padding:1%; margin:1%; border-radius:5px !important;">
+                                    {% for categorie in categories %}
+                                    <option value="{{ categorie.pk }}">{{ categorie.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="col col-md-6">
+                                <textarea class="form-control" name="description" placeholder="Description" required style="padding:1%; margin:1%; border-radius:5px !important;"></textarea>
+                            </div>
+                            <div class="col col-md-6">
+                                <textarea class="form-control" name="reward" placeholder="Contrepartie (optionnel)" style="padding:1%; margin:1%; border-radius:5px !important;"></textarea>
+                            </div>
+                            <div class="col col-md-6">
+                                <input class="form-control" type="number" name="duration" placeholder="Durée en jours" style="padding:1%; margin:1%; border-radius:5px !important;">
+                            </div>
+                            <div class="col col-md-6">
+                                <input class="form-control" type="file" name="uploaded_files" style="padding:1%; margin:1%; border-radius:5px !important;">
+                            </div>
+
+                            <div class="col col-md-12">
+                                <select class="form-control" name="visibility" required style="margin:1%; border-radius:5px !important;">
+                                    <option value="public">Publique</option>
+                                    <option value="private">Privée</option>
+                                </select>
+                            </div>
+
+                            <div class="col col-md-12">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="terms_accepted" id="terms" required style="margin:1%">
+                                    <label class="form-check-label" for="terms">J'accepte les CGU</label>
+                                </div>
+                            </div>
+
+                            <div class="col col-md-12" style="text-align: right">
+                                <button type="submit" class="bnt theme-btn">Enregistrer</button>
+                            </div>
+                        </form>
+                    </div>
+                </div> <!-- end row -->
+            </div> <!-- end container -->
+        </div>
+    </div>
+</section>
+<!-- end contact-main-content -->
+{% else %}
+<section class="contact-main-content section-padding">
+    <div class="container">
+        <div class="row contact-info">
+            <h2>Vous devez avoir un compte Association ou Particulier afin de pouvoir creer une cagnotte</h2>
+            <a href="{% url 'register' %}">Cliquez ici pour créer un compte</a>
+        </div> <!-- end contact info -->
+    </div> <!-- end container -->
+</section>
+{% endif %}
 {% endblock %}

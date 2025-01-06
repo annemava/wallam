@@ -48,10 +48,11 @@
                             </div>
                             <div class="col col-md-6">
                                 <select class="form-control" name="category" required>
-                                    <option value="solidaire">Solidaire</option>
-                                    <option value="sante">Santé</option>
-                                    <option value="urgence">Urgence</option>
-                                    <option value="association">Association</option>
+                                    {% if categories %}
+                                    {% for categorie in categories %}
+                                    <option value="{{ categorie.pk }}">{{ categorie.name }}</option>
+                                    {% endfor %}
+                                    {% endif %}
                                 </select>
                             </div>
                             <div class="col col-md-6">
@@ -81,10 +82,6 @@
                             <div class="col col-md-12">
                                 <button type="submit" class="bnt theme-btn">Send</button>
                                 <span id="loader"><img src="images/contact-ajax-loader.gif" alt="Loader"></span>
-                            </div>
-                            <div class="col col-md-12">
-                                <div id="success">Thank you</div>
-                                <div id="error"> Error occurred while sending email. Please try again later. </div>
                             </div>
                         </form>
                     </div>

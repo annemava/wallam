@@ -1,10 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'default.html' %}
+{% load static %}
+{% block title %} Wallam | Créer une cagnotte {% endblock %}
+{% block menu %}
+<ul class="nav navbar-nav">
+    <li>
+        <a href="{% url 'index' %}">Accueil</a>
+    </li>
+    <li class="current">
+        <a href="{% url 'create_campaign' %}">Créer une cagnotte</a>
+    </li>
+    <li><a href="{% url 'annonce' %}">Créer une annonce</a></li>
+</ul>
+{% endblock %}
+{% block content %}
+<!-- start contact-main-content -->
+<section class="contact-main-content section-padding">
+    <div class="container">
+        <div class="row contact-info">
+
+        </div> <!-- end contact info -->
+    </div> <!-- end container -->
+
+    <div class="row map-concate-form">
+        <div class="col col-xs-12">
+            <div class="map" id="map"></div>
+        </div>
+        <div class="contact-form">
+            <div class="container">
+                <div class="row  wow bounceInUp">
+                    <div class="col col-md-10 col-md-offset-1 form-inner">
+                        <h3 style="text-align: center; margin:2%;">Faites un don pour la campagne : {{ campaign.title }}</h3>
+                        <form action="{% url 'campaign_donate' pk=campaign.pk %}" class="form row" method="post">
+                            {% csrf_token %}
+                            <input class="form-control" type="number" name="amount" placeholder="Entrez le montant" required style="padding:1%; margin:1%; border-radius:5px !important;">
+                            <input class="form-control" type="text" name="donor_fullname" placeholder="Entrez votre nom ou pseudo" style="padding:1%; margin:1%; border-radius:5px !important;">
+                            <input class="form-control" type="text" name="donor_phone" placeholder="Entrez votre numéro de téléphone" style="padding:1%; margin:1%; border-radius:5px !important;">
+                            <div class="form-button" style="text-align: right;">
+                                <button type="submit" class="btn btn-primary" style="width: 10%;">Valider</button>
+                            </div>
+                        </form>
+                    </div>
+                </div> <!-- end row -->
+            </div> <!-- end container -->
+        </div>
+    </div>
+</section>
+<!-- end contact-main-content -->
+
+{% endblock %}

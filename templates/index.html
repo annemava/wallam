@@ -57,73 +57,42 @@
         <div class="row urgent-inner">
             <div class="col col-lg-10 col-lg-offset-1">
                 <div class="urgent-slider">
+                    {% for urgent in urgents %}
                     <div class="urgent-box">
                         <div class="img-holder">
                             <img src="{% static 'images/urgent-slider/img-2.jpg' %}" alt class="img img-responsive">
                         </div>
                         <div class="details">
                             <span>Urgent</span>
-                            <h2>Kids promenade party</h2>
-                            <p class="remaing-date">3 days remaining</p>
+                            <h2>{{ urgent.title }}</h2>
+                            <p class="remaing-date">{{ urgent.days_remaining }} jours restants</p>
                             <div class="progress-wrapper">
                                 <div class="progress">
-                                    <div class="progress-bar" data-percent="85"></div>
+                                    <div class="progress-bar" data-percent="{{ urgent.percentage_collected }}"></div>
                                 </div>
                             </div>
                             <div class="goal-raised">
                                 <div class="goal">
-                                    <span>Goal</span>
-                                    <h4>12,500</h4>
+                                    <span>Objectif</span>
+                                    <h4>{{ urgent.goal }}</h4>
                                 </div>
                                 <div class="raised">
                                     <span>Raised</span>
-                                    <h4>12,500</h4>
+                                    <h4>{{ urgent.amount_collected }}</h4>
                                 </div>
                             </div>
-                            <form action="#" class="form">
+                            <form action="{% url 'campaign_donate' pk=urgent.pk %}" class="form" method="post">
+                                {% csrf_token %}
                                 <div>
-                                    <input type="text" class="form-control" placeholder="- ENTER AMOUNT -" required>
+                                    <input type="number" name="amount" class="form-control" placeholder="- ENTER AMOUNT -" required>
                                 </div>
                                 <div>
-                                    <button type="submit" class="btn theme-btn">Donate</button>
+                                    <button type="submit" class="btn theme-btn">Donation</button>
                                 </div>
                             </form>
                         </div>
                     </div>
-
-                    <div class="urgent-box">
-                        <div class="img-holder">
-                            <img src="{% static 'images/urgent-slider/img-2.jpg' %}" alt class="img img-responsive">
-                        </div>
-                        <div class="details">
-                            <span>Urgent</span>
-                            <h2>Kids promenade party</h2>
-                            <p class="remaing-date">3 days remaining</p>
-                            <div class="progress-wrapper">
-                                <div class="progress">
-                                    <div class="progress-bar" data-percent="85"></div>
-                                </div>
-                                <div class="goal-raised">
-                                    <div class="goal">
-                                        <span>Goal</span>
-                                        <h4>12,500</h4>
-                                    </div>
-                                    <div class="raised">
-                                        <span>Raised</span>
-                                        <h4>12,500</h4>
-                                    </div>
-                                </div>
-                                <form action="#" class="form">
-                                    <div>
-                                        <input type="text" class="form-control" placeholder="- Enter Amount -" required>
-                                    </div>
-                                    <div>
-                                        <button type="submit" class="btn theme-btn">Donate</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div> <!-- end urgent-slider -->
             </div> <!-- end col -->
         </div> <!-- end row -->
@@ -182,7 +151,7 @@
                         Wallam vous donne les moyens nécessaires pour réunir les fonds dont
                         vous avez besoins en toute sécurité.
                     </p>
-                    <a href="#" class="btn theme-btn">LANCEZ UNE CAGNOTTE MAINTENANT !</a>
+                    <a href="{% url 'create_campaign' %}" class="btn theme-btn">LANCEZ UNE CAGNOTTE MAINTENANT !</a>
                 </div>
             </div>
         </div> <!-- end row -->
@@ -200,11 +169,12 @@
         </div> <!-- end section-title -->
 
         <div class="row content">
+            {% for campaign in campaigns %}
             <div class="col col-md-4 col-xs-6">
                 <div class="title">
                     <ul>
-                        <li><h3>Kids playground</h3></li>
-                        <li><i class="fa fa-map-marker"></i> Boston, Texas</li>
+                        <li><h3>{{  campaign.title }}</h3></li>
+                        <li><i class="fa fa-map-marker"></i> {{  campaign.category }}</li>
                     </ul>
                 </div>
                 <div class="img-progress">
@@ -212,155 +182,21 @@
                         <img src="{% static 'images/latest-causes/img-1.jpg' %}" alt class="img img-responsive">
                     </div>
                     <div class="progress">
-                        <div class="progress-bar" data-percent="85"></div>
+                        <div class="progress-bar" data-percent="{{ campaign.percentage_collected }}"></div>
                     </div>
                 </div>
                 <div class="donate-amount">
                     <ul>
-                        <li>Raised: <span>$52,872</span> / $70,000</li>
-                        <li><i class="fa fa-clock-o"></i> 95 days</li>
+                        <li style="font-size:12px">Objectifs: <span>{{ campaign.amount_collected }} FCFA</span> / {{ campaign.goal }} FCFA</li>
+                        <li style="font-size:12px"><i class="fa fa-clock-o"></i> {{ campaign.days_remaining }} jours</li>
                     </ul>
                 </div>
                 <div class="text">
-                    <p>Iste natus error sit voluptatem accusantium dolo remque laudantium.</p>
-                    <a href="#" class="btn theme-btn">Donate now</a>
+                    <p style="text-align: justify;">{{ campaign.description|truncatechars:100 }}</p>
+                    <a href="{% url 'campaign_donate' pk=campaign.id %}" class="btn theme-btn">Faire un Don</a>
                 </div>
             </div>
-
-            <div class="col col-md-4 col-xs-6">
-                <div class="title">
-                    <ul>
-                        <li><h3>Kids playground</h3></li>
-                        <li><i class="fa fa-map-marker"></i> Boston, Texas</li>
-                    </ul>
-                </div>
-                <div class="img-progress">
-                    <div class="img-holder">
-                        <img src="{% static 'images/latest-causes/img-1.jpg' %}" alt class="img img-responsive">
-                    </div>
-                    <div class="progress">
-                        <div class="progress-bar" data-percent="55"></div>
-                    </div>
-                </div>
-                <div class="donate-amount">
-                    <ul>
-                        <li>Raised: <span>$52,872</span> / $70,000</li>
-                        <li><i class="fa fa-clock-o"></i> 95 days</li>
-                    </ul>
-                </div>
-                <div class="text">
-                    <p>Iste natus error sit voluptatem accusantium dolo remque laudantium.</p>
-                    <a href="#" class="btn theme-btn">Donate now</a>
-                </div>
-            </div>
-
-            <div class="col col-md-4 col-xs-6">
-                <div class="title">
-                    <ul>
-                        <li><h3>Kids playground</h3></li>
-                        <li><i class="fa fa-map-marker"></i> Boston, Texas</li>
-                    </ul>
-                </div>
-                <div class="img-progress">
-                    <div class="img-holder">
-                        <img src="{% static 'images/latest-causes/img-1.jpg' %}" alt class="img img-responsive">
-                    </div>
-                    <div class="progress">
-                        <div class="progress-bar" data-percent="25"></div>
-                    </div>
-                </div>
-                <div class="donate-amount">
-                    <ul>
-                        <li>Raised: <span>$52,872</span> / $70,000</li>
-                        <li><i class="fa fa-clock-o"></i> 95 days</li>
-                    </ul>
-                </div>
-                <div class="text">
-                    <p>Iste natus error sit voluptatem accusantium dolo remque laudantium.</p>
-                    <a href="#" class="btn theme-btn">Donate now</a>
-                </div>
-            </div>
-
-            <div class="col col-md-4 col-xs-6">
-                <div class="title">
-                    <ul>
-                        <li><h3>Kids playground</h3></li>
-                        <li><i class="fa fa-map-marker"></i> Boston, Texas</li>
-                    </ul>
-                </div>
-                <div class="img-progress">
-                    <div class="img-holder">
-                        <img src="{% static 'images/latest-causes/img-1.jpg' %}" alt class="img img-responsive">
-                    </div>
-                    <div class="progress">
-                        <div class="progress-bar" data-percent="95"></div>
-                    </div>
-                </div>
-                <div class="donate-amount">
-                    <ul>
-                        <li>Raised: <span>$52,872</span> / $70,000</li>
-                        <li><i class="fa fa-clock-o"></i> 95 days</li>
-                    </ul>
-                </div>
-                <div class="text">
-                    <p>Iste natus error sit voluptatem accusantium dolo remque laudantium.</p>
-                    <a href="#" class="btn theme-btn">Donate now</a>
-                </div>
-            </div>
-
-            <div class="col col-md-4 col-xs-6">
-                <div class="title">
-                    <ul>
-                        <li><h3>Kids playground</h3></li>
-                        <li><i class="fa fa-map-marker"></i> Boston, Texas</li>
-                    </ul>
-                </div>
-                <div class="img-progress">
-                    <div class="img-holder">
-                        <img src="{% static 'images/latest-causes/img-1.jpg' %}" alt class="img img-responsive">
-                    </div>
-                    <div class="progress">
-                        <div class="progress-bar" data-percent="70"></div>
-                    </div>
-                </div>
-                <div class="donate-amount">
-                    <ul>
-                        <li>Raised: <span>$52,872</span> / $70,000</li>
-                        <li><i class="fa fa-clock-o"></i> 95 days</li>
-                    </ul>
-                </div>
-                <div class="text">
-                    <p>Iste natus error sit voluptatem accusantium dolo remque laudantium.</p>
-                    <a href="#" class="btn theme-btn">Donate now</a>
-                </div>
-            </div>
-
-            <div class="col col-md-4 col-xs-6">
-                <div class="title">
-                    <ul>
-                        <li><h3>Kids playground</h3></li>
-                        <li><i class="fa fa-map-marker"></i> Boston, Texas</li>
-                    </ul>
-                </div>
-                <div class="img-progress">
-                    <div class="img-holder">
-                        <img src="{% static 'images/latest-causes/img-1.jpg' %}" alt class="img img-responsive">
-                    </div>
-                    <div class="progress">
-                        <div class="progress-bar" data-percent="15"></div>
-                    </div>
-                </div>
-                <div class="donate-amount">
-                    <ul>
-                        <li>Raised: <span>$52,872</span> / $70,000</li>
-                        <li><i class="fa fa-clock-o"></i> 95 days</li>
-                    </ul>
-                </div>
-                <div class="text">
-                    <p>Iste natus error sit voluptatem accusantium dolo remque laudantium.</p>
-                    <a href="#" class="btn theme-btn">Donate now</a>
-                </div>
-            </div>
+            {% endfor %}
         </div> <!-- end content -->
     </div> <!-- end container -->
 </section>

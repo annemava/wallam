@@ -7,12 +7,7 @@
     <div class="page-links">
         <a href="{% url 'login' %}" class="active">Connexion</a><a href="{% url 'register' %}">Enregistrement</a>
     </div>
-    {% if messages %}
-        {% for message in messages %}
-            <div style="color: red;">{{ message }}</div>
-        {% endfor %}
-    {% endif %}
-    <form action="#" method="post">
+    <form action="{% url 'login' %}" method="post">
         {% csrf_token %}
         <input class="form-control" type="text" name="username" placeholder="Email ou numéro de téléphone" required>
         <input class="form-control" type="password" name="password" placeholder="Mot de passe" required>
