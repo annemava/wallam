@@ -22,7 +22,7 @@ class CustomUser(AbstractUser):
 
 class Personne(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
-    pseudo = models.CharField(max_length=100)
+    pseudo = models.CharField(max_length=100, null=True, blank=True)
     accept_cgu = models.BooleanField(default=False)
     created_at = models.DateField(auto_now_add=True)
 

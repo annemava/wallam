@@ -2,11 +2,12 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from datetime import timedelta
-from .models import Campaign
+from core.models import Personne
+from .models import Campaign, Category, Donation
 
 
-@login_required
 def create_campaign_view(request):
+    categories = Category.objects.filter(active=True)
     if request.method == "POST":
         # Récupérer les données du formulaire
         title = request.POST.get("title")
@@ -15,7 +16,7 @@ def create_campaign_view(request):
         goal = request.POST.get("goal")
         duration = request.POST.get("duration")
         code = request.POST.get("code")
-        category = request.POST.get("category")
+        category_id = request.POST.get("category")
         description = request.POST.get("description")
         reward = request.POST.get("reward")
         uploaded_files = request.FILES.get("uploaded_files")
@@ -26,6 +27,9 @@ def create_campaign_view(request):
         if not terms_accepted:
             messages.error(request, "Vous devez accepter les conditions générales d'utilisation.")
             return redirect("create_campaign")
+
+        if category_id:
+            category = Category.objects.get(pk=int(category_id))
 
         try:
             # Créer la campagne
@@ -44,20 +48,23 @@ def create_campaign_view(request):
                 visibility=visibility,
                 terms_accepted=terms_accepted,
             )
-            messages.success(request, "La campagne a été créée avec succès.")
             return redirect("campaign_detail", pk=campaign.pk)  # Redirige vers la page de détail
         except Exception as e:
+            print("erreur ", str(e))
             messages.error(request, f"Erreur lors de la création de la campagne : {str(e)}")
             return redirect("create_campaign")
+    context = {
+        "categories": categories
+    }
 
-    return render(request, "campaign/create_campaign.html")
+    return render(request, "campaign/create_campaign.html", context)
 
 
 @login_required
 def edit_campaign_view(request, pk):
     # Récupérer la campagne existante
     campaign = get_object_or_404(Campaign, pk=pk, user=request.user)  # Vérifie que la campagne appartient à l'utilisateur connecté
-
+    categories = Category.objects.filter(active=True).exclude(pk=campaign.category.pk)
     if request.method == "POST":
         # Récupérer les données du formulaire
         title = request.POST.get("title")
@@ -86,6 +93,8 @@ def edit_campaign_view(request, pk):
             campaign.goal = goal if goal else None
             campaign.duration = duration
             campaign.code = code if code else None
+            if category:
+                category = Category.objects.get(pk=int(category))
             campaign.category = category
             campaign.description = description
             campaign.reward = reward if reward else None
@@ -96,14 +105,16 @@ def edit_campaign_view(request, pk):
             campaign.save()
 
             messages.success(request, "La campagne a été mise à jour avec succès.")
-            return redirect("campaign_detail", pk=campaign.pk)
+            return redirect("campaign_detail", pk=campaign.pk)  # Redirige vers la page de détail
         except Exception as e:
+            print("erreur ", e)
             messages.error(request, f"Erreur lors de la modification de la campagne : {str(e)}")
             return redirect("edit_campaign", pk=pk)
 
     # Préremplir le formulaire avec les données existantes
     context = {
         "campaign": campaign,
+        "categories": categories
     }
     return render(request, "campaign/edit_campaign.html", context)
 
@@ -111,12 +122,38 @@ def edit_campaign_view(request, pk):
 def campaign_detail_view(request, pk):
     campaign = get_object_or_404(Campaign, pk=pk)
     context = {
-        "campaign": campaign,
+        "campaign": campaign
     }
-    return render(request, "campaign/campaign_detail.html", context)
+    return render(request, "campaign/detail_campaign.html", context)
 
 
 """from datetime import timedelta
 
 expiration_date = campaign.created_at + timedelta(days=campaign.duration)
 is_expired = expiration_date < timezone.now()"""
+
+
+def campaign_donate(request, pk):
+    campaign = get_object_or_404(Campaign, pk=pk)
+    context = {
+        "campaign": campaign
+    }
+    if request.method == "POST":
+        donor_fullname = request.POST.get("donor_fullname")
+        amount = request.POST.get("amount")
+        donor_phone = request.POST.get("donor_phone")
+
+        try:
+            if donor_fullname:
+                Donation.objects.create(campaign=campaign, amount=amount, donor_fullname=donor_fullname,
+                                        donor_phone=donor_phone)
+            else:
+                Donation.objects.create(campaign=campaign, amount=amount, user=request.user,
+                                        donor_phone=donor_phone)
+            context["amount"] = amount
+            return render(request, "campaign/detail_campaign.html", context)
+        except Exception as ex:
+            print("erreur ", ex)
+            return render(request, "campaign/detail_campaign.html", context)
+
+    return render(request, "campaign/campaign_donation.html", context)

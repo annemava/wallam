@@ -1,13 +1,20 @@
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .models import CustomUser, Association, Particulier
+from campaign.models import Campaign
 
 
 # Create your views here.
-class HomePageView(TemplateView):
-    template_name = 'index.html'
+def homepage(request):
+    campaigns = Campaign.objects.filter(status="encours")
+    urgents = Campaign.objects.filter(status="encours", urgent=True)
+    context = {
+        "campaigns": campaigns,
+        "urgents": urgents
+    }
+    return render(request, 'index.html', context)
 
 
 class AnnoncePageView(TemplateView):
@@ -20,6 +27,11 @@ class CagnottePageView(TemplateView):
 
 class ErrorPageView(TemplateView):
     template_name = 'error-404.html'
+
+
+def logout_view(request):
+    logout(request)
+    return redirect("index")
 
 
 def login_view(request):
@@ -93,7 +105,7 @@ def register_view(request):
                 return redirect("index")
 
         except Exception as e:
-            messages.error(request, f"Une erreur s'est produite : {e}")
+
             return render(request, "account/register.html")
 
     return render(request, "account/register.html")
