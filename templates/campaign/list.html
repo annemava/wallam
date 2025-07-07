@@ -1,0 +1,16 @@
+{% extends 'default.html' %}
+{% load static %}
+{% block title %} Wallam | Liste des Campagnes {% endblock %}
+{% block menu %}
+<ul class="nav navbar-nav">
+    <li class="current">
+        <a href="{% url 'index' %}">Accueil</a>
+    </li>
+    <li class="">
+        <a href="{% url 'create_campaign' %}">Créer une cagnotte</a>
+    </li>
+    <li><a href="{% url 'announce' %}">Créer une annonce</a></li>
+</ul>
+{% endblock %}
+{% block content %}
+{% endblock %}

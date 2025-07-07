@@ -32,6 +32,30 @@ class ErrorPageView(TemplateView):
     template_name = 'error-404.html'
 
 
+class CguPageView(TemplateView):
+    template_name = "cgu.html"
+
+
+class HowWorkPageView(TemplateView):
+    template_name = "how_it_work.html"
+
+
+class FaqPageView(TemplateView):
+    template_name = "faq.html"
+
+
+class GarantieSecuritePageView(TemplateView):
+    template_name = "garantie_securite.html"
+
+
+class MentionLegalePageView(TemplateView):
+    template_name = "mention_legale.html"
+
+
+class TarifsPageView(TemplateView):
+    template_name = "tarifs.html"
+
+
 def logout_view(request):
     logout(request)
     return redirect("index")

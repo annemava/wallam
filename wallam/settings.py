@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'core',
     'campaign',
     'event',
+    'donation'
 ]
 
 MIDDLEWARE = [
@@ -51,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
 
 ROOT_URLCONF = 'wallam.urls'
 
@@ -75,7 +77,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'wallam.wsgi.application'
 
 AUTH_USER_MODEL = 'core.CustomUser'
-
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases

@@ -146,10 +146,10 @@
                             <h3>Company</h3>
                             <ul>
                                 <li><a href="#">Qui sommes nous</a></li>
-                                <li><a href="#">Campagnes</a></li>
-                                <li><a href="#">Annonces</a></li>
-                                <li><a href="#">Comment ça marche</a></li>
-                                <li><a href="#">Tarifs</a></li>
+                                <li><a href="{% url 'campaign_list' %}">Campagnes</a></li>
+                                <li><a href="{% url 'donation_list' %}">Annonces</a></li>
+                                <li><a href="{% url 'how_it_work' %}">Comment ça marche</a></li>
+                                <li><a href="{% url 'tarifs' %}">Tarifs</a></li>
                             </ul>
                         </div>
                     </div>
@@ -158,11 +158,11 @@
                         <div class="widget">
                             <h3>Help</h3>
                             <ul>
-                                <li><a href="#">FAQ</a></li>
-                                <li><a href="#">CGU</a></li>
+                                <li><a href="{% url 'faq' %}">FAQ</a></li>
+                                <li><a href="{% url 'cgu' %}">CGU</a></li>
                                 <li><a href="#">Politique d'utilisation</a></li>
-                                <li><a href="#">Mention légale</a></li>
-                                <li><a href="#">Garantie et sécurité</a></li>
+                                <li><a href="{% url 'mention_legale' %}">Mention légale</a></li>
+                                <li><a href="{% url 'garantie_securite' %}">Garantie et sécurité</a></li>
                             </ul>
                         </div>
                     </div>

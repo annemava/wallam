@@ -1,0 +1,97 @@
+{% extends 'default.html' %}
+{% load static %}
+{% block title %} Wallam | Tarifs {% endblock %}
+{% block menu %}
+<ul class="nav navbar-nav">
+    <li>
+        <a href="{% url 'index' %}">Accueil</a>
+    </li>
+    <li class="current">
+        <a href="{% url 'create_campaign' %}">Créer une cagnotte</a>
+    </li>
+    <li><a href="{% url 'announce' %}">Créer une annonce</a></li>
+</ul>
+{% endblock %}
+{% block content %}
+<!-- start about-details -->
+<section class="about-us-st section-padding">
+    <div class="container">
+        <h2><span>Tarifs </span></h2>
+        <div class="row">
+            <div class="col col-md-12">
+                <div class="left-col">
+
+                    <p>Nos tarifs sont conçus en pourcentage pour faciliter et accueillir tous les élans de générosité et de solidarité.</p>
+                    <div class="company">
+                    </div>
+                    <div class="panel-group" id="accordion">
+                        <div class="panel panel-default current">
+                            <div class="panel-heading" id="headingOne">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true">1.	Création : <i class="fa fa-angle-down"></i></a>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                    <div class="details">
+                                        <p>
+                                            <ul>
+                                                <li>Lancer votre cagnotte sans aucun frais de plateforme. </li>
+                                                <li>Créer une annonce de don d’objet ou de nourriture gratuitement</li>
+                                            </ul>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading" id="headingTwo">
+                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">2.	Participation :  <i class="fa fa-angle-down"></i></a>
+                            </div>
+                            <div id="collapseTwo" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="details">
+                                        <p>
+                                            <ul>
+                                                <li>Faite un don gratuitement pour soutenir une cause</li>
+                                                <li>Récupérez un don d’objet gratuitement, sans frais, ni commission</li>
+                                            </ul>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading" id="headingThree">
+                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">3.	Dépenses :<i class="fa fa-angle-down"></i></a>
+                            </div>
+                            <div id="collapseThree" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="details">
+                                        <p>
+                                            <ul>
+                                                <li>5% frais de gestion + 1.5 à 3% frais de transaction (en fonction de l’opérateur mobile ou bancaire) pour les cagnottes publiques.</li>
+                                                <li>8% de frais de gestion + 1.5 à 3% frais de transaction (en fonction de l’opérateur mobile ou bancaire) pour les cagnottes privées. </li>
+                                                <li>300f par retrait d’objet de plus de 05 objets par mois.  </li>
+                                            </ul>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="company">
+                        <h3>Pourquoi ces frais ?</h3>
+                        <p>
+                            Notre choix tarifaire est clair et transparent pour financer les frais de fonctionnement du service. Nous nous rémunérons uniquement grâce au pourcentage à la dépense de votre cagnotte. Wallam ne supporte pas les frais de retrait liés aux transactions, il revient donc au Cagnotteur de tenir compte des frais lors de la création de la cagnotte.
+                        </p>
+                    </div>
+                </div> <!-- end left-col -->
+            </div> <!-- end col -->
+        </div> <!-- end row -->
+    </div> <!-- end container -->
+</section>
+
+<!-- end cta -->
+{% endblock %}

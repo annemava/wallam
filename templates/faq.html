@@ -1,0 +1,224 @@
+{% extends 'default.html' %}
+{% load static %}
+{% block title %} Wallam | Foire aux questions {% endblock %}
+{% block menu %}
+<ul class="nav navbar-nav">
+    <li>
+        <a href="{% url 'index' %}">Accueil</a>
+    </li>
+    <li class="current">
+        <a href="{% url 'create_campaign' %}">Créer une cagnotte</a>
+    </li>
+    <li><a href="{% url 'announce' %}">Créer une annonce</a></li>
+</ul>
+{% endblock %}
+{% block content %}
+<!-- start about-details -->
+        <section class="about-us-st section-padding">
+            <div class="container">
+                <h2><span>Foire</span> aux questions</h2>
+                <div class="row">
+                    <div class="col col-md-12">
+                        <div class="left-col">
+                            <div class="company">
+                                <h3>Questions sur <span>Wallam</span></h3>
+                            </div>
+                            <p>Vous souhaitez en savoir plus sur la collecte de fonds, les dons d’objets, les cagnottes et annonces, et les événements sur wallam. Nous répondons à quelques questions :</p>
+
+                            <div class="panel-group" id="accordion">
+                                <div class="panel panel-default current">
+                                    <div class="panel-heading" id="headingOne">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true">COMMENT CREER UNE CAGNOTTE WALLAM ? <i class="fa fa-angle-down"></i></a>
+                                    </div>
+                                    <div id="collapseOne" class="panel-collapse collapse in">
+                                        <div class="panel-body">
+                                            <div class="img-holder">
+                                                <img src="images/about/thumb/img-1.jpg" alt>
+                                            </div>
+                                            <div class="details">
+                                                <p>Pour créer une cagnotte wallam, l’utilisateur doit obligatoire s’inscrire sur la plateforme wallam et entré ses données personnelles. Après création de son compte, l’utilisateur doit cliquer sur créer une cagnotte et remplir le formulaire à cet effet. En validant les données, sa cagnotte sera automatique créer.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" id="headingTwo">
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">COMMENT FONCTIONNE WALLAM ? <i class="fa fa-angle-down"></i></a>
+                                    </div>
+                                    <div id="collapseTwo" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <div class="img-holder">
+                                                <img src="images/about/thumb/img-1.jpg" alt>
+                                            </div>
+                                            <div class="details">
+                                                <p>Wallam fonctionne comme un intermédiaire qui vous permet de faire des dons d'objets ou de nourriture et/ou de lancer une campagne de collecte de fonds pour les causes caritatives.  </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" id="headingThree">
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">POUR QUEL CAUSE PEUT-ON LANCER UNE CAGNOTTE ? <i class="fa fa-angle-down"></i></a>
+                                    </div>
+                                    <div id="collapseThree" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <div class="details">
+                                                <p>Vous trouverez de l’aide sur wallam, quel que soit votre projet caritatif. Qu’il s’agit : de la prise en charge de certaines maladies rares, des frais d’hospitalisations ou d’évacuation ; du décès d’un proche ou d’organisation des funérailles ; d’accident ou de catastrophe naturelles, de religion ; de sports et de loisirs etc.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" id="headingFour">
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">COMMENT WALLAM ASSURE LA SECURITE DES CAGNOTTES ? <i class="fa fa-angle-down"></i></a>
+                                    </div>
+                                    <div id="collapseFour" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <div class="details">
+                                                <p>Wallam a fait de la sécurité une priorité absolue afin de vous accompagner dans vos élans de générosité, en protégeant votre Don, tout en sécurisant vos données. Une équipe de suivi et de sécurité, veille de manière proactive pour détecter toute forme de fraude, et procède à la vérification des collectes. Pour plus d’informations cliquez sur le lien: garantie et sécurité (lien). </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" id="headingFive">
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive">COMMENT RETIRER LES FONDS COLLECTES ?<i class="fa fa-angle-down"></i></a>
+                                    </div>
+                                    <div id="collapseFive" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <div class="details">
+                                                <p>Les fonds collectés sur notre plateforme sont retirés à tout moment par le bénéficiaire à travers une demande de retrait via la page de collecte de fond. Toutefois, quelques vérifications sont requises avant tout transfert de fonds. Pour plus d’informations, cliquez sur : garantie et sécurité (lien). </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" id="headingSix">
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSix">EST-CE QU’UN UTILISATEUR PEUT RETIRER L’ARGENT QUE J’AI COLLECTE POUR LUI ?<i class="fa fa-angle-down"></i></a>
+                                    </div>
+                                    <div id="collapseSix" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <div class="details">
+                                                <p>Oui, un utilisateur peut retirer l’argent que j’ai collecté pour lui à condition d’avoir informé qu’il est le bénéficiaire de la collecte de fonds lors de la création de la cagnotte.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" id="headingSeven">
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven">COMMENT RECUPERER UN DON D’OBJET ?<i class="fa fa-angle-down"></i></a>
+                                    </div>
+                                    <div id="collapseSeven" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <div class="details">
+                                                <p>Pour récupérer un don d'objet ou de nourriture, l'utilisateur doit créer obligatoirement un compte wallam en remplissant le formulaire à cet effet.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" id="headingEight">
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseEight">QUE SE PASSE-T-IL SI L’OBJECTIF N’EST PAS ATTEINT ?<i class="fa fa-angle-down"></i></a>
+                                    </div>
+                                    <div id="collapseEight" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <div class="details">
+                                                <p>Même si l’objectif de la collecte de fonds n’est pas atteint, le bénéficiaire peut à tout moment procédé au retrait de la somme collectée. </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" id="headingNine">
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseNine">COMMENT FAIRE POUR OBTENIR UN DON ?<i class="fa fa-angle-down"></i></a>
+                                    </div>
+                                    <div id="collapseNine" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <div class="details">
+                                                <p>Pour obtenir un don, vous devez être inscrit sur la plateforme wallam et remplir tous les conditions requises lors de votre inscription.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" id="headingTen">
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTen">QUELS SONT LES PAYS PRIS EN CHARGE ?<i class="fa fa-angle-down"></i></a>
+                                    </div>
+                                    <div id="collapseTen" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <div class="details">
+                                                <p>Wallam est disponible au Cameroun et bientôt dans toute l’Afrique Francophone.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" id="headingEleven">
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseEleven">Y-A-T-IL DES FRAIS POUR LANCER UNE LANCER UNE CAGNOTTE ?<i class="fa fa-angle-down"></i></a>
+                                    </div>
+                                    <div id="collapseEleven" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <div class="details">
+                                                <p>Il n’y a pas de frais pour lancer une cagnotte sur wallam. Lors de chaque demande de retrait d’argent sur la plateforme, wallam va retirer 3 % du montant demander représentant les frais de transactions et de redistribution. Tout le reste revient automatiquement à votre cause.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" id="headingTwelve">
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwelve">Y-A-T-IL UN DELAI OU DATE LIMITE POUR UNE CAGNOTTE SUR WALLAM ?<i class="fa fa-angle-down"></i></a>
+                                    </div>
+                                    <div id="collapseTwelve" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <div class="details">
+                                                <p>Il n’y a pas de limite ou de délai pour votre cagnotte sur wallam. Vous pouvez partager le lien quand vous voulez avec votre communauté.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" id="headingThirtheen">
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThirtheen">PUIS-JE COLLECTER DE L’ARGENT POUR MOI-MEME ? <i class="fa fa-angle-down"></i></a>
+                                    </div>
+                                    <div id="collapseThirtheen" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <div class="details">
+                                                <p>Oui, vous pouvez lancer une cagnotte pour vous-même ou pour votre famille, si vous vivez des moments de crise, de situation d’urgence ou de catastrophe naturel.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" id="headingFourtheen">
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFourtheen">PUIS-JE COLLECTER DE L’ARGENT POUR UNE ASSOCIATION A BUT NON LUCRATIF ? <i class="fa fa-angle-down"></i></a>
+                                    </div>
+                                    <div id="collapseFourtheen" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <div class="details">
+                                                <p>Oui, vous pouvez lancer une collecte d’argent pour une association à but non lucratif. Tout ce que vous avez à faire, c’est de commencer maintenant !</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" id="headingFiftheen">
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFiftheen">COMBIEN DE TEMPS FAUDRA-T-IL POUR RECEVOIR L’ARGENT DE MA CAGNOTTE WALLAM ? <i class="fa fa-angle-down"></i></a>
+                                    </div>
+                                    <div id="collapseFiftheen" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <div class="details">
+                                                <p>Le processus de vérification de dépôts et de virements peut prendre 03 à 07 jours ouvrables, voir plus. Une fois votre premier virement envoyé, il faudra en moyens 02 à 05 jours ouvrables pour que les fonds soient déposés en toute sécurité sur le compte bancaire ou mobile money enregistré. </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- end left-col -->
+                    </div> <!-- end col -->
+                </div> <!-- end row -->
+            </div> <!-- end container -->
+        </section>
+        <!-- end about-details -->
+{% endblock %}

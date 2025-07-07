@@ -157,3 +157,7 @@ def campaign_donate(request, pk):
             return render(request, "campaign/detail_campaign.html", context)
 
     return render(request, "campaign/campaign_donation.html", context)
+
+
+def campaign_list(request):
+    pass

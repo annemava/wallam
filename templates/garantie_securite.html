@@ -1,0 +1,143 @@
+{% extends 'default.html' %}
+{% load static %}
+{% block title %} Wallam | Garantie et sécurité {% endblock %}
+{% block menu %}
+<ul class="nav navbar-nav">
+    <li>
+        <a href="{% url 'index' %}">Accueil</a>
+    </li>
+    <li class="current">
+        <a href="{% url 'create_campaign' %}">Créer une cagnotte</a>
+    </li>
+    <li><a href="{% url 'announce' %}">Créer une annonce</a></li>
+</ul>
+{% endblock %}
+{% block content %}
+<!-- start about-details -->
+<section class="about-us-st section-padding">
+    <div class="container">
+        <h2><span>GARANTIES </span> ET SECURITE</h2>
+        <div class="row">
+            <div class="col col-md-12">
+                <div class="left-col">
+
+                    <p>Wallam fait de la sécurité une priorité absolue afin de vous accompagner dans vos élans de générosité. </p>
+                    <p>Notre équipe de suivi et d’évaluation, veille de manière proactive pour détecter toute forme de fraude, et procède à la vérification des collectes. </p>
+                    <p>Wallam sécurise vos données, tout en protégeant votre Don.</p>
+                    <div class="company">
+                        <h3>Comment ça <span>marche ?</span></h3>
+                    </div>
+                    <div class="panel-group" id="accordion">
+                        <div class="panel panel-default current">
+                            <div class="panel-heading" id="headingOne">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true">Fonds collectés <i class="fa fa-angle-down"></i></a>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                    <div class="details">
+                                        <p>Les fonds collectés sur notre plateforme sont gardés sur des comptes sécurisés auprès de nos partenaires jusqu’à la demande de retrait par le bénéficiaire.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading" id="headingTwo">
+                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Demandes de documents  <i class="fa fa-angle-down"></i></a>
+                            </div>
+                            <div id="collapseTwo" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="details">
+                                        <p>Wallam examine au besoin, les documents de l’association ou du particulier à l’origine de la collecte de fonds ou de l’annonce.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading" id="headingThree">
+                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">Vérification avant virement<i class="fa fa-angle-down"></i></a>
+                            </div>
+                            <div id="collapseThree" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="details">
+                                        <p>Nous veillons également à la conformité des comptes et à la distribution des fonds au bénéficiaire final. Avant tout transfert de fonds, notre équipe va s’assurer du respect de notre politique général d’utilisation.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div> <!-- end left-col -->
+            </div> <!-- end col -->
+        </div> <!-- end row -->
+    </div> <!-- end container -->
+</section>
+<!-- end about-details -->
+<section class="cta">
+    <div class="container">
+        <div class="row">
+            <div class="col col-md-5 col-sm-5">
+                <img src="{% static 'images/cta-cartoon.png' %}" alt class="img img-responsive">
+            </div>
+
+            <div class="col col-md-6 col-md-offset-1 col-sm-7">
+                <div class="cta-details wow fadeInRightSlow">
+                    <a href="{% url 'announce' %}" class="btn theme-btn">Faite un don maintenant !</a>
+                </div>
+            </div>
+        </div> <!-- end row -->
+    </div> <!-- end container -->
+</section>
+<!-- end cta -->
+
+<section class="about-us-st section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col col-md-12">
+                <div class="left-col">
+                    <div class="company">
+                        <h3>SI VOUS SUSPECTEZ UNE FRAUDE, <span>SIGNALEZ !</span></h3>
+                    </div>
+                    <div class="panel-group" id="accordion1">
+                        <div class="panel panel-default current">
+                            <div class="panel-heading" id="headingFour">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="true">Soumettez une réclamation : dites-nous pourquoi vous pensez que le don est utilisé à mauvais escient.</a>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading" id="headingFive">
+                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive">Enquête et vérification : notre équipe de suivi et d’évaluation, va analyser et enquêter votre réclamation avant tout sanction.</a>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading" id="headingSix">
+                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSix">Sanctions : wallam se réserve le droit de suspendre ou de bannir tout cagnotte, toute annonce ou tout utilisateur qui ne respectera pas nos consignes d’utilisations.</a>
+                            </div></div>
+                        </div>
+
+                    </div>
+                </div> <!-- end left-col -->
+            </div> <!-- end col -->
+        </div> <!-- end row -->
+    </div> <!-- end container -->
+</section>
+<section class="cta">
+    <div class="container">
+        <div class="row">
+            <div class="col col-md-5 col-sm-5">
+                <img src="{% static 'images/cta-cartoon.png' %}" alt class="img img-responsive">
+            </div>
+
+            <div class="col col-md-6 col-md-offset-1 col-sm-7">
+                <div class="cta-details wow fadeInRightSlow">
+                    <a href="#" class="btn theme-btn">Soumettre une réclamation</a>
+                </div>
+            </div>
+        </div> <!-- end row -->
+    </div> <!-- end container -->
+</section>
+<!-- end cta -->
+{% endblock %}

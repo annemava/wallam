@@ -1,0 +1,64 @@
+{% extends 'default.html' %}
+{% load static %}
+{% block title %} Wallam | Comment ça marche {% endblock %}
+{% block menu %}
+<ul class="nav navbar-nav">
+    <li>
+        <a href="{% url 'index' %}">Accueil</a>
+    </li>
+    <li class="current">
+        <a href="{% url 'create_campaign' %}">Créer une cagnotte</a>
+    </li>
+    <li><a href="{% url 'announce' %}">Créer une annonce</a></li>
+</ul>
+{% endblock %}
+{% block content %}
+<section class="contact-main-content section-padding">
+    <div class="container">
+        <div class="row contact-info">
+            <h2>COMMENT CA MARCHE</h2>
+        </div> <!-- end contact info -->
+        <div>
+            <p>
+                <h3>A.	CHOISISSEZ VOTRE ACTION</h3>
+                <div>
+                    <ul>
+                        <li>Démarrez votre cagnotte</li>
+                        <li>Soutenir une cause</li>
+                        <li>Offrir un Objet</li>
+                    </ul>
+                </div>
+                <h3>B.	PUBLIER SUR WALLAM</h3>
+                <div>
+                    <ul>
+                        <li>Fixé le montant</li>
+                        <li>Décrivez là</li>
+                        <li>Validez</li>
+                    </ul>
+                </div>
+                <h3>C.	PARTAGEZ A VOS AMIS</h3>
+                <div>
+                    <ul>
+                        <li>Invitez vos proches à participer</li>
+                        <li>Partagez sur les réseaux sociaux</li>
+                    </ul>
+                </div>
+                <h3>D.	GEREZ VOS DONS</h3>
+                <div>
+                    <ul>
+                        <li>Accepter les dons</li>
+                        <li>Remerciez vos donateurs</li>
+                    </ul>
+                </div>
+
+            </p>
+        </div>
+        <div>
+            <p>
+                FAITES UN DON MAINTENANT ! <br>
+(Lien renvoyant au listing de tous les campagnes de levée de fonds en cours et ensuite le listing de toutes les annonces de don d’objets)
+            </p>
+        </div>
+    </div> <!-- end container -->
+</section>
+{% endblock %}
