@@ -30,3 +30,6 @@ urlpatterns = [
     path('deconnexion', logout_view, name='logout'),
     path('enregistrement', register_view, name='register'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
