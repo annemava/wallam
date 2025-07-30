@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-(=)h1+#2gr#4xriwx6dwbzk2cc22$uwh%!=ts*e678-_)6f@#@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['wallam.onrender.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -54,9 +54,10 @@ MIDDLEWARE = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://wallam.onrender.com",
+    "*"
 ]
 
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 ROOT_URLCONF = 'wallam.urls'
 
