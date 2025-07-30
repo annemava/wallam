@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-(=)h1+#2gr#4xriwx6dwbzk2cc22$uwh%!=ts*e678-_)6f@#@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['wallam.onrender.com']
 
 
 # Application definition
@@ -53,6 +53,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+CSRF_TRUSTED_ORIGINS = ['wallam.onrender.com']
 
 ROOT_URLCONF = 'wallam.urls'
 
