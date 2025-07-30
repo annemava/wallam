@@ -53,7 +53,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CSRF_TRUSTED_ORIGINS = ['wallam.onrender.com']
+CSRF_TRUSTED_ORIGINS = [
+    "https://wallam.onrender.com",
+]
+
 
 ROOT_URLCONF = 'wallam.urls'
 
