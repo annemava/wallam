@@ -1,6 +1,7 @@
 from django.db import models
 from datetime import timedelta, date
 from core.models import CustomUser as User
+from django.templatetags.static import static
 
 
 class Category(models.Model):
@@ -75,6 +76,19 @@ class Campaign(models.Model):
         total_contributions = self.donations.aggregate(total=models.Sum('amount'))['total'] or 0
         percentage = (total_contributions / self.goal) * 100
         return round(min(percentage, 100), 2)  # Limite à 100% et arrondi à 2 décimales
+
+    def get_image_url(self):
+
+        if self.uploaded_files and self.uploaded_files.url.lower().endswith(('.jpg', '.jpeg', '.png', '.gif', '.webp')):
+            return self.uploaded_files.url
+
+        if self.category:
+            base_path = f"images/urgent-slider/{self.category.name.lower()}"
+            for ext in ['jpg', 'jpeg', 'png', 'webp', 'PNG', 'JPG', 'JPEG']:
+                return static(f"{base_path}.{ext}")  # Choisit la première extension trouvée dans l'ordre (non idéal sans test réel)
+
+        return static("images/urgent-slider/default.jpg")
+
 
 
 class Donation(models.Model):

@@ -60,7 +60,7 @@
                     {% for urgent in urgents %}
                     <div class="urgent-box">
                         <div class="img-holder">
-                            <img src="{% static 'images/urgent-slider/img-2.jpg' %}" alt class="img img-responsive">
+                            <img src="{{ urgent.get_image_url }}" alt="{{ urgent.title }}" class="img img-responsive">
                         </div>
                         <div class="details">
                             <span>Urgent</span>
