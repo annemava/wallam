@@ -144,7 +144,7 @@
     <div class="container">
         <div class="row">
             <div class="col col-md-5 col-sm-5">
-                <img src="{% static 'images/cta-cartoon.png' %}" alt class="img img-responsive">
+                <img src="{% static 'images/communaute.PNG' %}" alt class="img img-responsive">
             </div>
 
             <div class="col col-md-6 col-md-offset-1 col-sm-7">
@@ -184,33 +184,29 @@
                     <div class="img-holder">
                         {% if campaign.uploaded_files %}
                             <img src="{{ campaign.uploaded_files.url }}" alt="{{ campaign.title }}" class="img img-responsive">
-                        
-                        {% elif campaign.urgent %}
-                            {% if campaign.category.name == 'Sante' %}
-                                <img src="{% static 'images/latest-causes/santé.jpg' %}" alt="{{ campaign.title }}" class="img img-responsive">
-                            {% elif campaign.category.name == 'Education' %}
-                                <img src="{% static 'images/latest-causes/education.jpg' %}" alt="{{ campaign.title }}" class="img img-responsive">
-                            {% elif campaign.category.name == 'Urgence' %}
-                                <img src="{% static 'images/latest-causes/urgence.jpg' %}" alt="{{ campaign.title }}" class="img img-responsive">
-                            {% elif campaign.category.name == 'Commemoration' %}
-                                <img src="{% static 'images/latest-causes/commemoration.jpg' %}" alt="{{ campaign.title }}" class="img img-responsive">
-                            {% elif campaign.category.name == 'Association' %}
-                                <img src="{% static 'images/latest-causes/association.jpg' %}" alt="{{ campaign.title }}" class="img img-responsive">
-                            {% elif campaign.category.name == 'Education' %}
-                                <img src="{% static 'images/latest-causes/education.jpg' %}" alt="{{ campaign.title }}" class="img img-responsive">
-                            {% elif campaign.category.name == 'Benevolat' %}
-                                <img src="{% static 'images/latest-causes/benevolat.jpg' %}" alt="{{ campaign.title }}" class="img img-responsive">
-                            {% elif campaign.category.name == 'Religion' %}
-                                <img src="{% static 'images/latest-causes/religion.jpg' %}" alt="{{ campaign.title }}" class="img img-responsive">
-                            {% elif campaign.category.name == 'Sport' %}
-                                <img src="{% static 'images/latest-causes/sport.jpg' %}" alt="{{ campaign.title }}" class="img img-responsive">
-                            {% elif campaign.category.name == 'Familles' %}
-                                <img src="{% static 'images/latest-causes/familles.jpg' %}" alt="{{ campaign.title }}" class="img img-responsive">
-                            {% else %}
-                                <img src="{% static 'images/latest-causes/default.jpg' %}" alt="{{ campaign.title }}" class="img img-responsive">
-                            {% endif %}
-
+                        {% elif campaign.category.name == 'Sante' %}
+                            <img src="{% static 'images/latest-causes/santé.jpg' %}" alt="{{ campaign.title }}" class="img img-responsive">
+                        {% elif campaign.category.name == 'Education' %}
+                            <img src="{% static 'images/latest-causes/education.jpg' %}" alt="{{ campaign.title }}" class="img img-responsive">
+                        {% elif campaign.category.name == 'Urgence' %}
+                            <img src="{% static 'images/latest-causes/urgence.jpg' %}" alt="{{ campaign.title }}" class="img img-responsive">
+                        {% elif campaign.category.name == 'Commemoration' %}
+                            <img src="{% static 'images/latest-causes/commemoration.jpg' %}" alt="{{ campaign.title }}" class="img img-responsive">
+                        {% elif campaign.category.name == 'Association' %}
+                            <img src="{% static 'images/latest-causes/association.jpg' %}" alt="{{ campaign.title }}" class="img img-responsive">
+                        {% elif campaign.category.name == 'Education' %}
+                            <img src="{% static 'images/latest-causes/education.jpg' %}" alt="{{ campaign.title }}" class="img img-responsive">
+                        {% elif campaign.category.name == 'Benevolat' %}
+                            <img src="{% static 'images/latest-causes/benevolat.jpg' %}" alt="{{ campaign.title }}" class="img img-responsive">
+                        {% elif campaign.category.name == 'Religion' %}
+                            <img src="{% static 'images/latest-causes/religion.jpg' %}" alt="{{ campaign.title }}" class="img img-responsive">
+                        {% elif campaign.category.name == 'Sport' %}
+                            <img src="{% static 'images/latest-causes/sport.jpg' %}" alt="{{ campaign.title }}" class="img img-responsive">
+                        {% elif campaign.category.name == 'Familles' %}
+                            <img src="{% static 'images/latest-causes/familles.jpg' %}" alt="{{ campaign.title }}" class="img img-responsive">
                         {% else %}
+                            <img src="{% static 'images/latest-causes/default.jpg' %}" alt="{{ campaign.title }}" class="img img-responsive">
+                        {% endif %}
                     </div>
                     <div class="progress">
                         <div class="progress-bar" data-percent="{{ campaign.percentage_collected }}"></div>
