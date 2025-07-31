@@ -182,7 +182,7 @@
                 </div>
                 <div class="img-progress">
                     <div class="img-holder">
-                        <img src="{% static 'images/latest-causes/img-1.jpg' %}" alt class="img img-responsive">
+                        <img src="{{ urgent.get_image_url }}" alt="{{ urgent.title }}" class="img img-responsive">
                     </div>
                     <div class="progress">
                         <div class="progress-bar" data-percent="{{ campaign.percentage_collected }}"></div>
