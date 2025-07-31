@@ -82,13 +82,16 @@ class Campaign(models.Model):
         if self.uploaded_files and self.uploaded_files.url.lower().endswith(('.jpg', '.jpeg', '.png', '.gif', '.webp')):
             return self.uploaded_files.url
 
+        # Préfixe du dossier selon l'urgence
+        urgency_prefix = "urgent-slider" if self.urgent else "latest-causes"
+
         if self.category:
-            base_path = f"images/urgent-slider/{self.category.name.lower()}"
+            base_path = f"images/{urgency_prefix}/{self.category.name.lower()}"
             for ext in ['jpg', 'jpeg', 'png', 'webp', 'PNG', 'JPG', 'JPEG']:
-                return static(f"{base_path}.{ext}")  # Choisit la première extension trouvée dans l'ordre (non idéal sans test réel)
+                # Tu pourrais tester ici si le fichier existe réellement avec os.path.exists
+                return static(f"{base_path}.{ext}")
 
-        return static("images/urgent-slider/default.jpg")
-
+        return static(f"images/{urgency_prefix}/default.jpg")
 
 
 class Donation(models.Model):
