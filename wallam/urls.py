@@ -1,3 +1,5 @@
+from django.conf import settings
+from django.conf.urls.static import static
 """
 URL configuration for wallam project.
 
@@ -31,5 +33,4 @@ urlpatterns = [
     path('enregistrement', register_view, name='register'),
 ]
 
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
