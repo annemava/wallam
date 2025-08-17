@@ -143,7 +143,7 @@
 
 	&:before {
 		content: "";
-		@include background-style("../images/cta-3-animal.jpg", center center, cover, no-repeat, local);
+		@include background-style("../images/charite.png", center center, cover, no-repeat, local);
 		width: 40%;
 		height: 100%;
 		position: absolute;

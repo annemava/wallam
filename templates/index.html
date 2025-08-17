@@ -185,25 +185,23 @@
                         {% if campaign.uploaded_files %}
                             <img src="{{ campaign.uploaded_files.url }}" alt="{{ campaign.title }}" class="img img-responsive">
                         {% elif campaign.category.name == 'Sante' %}
-                            <img src="{% static 'images/latest-causes/sante.jpg' %}" alt="{{ campaign.title }}" class="img img-responsive">
+                            <img src="{% static 'images/latest-causes/sante.png' %}" alt="{{ campaign.title }}" class="img img-responsive">
                         {% elif campaign.category.name == 'Education' %}
-                            <img src="{% static 'images/latest-causes/education.jpg' %}" alt="{{ campaign.title }}" class="img img-responsive">
+                            <img src="{% static 'images/latest-causes/education.png' %}" alt="{{ campaign.title }}" class="img img-responsive">
                         {% elif campaign.category.name == 'Urgence' %}
                             <img src="{% static 'images/latest-causes/urgence.png' %}" alt="{{ campaign.title }}" class="img img-responsive">
                         {% elif campaign.category.name == 'Commemoration' %}
-                            <img src="{% static 'images/latest-causes/commemoration.jpg' %}" alt="{{ campaign.title }}" class="img img-responsive">
+                            <img src="{% static 'images/latest-causes/commemoration.png' %}" alt="{{ campaign.title }}" class="img img-responsive">
                         {% elif campaign.category.name == 'Association' %}
-                            <img src="{% static 'images/latest-causes/association.jpg' %}" alt="{{ campaign.title }}" class="img img-responsive">
-                        {% elif campaign.category.name == 'Education' %}
-                            <img src="{% static 'images/latest-causes/education.jpg' %}" alt="{{ campaign.title }}" class="img img-responsive">
+                            <img src="{% static 'images/latest-causes/association.png' %}" alt="{{ campaign.title }}" class="img img-responsive">
                         {% elif campaign.category.name == 'Benevolat' %}
-                            <img src="{% static 'images/latest-causes/benevolat.jpg' %}" alt="{{ campaign.title }}" class="img img-responsive">
+                            <img src="{% static 'images/latest-causes/benevolat.png' %}" alt="{{ campaign.title }}" class="img img-responsive">
                         {% elif campaign.category.name == 'Religion' %}
                             <img src="{% static 'images/latest-causes/religion.png' %}" alt="{{ campaign.title }}" class="img img-responsive">
                         {% elif campaign.category.name == 'Sport' %}
                             <img src="{% static 'images/latest-causes/sport.png' %}" alt="{{ campaign.title }}" class="img img-responsive">
-                        {% elif campaign.category.name == 'Solidarite' %}
-                            <img src="{% static 'images/latest-causes/solidarite.jpg' %}" alt="{{ campaign.title }}" class="img img-responsive">
+                        {% elif campaign.category.name == 'Famille' %}
+                            <img src="{% static 'images/latest-causes/famille.png' %}" alt="{{ campaign.title }}" class="img img-responsive">
                         {% else %}
                             <img src="{% static 'images/latest-causes/default.jpg' %}" alt="{{ campaign.title }}" class="img img-responsive">
                         {% endif %}
@@ -253,15 +251,21 @@
         <div class="row">
             <div class="col col-md-12">
                 <div class="shop-content latest-product-slider">
-                    {% for announce in announces %}
+                    {% for donation in donations %}
                     <div class="grid">
                         <div class="box">
                             <div class="img-holder">
-                                <img src="{% static 'images/shop/img-1.jpg' %}" alt class="img img-responsive">
+                            {% if donation.category.title == 'Nourriture' %}
+                            <img src="{% static 'images/shop/nourriture.jpg' %}" alt class="img img-responsive">
+                            {% elif donation.category.title == 'Objet' %}
+                                <img src="{% static 'images/shop/objet.jpg' %}" alt class="img img-responsive">
+                            {% else %}
+                            <img src="{% static 'images/shop/img-1.jpg' %}" alt class="img img-responsive">
+                            {% endif %}
                             </div>
                             <div class="details">
-                                <h3><a href="{% url 'donation_detail' pk=announce.pk %}">{{ announce.title }}</a></h3>
-                                <a href="#" class="add-to-cart">Etat : </i> {{ announce.condition.title }}</a>
+                                <h3><a href="{% url 'donation_detail' pk=donation.pk %}">{{ donation.title }}</a></h3>
+                                <a href="#" class="add-to-cart">Etat : </i> {{ donation.condition.title }}</a>
 
                             </div>
                         </div>

@@ -11,11 +11,11 @@ from donation.models import ObjectDonation
 def homepage(request):
     campaigns = Campaign.objects.filter(status="encours")
     urgents = Campaign.objects.filter(status="encours", urgent=True)
-    announces = ObjectDonation.objects.filter(active=True)
+    donations = ObjectDonation.objects.filter(active=True)
     context = {
         "campaigns": campaigns,
         "urgents": urgents,
-        "announces": announces
+        "donations": donations
     }
     return render(request, 'index.html', context)
 
