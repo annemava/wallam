@@ -9,7 +9,7 @@ from donation.models import ObjectDonation
 
 # Create your views here.
 def homepage(request):
-    campaigns = Campaign.objects.filter(status="encours")
+    campaigns = Campaign.objects.filter(status="encours", urgent=False)
     urgents = Campaign.objects.filter(status="encours", urgent=True)
     donations = ObjectDonation.objects.filter(active=True)
     context = {

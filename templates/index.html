@@ -170,10 +170,10 @@
                 <h2><span>Cagnottes</span> Disponibles</h2>
             </div>
         </div> <!-- end section-title -->
-
-        <div class="row content">
-            {% for campaign in campaigns %}
-            <div class="col col-md-4 col-xs-6">
+        
+        <div class="row content g-4">
+            {% for campaign in campaigns %}    
+            <div class="col-12 col-sm-6 col-md-4" style="margin-top:3% !important">
                 <div class="title">
                     <ul>
                         <li><h3>{{  campaign.title }}</h3></li>
@@ -221,8 +221,9 @@
                     <a href="{% url 'campaign_donate' pk=campaign.id %}" class="btn theme-btn">Faire un Don</a>
                 </div>
             </div>
-            {% endfor %}
+            {% endfor %}    
         </div> <!-- end content -->
+        
     </div> <!-- end container -->
 </section>
 <!-- end latest-causes -->
