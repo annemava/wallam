@@ -256,10 +256,22 @@
                     <div class="grid">
                         <div class="box">
                             <div class="img-holder">
-                            {% if donation.category.title == 'Nourriture' %}
-                            <img src="{% static 'images/shop/nourriture.jpg' %}" alt class="img img-responsive">
-                            {% elif donation.category.title == 'Objet' %}
-                                <img src="{% static 'images/shop/objet.jpg' %}" alt class="img img-responsive">
+                            {% if donation.category.title == 'Objets de construction' %}
+                            <img src="{% static 'images/shop/construction.jpg' %}" alt class="img img-responsive">
+                            {% elif donation.category.title == 'Matériels informatiques' %}
+                                <img src="{% static 'images/shop/informatique.jpg' %}" alt class="img img-responsive">
+                            {% elif donation.category.title == 'Accessoires de bureau' %}
+                            <img src="{% static 'images/shop/mat_bureau.jpg' %}" alt class="img img-responsive">
+                            {% elif donation.category.title == 'Meubles et équipements' %}
+                                <img src="{% static 'images/shop/meubles.jpg' %}" alt class="img img-responsive">
+                            {% elif donation.category.title == 'Produits de conserve' %}
+                                <img src="{% static 'images/shop/conserve.jpg' %}" alt class="img img-responsive">
+                            {% elif donation.category.title == 'Tubercules' %}
+                                <img src="{% static 'images/shop/tubercules.jpg' %}" alt class="img img-responsive">
+                            {% elif donation.category.title == 'Fruits et légumes' %}
+                                <img src="{% static 'images/shop/fruits.jpg' %}" alt class="img img-responsive">
+                            {% elif donation.category.title == 'Produits laitiers' %}
+                                <img src="{% static 'images/shop/laitiers.jpg' %}" alt class="img img-responsive">
                             {% else %}
                             <img src="{% static 'images/shop/img-1.jpg' %}" alt class="img img-responsive">
                             {% endif %}
