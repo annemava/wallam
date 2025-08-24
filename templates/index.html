@@ -13,6 +13,87 @@
 </ul>
 {% endblock %}
 {% block content %}
+<style>
+    /* Forcer la couleur turquoise foncé sur les sections à fond noir */
+    .cta-3,
+    .cta-3[style*="background-color: #000"],
+    .cta-3[style*="background: #000"],
+    section[style*="background-color: #000"],
+    section[style*="background: #000"],
+    .cta-3 {
+        background-color: #339c90 !important;
+        background: #339c90 !important;
+    }
+    .cta-3 h2,
+    .cta-3 p,
+    .cta-3 .details-text,
+    .cta-3 .theme-btn {
+        color: #fff !important;
+    }
+</style>
+<style>
+    /* Couleur turquoise foncé pour tous les span */
+    span {
+        color: #339c90 !important;
+    }
+</style>
+<style>
+    /* Tooltip de la jauge turquoise foncé */
+    .progress-bar[data-percent]:after,
+    .progress-bar .tooltip,
+    .progress-bar .tooltip-inner {
+        background: #339c90 !important;
+        background-color: #339c90 !important;
+        color: #fff !important;
+        border: none !important;
+    }
+    .progress-bar .tooltip-arrow,
+    .progress-bar .tooltip:before,
+    .progress-bar .tooltip:after {
+        border-top-color: #339c90 !important;
+        border-bottom-color: #339c90 !important;
+        border-left-color: #339c90 !important;
+        border-right-color: #339c90 !important;
+    }
+</style>
+<style>
+    /* Progress bar turquoise foncé */
+    .progress-bar {
+        background: #339c90 !important;
+        background-color: #339c90 !important;
+    }
+</style>
+<style>
+    /* Boutons 'Faire un don' turquoise foncé */
+    a.btn.theme-btn,
+    button.btn.theme-btn,
+    .btn.theme-btn {
+        background: #339c90 !important;
+        background-color: #339c90 !important;
+        color: #fff !important;
+        border: none !important;
+    }
+    a.btn.theme-btn:hover,
+    button.btn.theme-btn:hover,
+    .btn.theme-btn:hover {
+        background: #28786b !important;
+        background-color: #28786b !important;
+        color: #fff !important;
+    }
+</style>
+<style>
+    /* Forcer la couleur turquoise foncé sur la section communauté */
+    .cta {
+        background-color: #339c90 !important;
+        background: #339c90 !important;
+    }
+    .cta h2,
+    .cta p,
+    .cta .cta-details,
+    .cta .theme-btn {
+        color: #fff !important;
+    }
+</style>
 <!-- start of hero -->
 <section class="hero hero-style-three hero-slider-wrapper">
     <div class="hero-slider">
@@ -234,7 +315,7 @@
         <div class="row">
             <div class="col col-md-7 col-md-offset-5 details-text">
                 <div class="wow fadeInRightSlow">
-                    <h2>Votre petite <span>attention</span> signifie beaucoup</h2>
+                    <h2>Votre petite <span style="color: #fff !important;font-weight: bold;">attention</span> signifie beaucoup</h2>
                     <p>La charité fait beaucoup plus de bien à celui qui donne qu’à celui qui reçoit.
                         Wallam rend le don accessible à tous et partout en Afrique. </p>
                     <a href="{% url 'announce' %}" class="btn theme-btn">Offrez un objet maintenant !</a>

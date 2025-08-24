@@ -13,6 +13,19 @@
 </ul>
 {% endblock %}
 {% block content %}
+<style>
+    /* Forcer la couleur des accordéons FAQ */
+    .about-us-st #accordion .panel-heading,
+    .about-us-st #accordion .panel-heading:hover,
+    .about-us-st #accordion .current .panel-heading {
+        background-color: #339c90 !important;
+    }
+    .about-us-st #accordion .panel-heading a,
+    .about-us-st #accordion .panel-heading:hover a,
+    .about-us-st #accordion .current .panel-heading a {
+        color: #fff !important;
+    }
+</style>
 <!-- start about-details -->
         <section class="about-us-st section-padding">
             <div class="container">
