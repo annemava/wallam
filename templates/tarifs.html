@@ -1,97 +1,127 @@
 {% extends 'default.html' %}
 {% load static %}
 {% block title %} Wallam | Tarifs {% endblock %}
-{% block menu %}
-<ul class="nav navbar-nav">
-    <li>
-        <a href="{% url 'index' %}">Accueil</a>
-    </li>
-    <li class="current">
-        <a href="{% url 'create_campaign' %}">Créer une cagnotte</a>
-    </li>
-    <li><a href="{% url 'announce' %}">Créer une annonce</a></li>
-</ul>
-{% endblock %}
 {% block content %}
-<!-- start about-details -->
-<section class="about-us-st section-padding">
-    <div class="container">
-        <h2><span>Tarifs </span></h2>
-        <div class="row">
-            <div class="col col-md-12">
-                <div class="left-col">
-
-                    <p>Nos tarifs sont conçus en pourcentage pour faciliter et accueillir tous les élans de générosité et de solidarité.</p>
-                    <div class="company">
-                    </div>
-                    <div class="panel-group" id="accordion">
-                        <div class="panel panel-default current">
-                            <div class="panel-heading" id="headingOne">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true">1.	Création : <i class="fa fa-angle-down"></i></a>
-                            </div>
-                            <div id="collapseOne" class="panel-collapse collapse in">
-                                <div class="panel-body">
-                                    <div class="details">
-                                        <p>
-                                            <ul>
-                                                <li>Lancer votre cagnotte sans aucun frais de plateforme. </li>
-                                                <li>Créer une annonce de don d’objet ou de nourriture gratuitement</li>
-                                            </ul>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+<style>
+        .tarifs-wrapper {
+                background: #fff;
+                border-radius: 14px;
+                box-shadow: 0 2px 16px rgba(51,156,144,0.08);
+                padding: 32px 24px;
+                margin: 32px auto 40px auto;
+                max-width: 900px;
+                color: #222;
+                font-size: 1.25rem;
+                line-height: 1.8;
+                font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        .tarifs-title {
+                color: #339c90;
+                text-align: center;
+                font-size: 2.5em;
+                font-weight: 700;
+                margin-bottom: 1.5em;
+                letter-spacing: 0.01em;
+                border-bottom: 2px solid #339c90;
+                padding-bottom: 0.3em;
+        }
+    .panel-group { margin-bottom: 2em; }
+    .panel {
+        border: none;
+        border-radius: 10px;
+        margin-bottom: 18px;
+        box-shadow: 0 1px 6px rgba(51,156,144,0.07);
+        background: #f3f7f6;
+    }
+    .panel-heading {
+        background: #339c90 !important;
+        color: #fff !important;
+        border-radius: 10px 10px 0 0;
+        padding: 0;
+    }
+    .panel-heading a {
+        display: block;
+        color: #fff !important;
+        font-weight: 600;
+        font-size: 1.15em;
+        padding: 18px 24px;
+        text-decoration: none;
+        border-radius: 10px 10px 0 0;
+        transition: background 0.2s;
+    }
+    .panel-heading a:hover, .panel-heading a[aria-expanded="true"] {
+        background: #28786b !important;
+        color: #fff !important;
+    }
+    .panel-body {
+        background: #fff;
+        border-radius: 0 0 10px 10px;
+        padding: 18px 24px;
+        color: #222;
+    }
+    .panel-body ul { margin-left: 1.2em; }
+    .company h3 {
+        color: #339c90;
+        margin-top: 2em;
+        font-weight: 700;
+    }
+        @media (max-width: 600px) {
+                .tarifs-wrapper { padding: 12px 2vw; font-size: 1.08rem; }
+                .tarifs-title { font-size: 1.5em; }
+                .panel-heading a { font-size: 1.08em; padding: 14px 10px; }
+                .panel-body { padding: 12px 6px; }
+        }
+</style>
+<section class="tarifs-wrapper">
+        <div class="tarifs-title">Tarifs</div>
+        <p>Nos tarifs sont conçus en pourcentage pour faciliter et accueillir tous les élans de générosité et de solidarité.</p>
+        <div class="panel-group" id="accordion">
+                <div class="panel panel-default current">
+                        <div class="panel-heading" id="headingOne">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true">1. Création <i class="fa fa-angle-down"></i></a>
                         </div>
-
-                        <div class="panel panel-default">
-                            <div class="panel-heading" id="headingTwo">
-                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">2.	Participation :  <i class="fa fa-angle-down"></i></a>
-                            </div>
-                            <div id="collapseTwo" class="panel-collapse collapse">
+                        <div id="collapseOne" class="panel-collapse collapse in">
                                 <div class="panel-body">
-                                    <div class="details">
-                                        <p>
-                                            <ul>
+                                        <ul>
+                                                <li>Lancer votre cagnotte sans aucun frais de plateforme.</li>
+                                                <li>Créer une annonce de don d’objet ou de nourriture gratuitement</li>
+                                        </ul>
+                                </div>
+                        </div>
+                </div>
+                <div class="panel panel-default">
+                        <div class="panel-heading" id="headingTwo">
+                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">2. Participation <i class="fa fa-angle-down"></i></a>
+                        </div>
+                        <div id="collapseTwo" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                        <ul>
                                                 <li>Faite un don gratuitement pour soutenir une cause</li>
                                                 <li>Récupérez un don d’objet gratuitement, sans frais, ni commission</li>
-                                            </ul>
-                                        </p>
-                                    </div>
+                                        </ul>
                                 </div>
-                            </div>
                         </div>
-
-                        <div class="panel panel-default">
-                            <div class="panel-heading" id="headingThree">
-                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">3.	Dépenses :<i class="fa fa-angle-down"></i></a>
-                            </div>
-                            <div id="collapseThree" class="panel-collapse collapse">
+                </div>
+                <div class="panel panel-default">
+                        <div class="panel-heading" id="headingThree">
+                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">3. Dépenses <i class="fa fa-angle-down"></i></a>
+                        </div>
+                        <div id="collapseThree" class="panel-collapse collapse">
                                 <div class="panel-body">
-                                    <div class="details">
-                                        <p>
-                                            <ul>
+                                        <ul>
                                                 <li>5% frais de gestion + 1.5 à 3% frais de transaction (en fonction de l’opérateur mobile ou bancaire) pour les cagnottes publiques.</li>
-                                                <li>8% de frais de gestion + 1.5 à 3% frais de transaction (en fonction de l’opérateur mobile ou bancaire) pour les cagnottes privées. </li>
-                                                <li>300f par retrait d’objet de plus de 05 objets par mois.  </li>
-                                            </ul>
-                                        </p>
-                                    </div>
+                                                <li>8% de frais de gestion + 1.5 à 3% frais de transaction (en fonction de l’opérateur mobile ou bancaire) pour les cagnottes privées.</li>
+                                                <li>300f par retrait d’objet de plus de 05 objets par mois.</li>
+                                        </ul>
                                 </div>
-                            </div>
                         </div>
-
-                    </div>
-                    <div class="company">
-                        <h3>Pourquoi ces frais ?</h3>
-                        <p>
-                            Notre choix tarifaire est clair et transparent pour financer les frais de fonctionnement du service. Nous nous rémunérons uniquement grâce au pourcentage à la dépense de votre cagnotte. Wallam ne supporte pas les frais de retrait liés aux transactions, il revient donc au Cagnotteur de tenir compte des frais lors de la création de la cagnotte.
-                        </p>
-                    </div>
-                </div> <!-- end left-col -->
-            </div> <!-- end col -->
-        </div> <!-- end row -->
-    </div> <!-- end container -->
+                </div>
+        </div>
+        <div class="company">
+                <h3>Pourquoi ces frais ?</h3>
+                <p>
+                        Notre choix tarifaire est clair et transparent pour financer les frais de fonctionnement du service. Nous nous rémunérons uniquement grâce au pourcentage à la dépense de votre cagnotte. Wallam ne supporte pas les frais de retrait liés aux transactions, il revient donc au Cagnotteur de tenir compte des frais lors de la création de la cagnotte.
+                </p>
+        </div>
 </section>
-
-<!-- end cta -->
 {% endblock %}

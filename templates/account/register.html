@@ -1,40 +1,138 @@
 {% extends 'account/default.html' %}
 {% load static %}
 {% block connexion %}
+<style>
+    /* Harmonisation visuelle vert turquoise et blanc pour l'inscription */
+    .form-items {
+        background: #339c90;
+        border-radius: 14px;
+        padding: 36px 24px 28px 24px;
+        max-width: 480px;
+        margin: 40px auto 32px auto;
+        box-shadow: 0 2px 16px 0 rgba(51,156,144,0.10);
+    }
+    .form-items h3 {
+        color: #fff;
+        font-weight: 700;
+        margin-bottom: 24px;
+        text-align: center;
+        letter-spacing: 1px;
+    }
+    .form-items .page-links {
+        text-align: center;
+        margin-bottom: 24px;
+    }
+    .form-items .page-links a {
+        color: #fff;
+        background: #339c90;
+        border: 2px solid #fff;
+        border-radius: 6px 6px 0 0;
+        padding: 8px 24px;
+        margin: 0 2px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: background 0.2s, color 0.2s;
+    }
+    .form-items .page-links a.active,
+    .form-items .page-links a:hover {
+        background: #fff;
+        color: #339c90;
+        border-bottom: 2px solid #339c90;
+    }
+    .form-items form {
+        margin: 0 auto;
+        max-width: 400px;
+    }
+    .form-items .form-control {
+        background: #fff;
+        color: #339c90;
+        border: 1.5px solid #339c90;
+        border-radius: 6px !important;
+        margin-bottom: 16px;
+        font-size: 16px;
+        box-shadow: none;
+        transition: border 0.2s;
+        padding: 10px 14px;
+    }
+    .form-items .form-control:focus {
+        border: 2px solid #28786b;
+        outline: none;
+    }
+    .form-items ::placeholder {
+        color: #b2dfd7;
+        opacity: 1;
+    }
+    .form-items .form-check-label {
+        color: #fff;
+        font-size: 15px;
+        margin-left: 6px;
+    }
+    .form-items .form-check-input[type="radio"] {
+        accent-color: #339c90;
+        margin-right: 8px;
+    }
+    .form-items .form-button {
+        text-align: right;
+        margin-top: 10px;
+    }
+    .form-items button,
+    .form-items .ibtn {
+        background: #fff;
+        color: #339c90;
+        border: 2px solid #339c90;
+        border-radius: 6px;
+        font-weight: 700;
+        font-size: 18px;
+        padding: 10px 36px;
+        margin-top: 12px;
+        transition: background 0.2s, color 0.2s;
+        box-shadow: none;
+    }
+    .form-items button:hover,
+    .form-items .ibtn:hover {
+        background: #339c90;
+        color: #fff;
+        border: 2px solid #fff;
+    }
+    @media (max-width: 600px) {
+        .form-items { padding: 12px 2px; max-width: 100%; }
+        .form-items form { max-width: 100%; }
+    }
+</style>
 <div class="form-items">
-    <h3>Get more things done with Loggin platform.</h3>
-    <div class="page-links">
-        <a href="{% url 'login' %}" >Connexion</a><a href="{% url 'register' %}" class="active">Enregistrement</a>
-    </div>
-
-    <form action="{% url 'register' %}" method="post">
-        {% csrf_token %}
-        <!-- Boutons radio pour le choix de l'utilisateur -->
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="user_type" id="inlineRadio1" value="association" required>
-            <label class="form-check-label" for="inlineRadio1">Association</label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="user_type" id="inlineRadio2" value="particulier" checked required>
-            <label class="form-check-label" for="inlineRadio2">Particulier</label>
+        <h3>Créer un compte Wallam</h3>
+        <div class="page-links">
+                <a href="{% url 'login' %}" >Connexion</a><a href="{% url 'register' %}" class="active">Enregistrement</a>
         </div>
 
-        <!-- Champs de texte -->
-        <input class="form-control" type="text" name="firstname" placeholder="Votre Nom" required>
-        <input class="form-control" type="text" name="lastname" placeholder="Votre Prénom" required>
-        <div id="nomassoc-container" style="display: none;">
-            <input class="form-control" type="text" name="nomassoc" placeholder="Le nom de l'association">
-        </div>
-        <input class="form-control" type="text" name="email" placeholder="Votre Email" required>
-        <input class="form-control" type="text" name="phone" placeholder="Votre numéro de téléphone" required>
-        <input class="form-control" type="password" name="password" placeholder="Votre mot de passe" required>
-        <input class="form-control" type="password" name="confirmpassword" placeholder="Confirmer votre mot de passe" required>
+        <form action="{% url 'register' %}" method="post">
+                {% csrf_token %}
+                <!-- Boutons radio pour le choix de l'utilisateur -->
+                <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="user_type" id="inlineRadio1" value="association" required>
+                        <label class="form-check-label" for="inlineRadio1">Association</label>
+                </div>
+                <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="user_type" id="inlineRadio2" value="particulier" checked required>
+                        <label class="form-check-label" for="inlineRadio2">Particulier</label>
+                </div>
 
-        <!-- Bouton de soumission -->
-        <div class="form-button">
-            <button id="submit" type="submit" class="ibtn">Enregistrer</button>
-        </div>
-    </form>
+                <!-- Champs de texte -->
+                <input class="form-control" type="text" name="firstname" placeholder="Votre Nom" required>
+                <input class="form-control" type="text" name="lastname" placeholder="Votre Prénom" required>
+                <div id="nomassoc-container" style="display: none;">
+                        <input class="form-control" type="text" name="nomassoc" placeholder="Le nom de l'association">
+                </div>
+                <input class="form-control" type="text" name="email" placeholder="Votre Email" required>
+                <input class="form-control" type="text" name="phone" placeholder="Votre numéro de téléphone" required>
+                <input class="form-control" type="password" name="password" placeholder="Votre mot de passe" required>
+                <input class="form-control" type="password" name="confirmpassword" placeholder="Confirmer votre mot de passe" required>
+
+                <!-- Bouton de soumission -->
+                <div class="form-button">
+                        <button id="submit" type="submit" class="ibtn">Enregistrer</button>
+                </div>
+        </form>
 </div>
 <script>
     // Gérer l'affichage du champ "nomassoc"

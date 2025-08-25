@@ -1,64 +1,151 @@
+
 {% extends 'default.html' %}
 {% load static %}
 {% block title %} Wallam | Comment ça marche {% endblock %}
 {% block menu %}
 <ul class="nav navbar-nav">
-    <li>
-        <a href="{% url 'index' %}">Accueil</a>
-    </li>
-    <li class="current">
-        <a href="{% url 'create_campaign' %}">Créer une cagnotte</a>
-    </li>
-    <li><a href="{% url 'announce' %}">Créer une annonce</a></li>
+        <li>
+                <a href="{% url 'index' %}">Accueil</a>
+        </li>
+        <li class="current">
+                <a href="{% url 'create_campaign' %}">Créer une cagnotte</a>
+        </li>
+        <li><a href="{% url 'announce' %}">Créer une annonce</a></li>
 </ul>
 {% endblock %}
 {% block content %}
-<section class="contact-main-content section-padding">
-    <div class="container">
-        <div class="row contact-info">
-            <h2>COMMENT CA MARCHE</h2>
-        </div> <!-- end contact info -->
-        <div>
-            <p>
-                <h3>A.	CHOISISSEZ VOTRE ACTION</h3>
-                <div>
-                    <ul>
-                        <li>Démarrez votre cagnotte</li>
-                        <li>Soutenir une cause</li>
-                        <li>Offrir un Objet</li>
-                    </ul>
-                </div>
-                <h3>B.	PUBLIER SUR WALLAM</h3>
-                <div>
-                    <ul>
-                        <li>Fixé le montant</li>
-                        <li>Décrivez là</li>
-                        <li>Validez</li>
-                    </ul>
-                </div>
-                <h3>C.	PARTAGEZ A VOS AMIS</h3>
-                <div>
-                    <ul>
-                        <li>Invitez vos proches à participer</li>
-                        <li>Partagez sur les réseaux sociaux</li>
-                    </ul>
-                </div>
-                <h3>D.	GEREZ VOS DONS</h3>
-                <div>
-                    <ul>
-                        <li>Accepter les dons</li>
-                        <li>Remerciez vos donateurs</li>
-                    </ul>
-                </div>
-
-            </p>
+<style>
+    .howitwork-wrapper {
+        background: #fff;
+        border-radius: 14px;
+        box-shadow: 0 2px 16px rgba(51,156,144,0.08);
+        padding: 32px 24px;
+        margin: 32px auto 40px auto;
+        max-width: 900px;
+        color: #222;
+        font-size: 1.08rem;
+        line-height: 1.7;
+        font-family: 'Segoe UI', Arial, sans-serif;
+    }
+    .howitwork-title {
+        color: #339c90;
+        text-align: center;
+        font-size: 2.1em;
+        font-weight: 700;
+        margin-bottom: 1.5em;
+        letter-spacing: 0.01em;
+        border-bottom: 2px solid #339c90;
+        padding-bottom: 0.3em;
+    }
+    .howitwork-steps {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 32px;
+        justify-content: space-between;
+        margin-bottom: 2em;
+    }
+    .howitwork-step {
+        flex: 1 1 200px;
+        min-width: 220px;
+        background: #f3f7f6;
+        border-radius: 10px;
+        padding: 24px 18px 18px 18px;
+        margin: 0 8px;
+        box-shadow: 0 1px 6px rgba(51,156,144,0.07);
+        text-align: center;
+        position: relative;
+    }
+    .howitwork-step h3 {
+        color: #339c90;
+        font-size: 1.2em;
+        margin-bottom: 0.7em;
+        font-weight: 600;
+    }
+    .howitwork-step ul {
+        list-style: disc inside;
+        text-align: left;
+        margin: 0 auto;
+        padding-left: 0.5em;
+    }
+    .howitwork-step .step-icon {
+        font-size: 2.2em;
+        color: #339c90;
+        margin-bottom: 0.3em;
+        display: block;
+    }
+    .howitwork-cta {
+        text-align: center;
+        margin-top: 2em;
+        font-size: 1.15em;
+        font-weight: 500;
+    }
+    .howitwork-cta a {
+        display: inline-block;
+        background: #339c90;
+        color: #fff;
+        border-radius: 6px;
+        padding: 12px 32px;
+        margin-top: 1em;
+        font-size: 1.1em;
+        font-weight: 600;
+        text-decoration: none;
+        transition: background 0.2s;
+        box-shadow: 0 1px 6px rgba(51,156,144,0.13);
+    }
+    .howitwork-cta a:hover {
+        background: #28786b;
+        color: #fff;
+    }
+    @media (max-width: 800px) {
+        .howitwork-steps { flex-direction: column; gap: 18px; }
+        .howitwork-step { margin: 0; }
+    }
+    @media (max-width: 600px) {
+        .howitwork-wrapper { padding: 12px 2vw; font-size: 0.98rem; }
+        .howitwork-title { font-size: 1.3em; }
+    }
+</style>
+<section class="howitwork-wrapper">
+    <div class="howitwork-title">COMMENT ÇA MARCHE</div>
+    <div class="howitwork-steps">
+        <div class="howitwork-step">
+            <span class="step-icon">&#128640;</span>
+            <h3>A. Choisissez votre action</h3>
+            <ul style="text-align: center;">
+                <li>Démarrez votre cagnotte</li>
+                <li>Soutenez une cause</li>
+                <li>Offrez un objet</li>
+            </ul>
         </div>
-        <div>
-            <p>
-                FAITES UN DON MAINTENANT ! <br>
-(Lien renvoyant au listing de tous les campagnes de levée de fonds en cours et ensuite le listing de toutes les annonces de don d’objets)
-            </p>
+        <div class="howitwork-step">
+            <span class="step-icon">&#128221;</span>
+            <h3>B. Publiez sur Wallam</h3>
+            <ul style="text-align: center;">
+                <li>Fixez le montant</li>
+                <li>Décrivez-la</li>
+                <li>Validez</li>
+            </ul>
         </div>
-    </div> <!-- end container -->
+        <div class="howitwork-step">
+            <span class="step-icon">&#128101;</span>
+            <h3>C. Partagez à vos amis</h3>
+            <ul style="text-align: center;">
+                <li>Invitez vos proches à participer</li>
+                <li>Partagez sur les réseaux sociaux</li>
+            </ul>
+        </div>
+        <div class="howitwork-step">
+            <span class="step-icon">&#128176;</span>
+            <h3>D. Gérez vos dons</h3>
+            <ul style="text-align: center;">
+                <li>Acceptez les dons</li>
+                <li>Remerciez vos donateurs</li>
+            </ul>
+        </div>
+    </div>
+    <div class="howitwork-cta">
+        FAITES UN DON MAINTENANT !<br>
+        <a href="#">Voir toutes les cagnottes et annonces</a>
+    </div>
 </section>
 {% endblock %}
