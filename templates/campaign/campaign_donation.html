@@ -13,38 +13,80 @@
 </ul>
 {% endblock %}
 {% block content %}
-<!-- start contact-main-content -->
-<section class="contact-main-content section-padding">
-    <div class="container">
-        <div class="row contact-info">
-
-        </div> <!-- end contact info -->
-    </div> <!-- end container -->
-
-    <div class="row map-concate-form">
-        <div class="col col-xs-12">
-            <div class="map" id="map"></div>
-        </div>
-        <div class="contact-form">
-            <div class="container">
-                <div class="row  wow bounceInUp">
-                    <div class="col col-md-10 col-md-offset-1 form-inner">
-                        <h3 style="text-align: center; margin:2%;">Faites un don pour la campagne : {{ campaign.title }}</h3>
-                        <form action="{% url 'campaign_donate' pk=campaign.pk %}" class="form row" method="post">
-                            {% csrf_token %}
-                            <input class="form-control" type="number" name="amount" placeholder="Entrez le montant" required style="padding:1%; margin:1%; border-radius:5px !important;">
-                            <input class="form-control" type="text" name="donor_fullname" placeholder="Entrez votre nom ou pseudo" style="padding:1%; margin:1%; border-radius:5px !important;">
-                            <input class="form-control" type="text" name="donor_phone" placeholder="Entrez votre numéro de téléphone" style="padding:1%; margin:1%; border-radius:5px !important;">
-                            <div class="form-button" style="text-align: right;">
-                                <button type="submit" class="btn btn-primary" style="width: 10%;">Valider</button>
-                            </div>
-                        </form>
-                    </div>
-                </div> <!-- end row -->
-            </div> <!-- end container -->
-        </div>
-    </div>
-</section>
-<!-- end contact-main-content -->
-
+<style>
+    .campaign-donation-wrapper {
+        background: #fff;
+        border-radius: 14px;
+        box-shadow: 0 2px 16px rgba(51,156,144,0.08);
+        padding: 32px 24px;
+        margin: 32px auto 40px auto;
+        max-width: 600px;
+        color: #222;
+        font-size: 1.18rem;
+        line-height: 1.7;
+        font-family: 'Segoe UI', Arial, sans-serif;
+    }
+    .campaign-donation-title {
+        color: #339c90;
+        font-size: 2em;
+        font-weight: 700;
+        margin-bottom: 1.2em;
+        letter-spacing: 0.01em;
+        text-align: center;
+        border-bottom: 2px solid #339c90;
+        padding-bottom: 0.2em;
+    }
+    .campaign-donation-form input[type="number"],
+    .campaign-donation-form input[type="text"] {
+        width: 100%;
+        padding: 12px 14px;
+        margin-bottom: 18px;
+        border-radius: 7px;
+        border: 1.5px solid #339c90;
+        font-size: 1.08em;
+        background: #f6fcfb;
+        color: #222;
+        transition: border 0.2s;
+    }
+    .campaign-donation-form input[type="number"]:focus,
+    .campaign-donation-form input[type="text"]:focus {
+        border: 2px solid #28786b;
+        outline: none;
+    }
+    .campaign-donation-btn {
+        display: inline-block;
+        background: #339c90;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        padding: 12px 32px;
+        font-size: 1.1em;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        box-shadow: 0 2px 8px rgba(51,156,144,0.10);
+        transition: background 0.2s, color 0.2s;
+        margin-top: 8px;
+        text-decoration: none;
+        width: 100%;
+    }
+    .campaign-donation-btn:hover {
+        background: #28786b;
+        color: #fff;
+    }
+    @media (max-width: 700px) {
+        .campaign-donation-wrapper { padding: 12px 2vw; font-size: 1.05rem; }
+        .campaign-donation-title { font-size: 1.2em; }
+    }
+</style>
+<div class="campaign-donation-wrapper">
+    <div class="campaign-donation-title">Faites un don pour la campagne : {{ campaign.title }}</div>
+    <form action="{% url 'campaign_donate' pk=campaign.pk %}" class="campaign-donation-form" method="post">
+        {% csrf_token %}
+        <input type="number" name="amount" placeholder="Entrez le montant" required>
+        <input type="text" name="donor_fullname" placeholder="Entrez votre nom ou pseudo">
+        <input type="text" name="donor_phone" placeholder="Entrez votre numéro de téléphone">
+        <button type="submit" class="campaign-donation-btn">Valider</button>
+    </form>
+</div>
 {% endblock %}

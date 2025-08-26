@@ -13,57 +13,111 @@
 </ul>
 {% endblock %}
 {% block content %}
-<!-- start page-wrapper -->
-<div class="page-wrapper shop-details-page">
-    <!-- start sop-details-main-content -->
-<section class="shop-details-main-content section-padding">
-    <div class="container">
-        <div class="row">
-            <div class="col col-md-6">
-                <div class="shop-single-slider-wrapper">
-                    <div class="slider-for">
-                        <div><img src="{% static 'images/shop/shop-details/img-1.jpg' %}" class="img img-responsive" alt></div>
-                        <div><img src="{% static 'images/shop/shop-details/img-1.jpg' %}" class="img img-responsive" alt></div>
-                        <div><img src="{% static 'images/shop/shop-details/img-1.jpg' %}" class="img img-responsive" alt></div>
-                        <div><img src="{% static 'images/shop/shop-details/img-1.jpg' %}" class="img img-responsive" alt></div>
-                        <div><img src="{% static 'images/shop/shop-details/img-1.jpg' %}" class="img img-responsive" alt></div>
-                        <div><img src="{% static 'images/shop/shop-details/img-1.jpg' %}" class="img img-responsive" alt></div>
-                    </div>
-                    <div class="slider-nav">
-                        <div><img src="{% static 'images/shop/shop-details/thumb/img-1.jpg' %}" class="img img-responsive" alt></div>
-                        <div><img src="{% static 'images/shop/shop-details/thumb/img-1.jpg' %}" class="img img-responsive" alt></div>
-                        <div><img src="{% static 'images/shop/shop-details/thumb/img-1.jpg' %}" class="img img-responsive" alt></div>
-                        <div><img src="{% static 'images/shop/shop-details/thumb/img-1.jpg' %}" class="img img-responsive" alt></div>
-                        <div><img src="{% static 'images/shop/shop-details/thumb/img-1.jpg' %}" class="img img-responsive" alt></div>
-                        <div><img src="{% static 'images/shop/shop-details/thumb/img-1.jpg' %}" class="img img-responsive" alt></div>
-                    </div>
+<style>
+    .donation-details-wrapper {
+        background: #fff;
+        border-radius: 14px;
+        box-shadow: 0 2px 16px rgba(51,156,144,0.08);
+        padding: 32px 24px;
+        margin: 32px auto 40px auto;
+        max-width: 950px;
+        color: #222;
+        font-size: 1.22rem;
+        line-height: 1.7;
+        font-family: 'Segoe UI', Arial, sans-serif;
+    }
+    .donation-details-title {
+        color: #339c90;
+        font-size: 2.1em;
+        font-weight: 700;
+        margin-bottom: 0.7em;
+        letter-spacing: 0.01em;
+        border-bottom: 2px solid #339c90;
+        padding-bottom: 0.2em;
+        text-align: left;
+    }
+    .donation-details-section {
+        margin-bottom: 2.2em;
+    }
+    .donation-details-section strong { color: #339c90; }
+    .donation-details-section a { color: #28786b; text-decoration: underline; }
+    .donation-details-slider img {
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(51,156,144,0.10);
+        margin-bottom: 10px;
+        width: 100%;
+        max-width: 420px;
+        height: auto;
+        object-fit: cover;
+    }
+    .donation-details-meta {
+        background: #f6fcfb;
+        border-radius: 8px;
+        padding: 18px 20px;
+        margin-bottom: 1.2em;
+        font-size: 1.08em;
+    }
+    .donation-details-meta span.label {
+        color: #339c90;
+        font-weight: 600;
+        margin-right: 6px;
+    }
+    .donation-details-expiry {
+        background: #339c90;
+        color: #fff;
+        border-radius: 6px;
+        display: inline-block;
+        padding: 6px 16px;
+        font-size: 0.98em;
+        font-weight: 600;
+        margin: 10px 0 18px 0;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+    }
+    .donation-details-btn {
+        display: inline-block;
+        background: #339c90;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        padding: 12px 32px;
+        font-size: 1.1em;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        box-shadow: 0 2px 8px rgba(51,156,144,0.10);
+        transition: background 0.2s, color 0.2s;
+        margin-top: 18px;
+        text-decoration: none;
+    }
+    .donation-details-btn:hover {
+        background: #28786b;
+        color: #fff;
+    }
+    @media (max-width: 900px) {
+        .donation-details-wrapper { padding: 12px 2vw; font-size: 1.08rem; }
+        .donation-details-title { font-size: 1.4em; }
+    }
+</style>
+<div class="donation-details-wrapper">
+    <div class="row">
+        <div class="col-md-6 donation-details-slider">
+            <img src="{% static 'images/shop/shop-details/img-1.jpg' %}" alt="Image de l'annonce" />
+        </div>
+        <div class="col-md-6">
+            <div class="donation-details-section">
+                <div class="donation-details-title">{{ donation.title }}</div>
+                <div class="donation-details-meta">
+                    <div><span class="label">Etat :</span> {{ donation.condition.title }}</div>
+                    <div><span class="label">Disponibilité :</span> {{ donation.availability.title }}</div>
+                    <div><span class="label">Catégorie :</span> {{ donation.category }}</div>
+                    <div><span class="label">Localisation :</span> {{ donation.location }}</div>
                 </div>
+                <div class="donation-details-expiry">Date d'expiration : {{ donation.expiration_date }}</div>
+                <div style="margin-bottom:1.2em;">{{ donation.description }}</div>
+                <a href="#" class="donation-details-btn">Réserver</a>
             </div>
-            <div class="col col-md-6">
-                <div class="product-details">
-                    <h2>{{ donation.title }}</h2>
-                    <p>{{ donation.description }}</p>
-                    <div class="product-option">
-                        <div class="fst-row">
-                            <span>Etat : </span><span>{{ donation.condition.title }}</span><br>
-                            <span>Disponibilité : </span><span>{{ donation.availability.title }}</span>
-                        </div>
-                        <div style="padding-top:3%">
-                            <span style="font-size:12px; font-weight: bold; color:#fff; text-transform: uppercase; padding:5px">Date d'expiration : {{ donation.expiration_date }}</span>
-                        </div>
-                        <div class="fst-row">
-                            <span>Catégorie : </span><span>{{ donation.category }}</span><br>
-                            <span>Localisation : </span><span>{{ donation.location }}</span>
-                        </div>
-                    </div> <!-- end option -->
-
-                    <div class="share" style="margin-top:5% !important;">
-                        <a href="#" class="bnt theme-btn">Réserver</a>
-                    </div> <!-- end share -->
-                </div> <!-- end product details -->
-            </div> <!-- end col -->
         </div>
     </div>
-</section>
 </div>
 {% endblock %}

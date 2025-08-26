@@ -4,14 +4,70 @@
 {% block menu %}
 {% endblock %}
 {% block content %}
-<div class="container">
-    <div class="row error-404-content">
-        <div class="col col-xs-12">
-            <img src="images/error-404.png" alt class="img img-reponsive">
-            <h1>Error 404</h1>
-            <p>The page you requested can’t be found in our system</p>
-            <a href="index.html" class="btn theme-btn"><i class="fa fa-angle-left"></i> Go Back</a>
-        </div>
-    </div>
-</div> <!-- end container -->
+<style>
+    .error-404-wrapper {
+        background: #fff;
+        border-radius: 14px;
+        box-shadow: 0 2px 16px rgba(51,156,144,0.08);
+        padding: 48px 24px 40px 24px;
+        margin: 48px auto 40px auto;
+        max-width: 520px;
+        color: #222;
+        font-size: 1.22rem;
+        line-height: 1.7;
+        font-family: 'Segoe UI', Arial, sans-serif;
+        text-align: center;
+    }
+    .error-404-title {
+        color: #339c90;
+        font-size: 3em;
+        font-weight: 700;
+        margin-bottom: 0.3em;
+        letter-spacing: 0.01em;
+        border-bottom: 2px solid #339c90;
+        padding-bottom: 0.2em;
+        display: inline-block;
+    }
+    .error-404-img {
+        max-width: 180px;
+        margin-bottom: 1.2em;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(51,156,144,0.10);
+    }
+    .error-404-msg {
+        font-size: 1.18em;
+        margin-bottom: 2em;
+        color: #28786b;
+    }
+    .error-404-btn {
+        display: inline-block;
+        background: #339c90;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        padding: 12px 32px;
+        font-size: 1.1em;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        box-shadow: 0 2px 8px rgba(51,156,144,0.10);
+        transition: background 0.2s, color 0.2s;
+        margin-top: 8px;
+        text-decoration: none;
+    }
+    .error-404-btn:hover {
+        background: #28786b;
+        color: #fff;
+    }
+    @media (max-width: 600px) {
+        .error-404-wrapper { padding: 16px 2vw; font-size: 1.05rem; }
+        .error-404-title { font-size: 1.5em; }
+    }
+</style>
+<div class="error-404-wrapper">
+    <img src="{% static 'images/error-404.png' %}" alt="Erreur 404" class="error-404-img">
+    <div class="error-404-title">Erreur 404</div>
+    <div class="error-404-msg">La page que vous recherchez est introuvable ou n'existe plus.</div>
+    <a href="{% url 'index' %}" class="error-404-btn"><i class="fa fa-angle-left"></i> Retour à l'accueil</a>
+</div>
 {% endblock %}

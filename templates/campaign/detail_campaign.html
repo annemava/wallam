@@ -13,89 +13,146 @@
 </ul>
 {% endblock %}
 {% block content %}
-<!-- start contact-main-content -->
-<section class="contact-main-content section-padding">
-    <div class="container">
-        <div class="row contact-info">
-
-        </div> <!-- end contact info -->
-    </div> <!-- end container -->
-
-    <div class="row map-concate-form">
-        <div class="col col-xs-12">
-            <div class="map" id="map"></div>
+<style>
+    .detail-campaign-wrapper {
+        background: #fff;
+        border-radius: 14px;
+        box-shadow: 0 2px 16px rgba(51,156,144,0.08);
+        padding: 32px 24px;
+        margin: 32px auto 40px auto;
+        max-width: 800px;
+        color: #222;
+        font-size: 1.18rem;
+        line-height: 1.7;
+        font-family: 'Segoe UI', Arial, sans-serif;
+    }
+    .detail-campaign-title {
+        color: #339c90;
+        font-size: 2em;
+        font-weight: 700;
+        margin-bottom: 1.2em;
+        letter-spacing: 0.01em;
+        text-align: center;
+        border-bottom: 2px solid #339c90;
+        padding-bottom: 0.2em;
+    }
+    .detail-campaign-form input[type="text"],
+    .detail-campaign-form input[type="number"],
+    .detail-campaign-form input[type="file"],
+    .detail-campaign-form select,
+    .detail-campaign-form textarea {
+        width: 100%;
+        padding: 12px 14px;
+        margin-bottom: 18px;
+        border-radius: 7px;
+        border: 1.5px solid #339c90;
+        font-size: 1.08em;
+        background: #f6fcfb;
+        color: #222;
+        transition: border 0.2s;
+    }
+    .detail-campaign-form input[type="text"]:focus,
+    .detail-campaign-form input[type="number"]:focus,
+    .detail-campaign-form input[type="file"]:focus,
+    .detail-campaign-form select:focus,
+    .detail-campaign-form textarea:focus {
+        border: 2px solid #28786b;
+        outline: none;
+    }
+    .detail-campaign-form .form-check-input {
+        margin-right: 8px;
+        accent-color: #339c90;
+    }
+    .detail-campaign-btn,
+    .detail-campaign-btn-green {
+        display: inline-block;
+        background: #339c90;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        padding: 12px 32px;
+        font-size: 1.1em;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        box-shadow: 0 2px 8px rgba(51,156,144,0.10);
+        transition: background 0.2s, color 0.2s;
+        margin-top: 8px;
+        text-decoration: none;
+        margin-right: 10px;
+    }
+    .detail-campaign-btn-green {
+        background: #28786b;
+    }
+    .detail-campaign-btn:hover,
+    .detail-campaign-btn-green:hover {
+        background: #1e5e54;
+        color: #fff;
+    }
+    @media (max-width: 900px) {
+        .detail-campaign-wrapper { padding: 12px 2vw; font-size: 1.05rem; }
+        .detail-campaign-title { font-size: 1.2em; }
+    }
+</style>
+<div class="detail-campaign-wrapper">
+    {% if amount %}
+        <div class="detail-campaign-title">Vous avez fait un DON de : {{ amount }} FCFA</div>
+        <div style="text-align:center; margin:2em 0 1em 0;">
+            <h4>Merci de soutenir notre cause, <a href="{% url 'index' %}">Retour à la page d'accueil</a></h4>
         </div>
-        <div class="contact-form">
-            <div class="container">
-                <div class="row  wow bounceInUp">
-                    <div class="col col-md-10 col-md-offset-1 form-inner">
-                        {% if amount %}
-                        <h3 style="text-align: center; margin:2%;">Vous avez fait un DON de : {{ amount }} FCFA</h3>
-                        {% else %}
-                        <h3 style="text-align: center; margin:2%;">Visualisation de la campagne de levée de fonds</h3>
-                        {% endif %}
-                        <form action="#" class="form row" method="post">
-                            <div class="col col-md-6">
-                                <input class="form-control" type="text" name="title" value="{{ campaign.title }}" disabled style="padding:1%; margin:1%; border-radius:5px !important;">
-                            </div>
-                            <div class="col col-md-6">
-                                <input class="form-control" type="text" name="beneficiary" value="{{ campaign.beneficiary }}" disabled style="padding:1%; margin:1%; border-radius:5px !important;">
-                            </div>
-                            <div class="col col-md-6">
-                                <input class="form-control" type="text" name="beneficiary_phone" value="{{ campaign.beneficiary_phone }}" disabled style="padding:1%; margin:1%; border-radius:5px !important;">
-                            </div>
-                            <div class="col col-md-6">
-                                <input class="form-control" type="number" step="0.01" name="goal" value="{{ campaign.goal }}" disabled style="padding:1%; margin:1%; border-radius:5px !important;">
-                            </div>
-                            <div class="col col-md-6">
-                                <input class="form-control" type="text" name="code" value="{{ campaign.code }}" disabled style="padding:1%; margin:1%; border-radius:5px !important;">
-                            </div>
-                            <div class="col col-md-6">
-                                <select class="form-control" name="category" disabled style="padding:1%; margin:1%; border-radius:5px !important;">
-                                    <option value="{{ campaign.category.pk }}">{{ campaign.category.name }}</option>
-                                </select>
-                            </div>
-                            <div class="col col-md-6">
-                                <textarea class="form-control" name="description" disabled style="padding:1%; margin:1%; border-radius:5px !important;">{{ campaign.description }}</textarea>
-                            </div>
-                            <div class="col col-md-6">
-                                <textarea class="form-control" name="reward" disabled style="padding:1%; margin:1%; border-radius:5px !important;">{{ campaign.reward }}</textarea>
-                            </div>
-                            <div class="col col-md-6">
-                                <input class="form-control" type="number" name="duration" value="{{ campaign.duration }}" disabled style="padding:1%; margin:1%; border-radius:5px !important;">
-                            </div>
-                            <div class="col col-md-6">
-                                <input class="form-control" type="file" name="uploaded_files" style="padding:1%; margin:1%; border-radius:5px !important;">
-                            </div>
-
-                            <div class="col col-md-12">
-                                <select class="form-control" name="visibility" disabled style="margin:1%; border-radius:5px !important;">
-                                    <option value="{{ campaign.visibility }}">{{ campaign.visibility }}</option>
-                                </select>
-                            </div>
-                            {% if amount %}
-                            <div class="col col-md-12" style="margin-top:1% !important;">
-                                <h4>Merci de soutenir notre cause, <a href="{% url 'index' %}">Retour à la page d'accueil</a></h4>
-                            </div>
-                            {% else %}
-                            <div class="col col-md-12">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="terms_accepted" id="terms" {% if campaign.terms_accepted %} checked {% endif %} disabled style="margin:1%">
-                                    <label class="form-check-label" for="terms">J'accepte les CGU</label>
-                                </div>
-                            </div>
-                            <div class="col col-md-12" style="text-align: right; margin-top:1% !important;">
-                                <a href="#" class="bnt theme-btn" style="background-color: green !important;">Liste des campagnes</a>
-                                <a href="{% url 'edit_campaign' pk=campaign.pk %}" class="bnt theme-btn">Modifier</a>
-                            </div>
-                            {% endif %}
-
-                        </form>
+    {% else %}
+        <div class="detail-campaign-title">Visualisation de la campagne de levée de fonds</div>
+        <form action="#" class="detail-campaign-form" method="post">
+            <div class="row">
+                <div class="col-md-6">
+                    <input type="text" name="title" value="{{ campaign.title }}" disabled placeholder="Titre de la campagne">
+                </div>
+                <div class="col-md-6">
+                    <input type="text" name="beneficiary" value="{{ campaign.beneficiary }}" disabled placeholder="Bénéficiaire">
+                </div>
+                <div class="col-md-6">
+                    <input type="text" name="beneficiary_phone" value="{{ campaign.beneficiary_phone }}" disabled placeholder="Téléphone du bénéficiaire">
+                </div>
+                <div class="col-md-6">
+                    <input type="number" step="0.01" name="goal" value="{{ campaign.goal }}" disabled placeholder="Objectif (montant)">
+                </div>
+                <div class="col-md-6">
+                    <input type="text" name="code" value="{{ campaign.code }}" disabled placeholder="Code de la campagne">
+                </div>
+                <div class="col-md-6">
+                    <select name="category" disabled>
+                        <option value="{{ campaign.category.pk }}">{{ campaign.category.name }}</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <textarea name="description" disabled placeholder="Description">{{ campaign.description }}</textarea>
+                </div>
+                <div class="col-md-6">
+                    <textarea name="reward" disabled placeholder="Récompense">{{ campaign.reward }}</textarea>
+                </div>
+                <div class="col-md-6">
+                    <input type="number" name="duration" value="{{ campaign.duration }}" disabled placeholder="Durée (jours)">
+                </div>
+                <div class="col-md-6">
+                    <input type="file" name="uploaded_files" disabled>
+                </div>
+                <div class="col-md-12">
+                    <select name="visibility" disabled>
+                        <option value="{{ campaign.visibility }}">{{ campaign.visibility }}</option>
+                    </select>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="terms_accepted" id="terms" {% if campaign.terms_accepted %} checked {% endif %} disabled>
+                        <label class="form-check-label" for="terms">J'accepte les CGU</label>
                     </div>
-                </div> <!-- end row -->
-            </div> <!-- end container -->
-        </div>
-    </div>
-</section>
-<!-- end contact-main-content -->
+                </div>
+                <div class="col-md-12" style="text-align: right; margin-top:1% !important;">
+                    <a href="#" class="detail-campaign-btn-green">Liste des campagnes</a>
+                    <a href="{% url 'edit_campaign' pk=campaign.pk %}" class="detail-campaign-btn">Modifier</a>
+                </div>
+            </div>
+        </form>
+    {% endif %}
+</div>
 {% endblock %}
