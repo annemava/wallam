@@ -11,5 +11,6 @@ urlpatterns = [
     path("garantie-securite", GarantieSecuritePageView.as_view(), name="garantie_securite"),
     path("mention-legale", MentionLegalePageView.as_view(), name="mention_legale"),
     path("tarifs", TarifsPageView.as_view(), name="tarifs"),
+    path("qui-sommes-nous", SommesNousPageView.as_view(), name="qui_sommes_nous"),
     path('404', ErrorPageView.as_view(), name='404'),
 ]
