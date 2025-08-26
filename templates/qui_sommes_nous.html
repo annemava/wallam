@@ -1,10 +1,132 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
 
-</body>
-</html>
+{% extends 'default.html' %}
+{% load static %}
+{% block title %} Wallam | Comment ça marche {% endblock %}
+{% block menu %}
+<ul class="nav navbar-nav">
+        <li>
+                <a href="{% url 'index' %}">Accueil</a>
+        </li>
+        <li class="current">
+                <a href="{% url 'create_campaign' %}">Créer une cagnotte</a>
+        </li>
+        <li><a href="{% url 'announce' %}">Créer une annonce</a></li>
+</ul>
+{% endblock %}
+{% block content %}
+<style>
+  .qs-wrapper {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 2px 16px rgba(51,156,144,0.08);
+    padding: 32px 24px;
+    margin: 32px auto 40px auto;
+    max-width: 900px;
+    color: #222;
+    font-size: 1.25rem;
+    line-height: 1.8;
+    font-family: 'Segoe UI', Arial, sans-serif;
+  }
+  .qs-title {
+    color: #339c90;
+    text-align: center;
+    font-size: 2.5em;
+    font-weight: 700;
+    margin-bottom: 1.5em;
+    letter-spacing: 0.01em;
+    border-bottom: 2px solid #339c90;
+    padding-bottom: 0.3em;
+  }
+  .qs-section {
+    margin-bottom: 2.5em;
+  }
+  .qs-section h2 {
+    color: #339c90;
+    font-size: 1.5em;
+    font-weight: 700;
+    margin-bottom: 0.7em;
+    margin-top: 0;
+  }
+  .qs-section ul {
+    margin-left: 1.2em;
+  }
+  .qs-section img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin: 18px 0 8px 0;
+    box-shadow: 0 1px 6px rgba(51,156,144,0.07);
+  }
+  .qs-section figcaption {
+    color: #888;
+    font-size: 0.98em;
+    text-align: center;
+  }
+  .qs-section blockquote {
+    background: #f3f7f6;
+    border-left: 5px solid #339c90;
+    margin: 1.5em 0;
+    padding: 18px 24px;
+    border-radius: 8px;
+    font-style: italic;
+    color: #28786b;
+  }
+  .qs-section blockquote cite {
+    display: block;
+    margin-top: 0.7em;
+    color: #555;
+    font-size: 0.98em;
+    font-style: normal;
+    text-align: right;
+  }
+  @media (max-width: 600px) {
+    .qs-wrapper { padding: 12px 2vw; font-size: 1.08rem; }
+    .qs-title { font-size: 1.5em; }
+    .qs-section h2 { font-size: 1.15em; }
+  }
+</style>
+<div class="qs-wrapper">
+  <div class="qs-title">QUI SOMMES NOUS</div>
+  <section class="qs-section" id="qui-sommes-nous" aria-labelledby="titre-qui-sommes-nous">
+    <h2 id="titre-qui-sommes-nous">Qui sommes-nous ?</h2>
+    <p>WALLAM est la première plateforme de DON 100% gratuit en Afrique pour les causes sociales et humanitaires en faveur des associations et des particuliers en Afrique. Wallam permet :</p>
+    <ul>
+      <li>De lancer des campagnes de collecte de fonds pour les causes caritatives et solidaires</li>
+      <li>De donner et de récupérer gratuitement de la nourriture et/ou des objets</li>
+    </ul>
+    <p>Wallam vous donne les moyens nécessaires de faire un don en toute tranquillité et/ou de récolter des fonds dont vous avez besoin en toute sécurité.</p>
+  </section>
+  <section class="qs-section" id="notre-equipe" aria-labelledby="titre-notre-equipe">
+    <h2 id="titre-notre-equipe">Notre équipe</h2>
+    <p>Notre équipe est composée de jeunes dynamiques, soucieux de construire un Afrique meilleur, plus sociale et solidaire avec l’appui d’une communauté très humaniste.</p>
+    <figure>
+      <img src="/chemin/vers/image-equipe.jpg" alt="Photo de l’équipe WALLAM" loading="lazy" />
+      <figcaption>(Image)</figcaption>
+    </figure>
+  </section>
+  <section class="qs-section" id="nos-valeurs" aria-labelledby="titre-nos-valeurs">
+    <h2 id="titre-nos-valeurs">Nos valeurs</h2>
+    <p>L’aide et l’entraide sont notre seule raison d’être, c’est pourquoi nous avons créé la première plateforme de don pour une société plus solidaire.</p>
+    <figure>
+      <img src="/chemin/vers/image-valeurs.jpg" alt="Illustration des valeurs de WALLAM" loading="lazy" />
+      <figcaption>(Image)</figcaption>
+    </figure>
+  </section>
+  <section class="qs-section" id="nos-engagements" aria-labelledby="titre-nos-engagements">
+    <h2 id="titre-nos-engagements">Nos engagements</h2>
+    <p>Chez Wallam, nous nous sommes donnés pour mission de donner du sourire aux personnes en difficulté.</p>
+    <p>Nous sommes convaincus qu’une mobilisation collective avec nos partenaires et donateurs nous permettra d’avoir un impact très significatif sur la société.</p>
+    <figure>
+      <img src="/chemin/vers/image-engagements.jpg" alt="Illustration des engagements de WALLAM" loading="lazy" />
+      <figcaption>(Image)</figcaption>
+    </figure>
+  </section>
+  <section class="qs-section" id="temoignages" aria-labelledby="titre-temoignages">
+    <h2 id="titre-temoignages">Ce qu’ils disent de nous</h2>
+    <blockquote>
+      <p>(Texte des personnes qui parlent de nous)</p>
+      <cite><!-- Nom, fonction --></cite>
+    </blockquote>
+    <!-- Dupliquer le bloc blockquote ci-dessus pour ajouter d’autres témoignages -->
+  </section>
+</div>
+{% endblock %}

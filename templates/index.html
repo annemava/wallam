@@ -30,6 +30,11 @@
     .cta-3 .theme-btn {
         color: #fff !important;
     }
+    .urgent-donation .urgent-box .details .form input {
+        background-color: #95b669 !important;
+        color: #fff !important;
+        border-color: #95b669 !important;
+    }
 </style>
 <style>
     /* Couleur turquoise foncé pour tous les span */
@@ -55,6 +60,15 @@
         border-left-color: #339c90 !important;
         border-right-color: #339c90 !important;
     }
+    .latest-causes .img-progress .progress span {
+        background: #95b669 !important;
+        padding: 6px 4px;
+        font-size: 10px;
+        position: absolute;
+        right: 0;
+        top: -32px;
+        color: #fff !important;
+    }
     .cta-4 .icon i {
         color: #339c90 !important;;
     }
@@ -68,8 +82,8 @@
 <style>
     /* Progress bar turquoise foncé */
     .progress-bar {
-        background: #339c90 !important;
-        background-color: #339c90 !important;
+        background: #95b669 !important;
+        background-color: #95b669 !important;
     }
 </style>
 <style>
@@ -77,8 +91,8 @@
     a.btn.theme-btn,
     button.btn.theme-btn,
     .btn.theme-btn {
-        background: #339c90 !important;
-        background-color: #339c90 !important;
+        background: #95b669 !important;
+        background-color: #95b669 !important;
         color: #fff !important;
         border: none !important;
     }
@@ -88,6 +102,16 @@
         background: #28786b !important;
         background-color: #28786b !important;
         color: #fff !important;
+    }
+    .shop-content .grid .add-to-cart {
+        color: #fff !important;
+        font-weight: bold !important;
+    }
+    .home-style-three .latest-product-slider .owl-dots .active span {
+        width: 15px;
+        height: 15px;
+        background-color: #339c90;
+        margin-bottom: -1px;
     }
 </style>
 <style>
@@ -152,10 +176,10 @@
                         <div class="img-holder">
                             <img src="{{ urgent.get_image_url }}" alt="{{ urgent.title }}" class="img img-responsive">
                         </div>
-                        <div class="details">
+                        <div class="details" style="background-color: #339c90 !important;">
                             <span>Urgent</span>
-                            <h2>{{ urgent.title }}</h2>
-                            <p class="remaing-date">{{ urgent.days_remaining }} jours restants</p>
+                            <h2 style="color: #fff !important;">{{ urgent.title }}</h2>
+                            <p class="remaing-date" style="color: #95b669 !important;">{{ urgent.days_remaining }} jours restants</p>
                             <div class="progress-wrapper">
                                 <div class="progress">
                                     <div class="progress-bar" data-percent="{{ urgent.percentage_collected }}"></div>
@@ -163,11 +187,11 @@
                             </div>
                             <div class="goal-raised">
                                 <div class="goal">
-                                    <span>Objectif</span>
+                                    <span style="color: #95b669 !important;">Objectif</span>
                                     <h4>{{ urgent.goal }}</h4>
                                 </div>
                                 <div class="raised">
-                                    <span>Raised</span>
+                                    <span style="color: #95b669 !important;">Raised</span>
                                     <h4>{{ urgent.amount_collected }}</h4>
                                 </div>
                             </div>
@@ -178,7 +202,7 @@
                                     <input type="number" name="amount" class="form-control" placeholder="- ENTRER LE MONTANT -" required>
                                 </div>
                                 <div>
-                                    <button type="submit" class="btn theme-btn">Donation</button>
+                                    <button type="submit" class="btn theme-btn">UN DON</button>
                                 </div>
                             </form>
                             {% else %}
@@ -366,7 +390,7 @@
                             <img src="{% static 'images/shop/img-1.jpg' %}" alt class="img img-responsive">
                             {% endif %}
                             </div>
-                            <div class="details">
+                            <div class="details" style="background-color: #339c90 !important;">
                                 <h3><a href="{% url 'donation_detail' pk=donation.pk %}">{{ donation.title }}</a></h3>
                                 <a href="#" class="add-to-cart">Etat : </i> {{ donation.condition.title }}</a>
 

@@ -55,6 +55,9 @@ class MentionLegalePageView(TemplateView):
 class TarifsPageView(TemplateView):
     template_name = "tarifs.html"
 
+class SommesNousPageView(TemplateView):
+    template_name = "qui_sommes_nous.html"
+
 
 def logout_view(request):
     logout(request)
