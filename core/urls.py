@@ -12,5 +12,6 @@ urlpatterns = [
     path("mention-legale", MentionLegalePageView.as_view(), name="mention_legale"),
     path("tarifs", TarifsPageView.as_view(), name="tarifs"),
     path("qui-sommes-nous", SommesNousPageView.as_view(), name="qui_sommes_nous"),
+    path("campaing-donation-list", campaing_donation_list, name="campaing_donation_list"),
     path('404', ErrorPageView.as_view(), name='404'),
 ]

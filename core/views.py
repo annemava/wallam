@@ -140,3 +140,12 @@ def register_view(request):
 
     return render(request, "account/register.html")
 
+
+def campaing_donation_list(request):
+    donations = ObjectDonation.objects.filter(active=True)
+    campaigns = Campaign.objects.filter(status="encours")
+    context = {
+        "donations": donations,
+        "campaigns": campaigns
+    }
+    return render(request, 'campaing_announce.html', context)

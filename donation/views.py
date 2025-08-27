@@ -70,4 +70,8 @@ def donation_detail_view(request, pk):
 
 
 def donation_list(request):
-    pass
+    donations = ObjectDonation.objects.filter(active=True)
+    context = {
+        "donations": donations
+    }
+    return render(request, 'donation/list.html', context)

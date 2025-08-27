@@ -160,4 +160,8 @@ def campaign_donate(request, pk):
 
 
 def campaign_list(request):
-    pass
+    campaigns = Campaign.objects.filter(status="encours")
+    context = {
+        "campaigns": campaigns
+    }
+    return render(request, 'campaign/list.html', context)
