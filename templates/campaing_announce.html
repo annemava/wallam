@@ -1,0 +1,312 @@
+{% extends 'default.html' %}
+{% load static %}
+{% block title %} Wallam | Liste des Dons {% endblock %}
+{% block menu %}
+<ul class="nav navbar-nav">
+    <li class="current">
+        <a href="{% url 'index' %}">Accueil</a>
+    </li>
+    <li class="">
+        <a href="{% url 'create_campaign' %}">Créer une cagnotte</a>
+    </li>
+    <li><a href="{% url 'announce' %}">Créer une annonce</a></li>
+</ul>
+{% endblock %}
+{% block content %}
+<style>
+    .donation-list-wrapper {
+        background: #fff;
+        border-radius: 14px;
+        box-shadow: 0 2px 16px rgba(51,156,144,0.08);
+        padding: 32px 24px 40px 24px;
+        margin: 32px auto 40px auto;
+        max-width: 1200px;
+        color: #222;
+        font-size: 1.18rem;
+        line-height: 1.7;
+        font-family: 'Segoe UI', Arial, sans-serif;
+    }
+    .donation-list-title {
+        color: #339c90;
+        font-size: 2.2em;
+        font-weight: 700;
+        margin-bottom: 1.2em;
+        letter-spacing: 0.01em;
+        text-align: center;
+        border-bottom: 2px solid #339c90;
+        padding-bottom: 0.2em;
+    }
+    .donation-card {
+        background: #f6fcfb;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(51,156,144,0.10);
+        padding: 18px 16px 22px 16px;
+        margin-bottom: 32px;
+        transition: box-shadow 0.2s;
+        min-height: 340px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .donation-card:hover {
+        box-shadow: 0 4px 18px rgba(51,156,144,0.18);
+    }
+    .donation-card-img {
+        width: 100%;
+        max-width: 220px;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 1em;
+        box-shadow: 0 2px 8px rgba(51,156,144,0.10);
+    }
+    .donation-card-title {
+        color: #339c90;
+        font-size: 1.18em;
+        font-weight: 700;
+        margin-bottom: 0.2em;
+        margin-top: 0.2em;
+        text-align: center;
+    }
+    .donation-card-category {
+        color: #28786b;
+        font-size: 1em;
+        margin-bottom: 0.7em;
+        text-align: center;
+    }
+    .donation-card-condition {
+        font-size: 0.98em;
+        color: #28786b;
+        margin-bottom: 0.5em;
+        text-align: center;
+    }
+    .donation-card-btn {
+        display: inline-block;
+        background: #339c90;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        padding: 10px 28px;
+        font-size: 1em;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        box-shadow: 0 2px 8px rgba(51,156,144,0.10);
+        transition: background 0.2s, color 0.2s;
+        margin-top: 8px;
+        text-decoration: none;
+    }
+    .donation-card-btn:hover {
+        background: #28786b;
+        color: #fff;
+    }
+    @media (max-width: 900px) {
+        .donation-list-wrapper { padding: 12px 2vw; font-size: 1.05rem; }
+        .donation-list-title { font-size: 1.2em; }
+        .donation-card { min-height: 220px; }
+    }
+</style>
+<style>
+    .campaign-list-wrapper {
+        background: #fff;
+        border-radius: 14px;
+        box-shadow: 0 2px 16px rgba(51,156,144,0.08);
+        padding: 32px 24px 40px 24px;
+        margin: 32px auto 40px auto;
+        max-width: 1200px;
+        color: #222;
+        font-size: 1.18rem;
+        line-height: 1.7;
+        font-family: 'Segoe UI', Arial, sans-serif;
+    }
+    .campaign-list-title {
+        color: #339c90;
+        font-size: 2.2em;
+        font-weight: 700;
+        margin-bottom: 1.2em;
+        letter-spacing: 0.01em;
+        text-align: center;
+        border-bottom: 2px solid #339c90;
+        padding-bottom: 0.2em;
+    }
+    .campaign-card {
+        background: #f6fcfb;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(51,156,144,0.10);
+        padding: 18px 16px 22px 16px;
+        margin-bottom: 32px;
+        transition: box-shadow 0.2s;
+        min-height: 420px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .campaign-card:hover {
+        box-shadow: 0 4px 18px rgba(51,156,144,0.18);
+    }
+    .campaign-card-title {
+        color: #339c90;
+        font-size: 1.25em;
+        font-weight: 700;
+        margin-bottom: 0.2em;
+        margin-top: 0.2em;
+    }
+    .campaign-card-category {
+        color: #28786b;
+        font-size: 1em;
+        margin-bottom: 0.7em;
+    }
+    .campaign-card-img {
+        width: 100%;
+        max-width: 320px;
+        height: 160px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 1em;
+        box-shadow: 0 2px 8px rgba(51,156,144,0.10);
+    }
+    .campaign-card-progress {
+        background: #e0f4f2;
+        border-radius: 6px;
+        height: 16px;
+        margin-bottom: 1em;
+        overflow: hidden;
+        position: relative;
+    }
+    .campaign-card-progress-bar {
+        background: #339c90;
+        height: 100%;
+        border-radius: 6px 0 0 6px;
+        transition: width 0.6s;
+    }
+    .campaign-card-amount {
+        font-size: 1em;
+        margin-bottom: 0.5em;
+    }
+    .campaign-card-amount span {
+        color: #339c90;
+        font-weight: 600;
+    }
+    .campaign-card-days {
+        font-size: 0.98em;
+        color: #28786b;
+        margin-bottom: 0.5em;
+    }
+    .campaign-card-desc {
+        font-size: 0.98em;
+        margin-bottom: 1.2em;
+        color: #444;
+        text-align: justify;
+    }
+    .campaign-card-btn {
+        display: inline-block;
+        background: #339c90;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        padding: 10px 28px;
+        font-size: 1em;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        box-shadow: 0 2px 8px rgba(51,156,144,0.10);
+        transition: background 0.2s, color 0.2s;
+        margin-top: 8px;
+        text-decoration: none;
+    }
+    .campaign-card-btn:hover {
+        background: #28786b;
+        color: #fff;
+    }
+    @media (max-width: 900px) {
+        .campaign-list-wrapper { padding: 12px 2vw; font-size: 1.05rem; }
+        .campaign-list-title { font-size: 1.2em; }
+        .campaign-card { min-height: 340px; }
+    }
+</style>
+<div class="campaign-list-wrapper">
+    <div class="campaign-list-title"><span>Cagnottes</span> Disponibles</div>
+    <div class="row content g-4">
+        {% for campaign in campaigns %}
+        <div class="col-12 col-sm-6 col-md-4">
+            <div class="campaign-card">
+                <div>
+                    <div class="campaign-card-title">{{ campaign.title }}</div>
+                    <div class="campaign-card-category"><i class="fa fa-tag"></i> {{ campaign.category }}</div>
+                    <div>
+                        {% if campaign.uploaded_files %}
+                            <img src="{{ campaign.uploaded_files.url }}" alt="{{ campaign.title }}" class="campaign-card-img">
+                        {% elif campaign.category.name == 'Sante' %}
+                            <img src="{% static 'images/latest-causes/sante.png' %}" alt="{{ campaign.title }}" class="campaign-card-img">
+                        {% elif campaign.category.name == 'Education' %}
+                            <img src="{% static 'images/latest-causes/education.png' %}" alt="{{ campaign.title }}" class="campaign-card-img">
+                        {% elif campaign.category.name == 'Urgence' %}
+                            <img src="{% static 'images/latest-causes/urgence.png' %}" alt="{{ campaign.title }}" class="campaign-card-img">
+                        {% elif campaign.category.name == 'Commemoration' %}
+                            <img src="{% static 'images/latest-causes/commemoration.png' %}" alt="{{ campaign.title }}" class="campaign-card-img">
+                        {% elif campaign.category.name == 'Association' %}
+                            <img src="{% static 'images/latest-causes/association.png' %}" alt="{{ campaign.title }}" class="campaign-card-img">
+                        {% elif campaign.category.name == 'Benevolat' %}
+                            <img src="{% static 'images/latest-causes/benevolat.png' %}" alt="{{ campaign.title }}" class="campaign-card-img">
+                        {% elif campaign.category.name == 'Religion' %}
+                            <img src="{% static 'images/latest-causes/religion.png' %}" alt="{{ campaign.title }}" class="campaign-card-img">
+                        {% elif campaign.category.name == 'Sport' %}
+                            <img src="{% static 'images/latest-causes/sport.png' %}" alt="{{ campaign.title }}" class="campaign-card-img">
+                        {% elif campaign.category.name == 'Famille' %}
+                            <img src="{% static 'images/latest-causes/famille.png' %}" alt="{{ campaign.title }}" class="campaign-card-img">
+                        {% else %}
+                            <img src="{% static 'images/latest-causes/default.jpg' %}" alt="{{ campaign.title }}" class="campaign-card-img">
+                        {% endif %}
+                    </div>
+                    <div class="campaign-card-progress">
+                        <div class="campaign-card-progress-bar" style="width: {{ campaign.percentage_collected }}%;"></div>
+                    </div>
+                    <div class="campaign-card-amount">Objectif : <span>{{ campaign.amount_collected }} FCFA</span> / {{ campaign.goal }} FCFA</div>
+                    <div class="campaign-card-days"><i class="fa fa-clock-o"></i> {{ campaign.days_remaining }} jours</div>
+                    <div class="campaign-card-desc">{{ campaign.description|truncatechars:100 }}</div>
+                </div>
+                <div>
+                    <a href="{% url 'campaign_donate' pk=campaign.id %}" class="campaign-card-btn">Faire un Don</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="donation-list-wrapper">
+    <div class="donation-list-title"><span>Annonces</span> Disponibles</div>
+    <div class="row content g-4">
+        {% for donation in donations %}
+        <div class="col-12 col-sm-6 col-md-4">
+            <div class="donation-card">
+                {% if donation.category.title == 'Objet de construction' %}
+                    <img src="{% static 'images/shop/construction.jpg' %}" alt class="donation-card-img">
+                {% elif donation.category.title == 'Matériels informatiques' %}
+                    <img src="{% static 'images/shop/informatique.jpg' %}" alt class="donation-card-img">
+                {% elif donation.category.title == 'Accessoires de bureau' %}
+                    <img src="{% static 'images/shop/mat_bureau.jpg' %}" alt class="donation-card-img">
+                {% elif donation.category.title == 'Meubles et équipements' %}
+                    <img src="{% static 'images/shop/meubles.jpg' %}" alt class="donation-card-img">
+                {% elif donation.category.title == 'Produit de conserve' %}
+                    <img src="{% static 'images/shop/conserve.jpg' %}" alt class="donation-card-img">
+                {% elif donation.category.title == 'Tubercules' %}
+                    <img src="{% static 'images/shop/tubercules.jpg' %}" alt class="donation-card-img">
+                {% elif donation.category.title == 'Fruits et légumes' %}
+                    <img src="{% static 'images/shop/fruits.jpg' %}" alt class="donation-card-img">
+                {% elif donation.category.title == 'Produits laitiers' %}
+                    <img src="{% static 'images/shop/laitiers.jpg' %}" alt class="donation-card-img">
+                {% else %}
+                    <img src="{% static 'images/shop/img-1.jpg' %}" alt class="donation-card-img">
+                {% endif %}
+                <div class="donation-card-title"><a href="{% url 'donation_detail' pk=donation.pk %}">{{ donation.title }}</a></div>
+                <div class="donation-card-category"><i class="fa fa-tag"></i> {{ donation.category.title }}</div>
+                <div class="donation-card-condition">Etat : {{ donation.condition.title }}</div>
+                <a href="{% url 'donation_detail' pk=donation.pk %}" class="donation-card-btn">Voir l'annonce</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
