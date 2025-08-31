@@ -123,7 +123,7 @@
                 <div class="row  wow bounceInUp">
                     <div class="col col-md-10 col-md-offset-1 form-inner">
                         <h3 style="text-align: center; margin:2%;">Don d'objet</h3>
-                        <form action="#" class="form row" method="post">
+                        <form action="#" class="form row" method="post" enctype="multipart/form-data">
                             {% csrf_token %}
                             <div class="col col-md-6">
                                 <input class="form-control" type="text" name="title" placeholder="Titre de l'annonce" required style="padding:1%; margin:1%; border-radius:5px !important;">
@@ -153,13 +153,24 @@
                                 </select>
                             </div>
                             <div class="col col-md-6">
-                                <input class="form-control" type="date" name="expiration_date" style="padding:1%; margin:1%; border-radius:5px !important;">
+                                <label for="expiration_date" style="color:#fff; font-weight:600; margin-bottom:4px; display:block;">Date de péremption (si applicable)</label>
+                                <input class="form-control" type="date" id="expiration_date" name="expiration_date" style="padding:1%; margin:1%; border-radius:5px !important;">
                             </div>
                             <div class="col col-md-6">
-                                <input class="form-control" type="text" name="location" placeholder="Votre localisation" style="padding:1%; margin:1%; border-radius:5px !important;">
+                                <label for="location" style="color:#fff; font-weight:600; margin-bottom:4px; display:block;">Votre localisation</label>
+                                <input class="form-control" type="text" id="location" name="location" placeholder="Votre localisation" style="padding:1%; margin:1%; border-radius:5px !important;">
                             </div>
                             <div class="col col-md-12">
                                 <textarea class="form-control" name="description" style="padding:1%; margin:1%; border-radius:5px !important;">Faites une brève description de votre Objet / Nourriture</textarea>
+                            </div>
+                            <div class="col col-md-4">
+                                <input class="form-control" type="file" name="image1" accept="image/*" style="padding:1%; margin:1%; border-radius:5px !important;">
+                            </div>
+                            <div class="col col-md-4">
+                                <input class="form-control" type="file" name="image2" accept="image/*" style="padding:1%; margin:1%; border-radius:5px !important;">
+                            </div>
+                            <div class="col col-md-4">
+                                <input class="form-control" type="file" name="image3" accept="image/*" style="padding:1%; margin:1%; border-radius:5px !important;">
                             </div>
                             <div class="col col-md-12">
                                 <div class="form-check">

@@ -9,7 +9,10 @@ from donation.models import ObjectDonation
 
 # Create your views here.
 def homepage(request):
-    campaigns = Campaign.objects.filter(status="encours", urgent=False)
+    if request.user.is_authenticated and request.user.is_superuser:
+        campaigns = Campaign.objects.filter(status="encours", urgent=False)
+    else:
+        campaigns = Campaign.objects.filter(status="encours", urgent=False, visibility="public")
     urgents = Campaign.objects.filter(status="encours", urgent=True)
     donations = ObjectDonation.objects.filter(active=True)
     context = {
@@ -57,6 +60,9 @@ class TarifsPageView(TemplateView):
 
 class SommesNousPageView(TemplateView):
     template_name = "qui_sommes_nous.html"
+
+class ReclamationPageView(TemplateView):
+    template_name = "reclamation.html"
 
 
 def logout_view(request):

@@ -102,7 +102,25 @@
 <div class="donation-details-wrapper">
     <div class="row">
         <div class="col-md-6 donation-details-slider">
-            <img src="{% static 'images/shop/shop-details/img-1.jpg' %}" alt="Image de l'annonce" />
+            {% if donation.category.title == 'Objet de construction' %}
+            <img src="{% static 'images/shop/construction.jpg' %}" alt class="img img-responsive">
+            {% elif donation.category.title == 'Matériels informatiques' %}
+                <img src="{% static 'images/shop/informatique.jpg' %}" alt class="img img-responsive">
+            {% elif donation.category.title == 'Accessoires de bureau' %}
+            <img src="{% static 'images/shop/mat_bureau.jpg' %}" alt class="img img-responsive">
+            {% elif donation.category.title == 'Meubles et équipements' %}
+                <img src="{% static 'images/shop/meubles.jpg' %}" alt class="img img-responsive">
+            {% elif donation.category.title == 'Produit de conserve' %}
+                <img src="{% static 'images/shop/conserve.jpg' %}" alt class="img img-responsive">
+            {% elif donation.category.title == 'Tubercules' %}
+                <img src="{% static 'images/shop/tubercules.jpg' %}" alt class="img img-responsive">
+            {% elif donation.category.title == 'Fruits et légumes' %}
+                <img src="{% static 'images/shop/fruits.jpg' %}" alt class="img img-responsive">
+            {% elif donation.category.title == 'Produits laitiers' %}
+                <img src="{% static 'images/shop/laitiers.jpg' %}" alt class="img img-responsive">
+            {% else %}
+            <img src="{% static 'images/shop/img-1.jpg' %}" alt class="img img-responsive">
+            {% endif %}
         </div>
         <div class="col-md-6">
             <div class="donation-details-section">

@@ -117,24 +117,46 @@
                         <label class="form-check-label" for="inlineRadio2">Particulier</label>
                 </div>
 
-                <!-- Champs de texte -->
-                <input class="form-control" type="text" name="firstname" placeholder="Votre Nom" required>
-                <input class="form-control" type="text" name="lastname" placeholder="Votre Prénom" required>
-                <div id="nomassoc-container" style="display: none;">
-                        <input class="form-control" type="text" name="nomassoc" placeholder="Le nom de l'association">
+                <!-- Champs de texte regroupés deux à deux -->
+                <div style="display: flex; gap: 12px; margin-bottom: 16px;">
+                    <input class="form-control" type="text" name="firstname" placeholder="Votre Nom" required style="flex:1;">
+                    <input class="form-control" type="text" name="lastname" placeholder="Votre Prénom" required style="flex:1;">
                 </div>
-                <input class="form-control" type="text" name="email" placeholder="Votre Email" required>
-                <input class="form-control" type="text" name="phone" placeholder="Votre numéro de téléphone" required>
-                <input class="form-control" type="password" name="password" placeholder="Votre mot de passe" required>
-                <input class="form-control" type="password" name="confirmpassword" placeholder="Confirmer votre mot de passe" required>
+                <div id="nomassoc-container" style="display: none; margin-bottom: 16px;">
+                    <input class="form-control" type="text" name="nomassoc" placeholder="Le nom de l'association">
+                </div>
+                <div style="display: flex; gap: 12px; margin-bottom: 16px;">
+                    <input class="form-control" type="text" name="email" placeholder="Votre Email" required style="flex:1;">
+                    <input class="form-control" type="text" name="phone" placeholder="Votre numéro de téléphone" required style="flex:1;">
+                </div>
+                <div style="display: flex; gap: 12px; margin-bottom: 16px;">
+                    <input class="form-control" type="password" name="password" placeholder="Votre mot de passe" required style="flex:1;">
+                    <input class="form-control" type="password" name="confirmpassword" placeholder="Confirmer votre mot de passe" required style="flex:1;">
+                </div>
 
+                <!-- CGU -->
+                <div style="margin-bottom: 18px; display: flex; align-items: center; gap: 10px;">
+                    <input type="checkbox" id="accept-cgu" name="accept_cgu" style="width: 18px; height: 18px;">
+                    <label for="accept-cgu" style="margin:0; color:#fff; font-weight:600; cursor:pointer;">J'accepte les <a href="{% url 'cgu' %}" target="_blank" style="color:#e0f4f2;text-decoration:underline;">CGU</a></label>
+                </div>
                 <!-- Bouton de soumission -->
                 <div class="form-button">
                         <button id="submit" type="submit" class="ibtn">Enregistrer</button>
                 </div>
         </form>
+        </form>
 </div>
 <script>
+    // Désactiver le bouton tant que CGU non cochée
+    document.addEventListener("DOMContentLoaded", function() {
+        const cguCheckbox = document.getElementById('accept-cgu');
+        const submitBtn = document.getElementById('submit');
+        function updateSubmitBtn() {
+            submitBtn.disabled = !cguCheckbox.checked;
+        }
+        cguCheckbox.addEventListener('change', updateSubmitBtn);
+        updateSubmitBtn();
+    });
     // Gérer l'affichage du champ "nomassoc"
     document.addEventListener("DOMContentLoaded", function() {
         const radioAssociation = document.getElementById("inlineRadio1");

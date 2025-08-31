@@ -13,5 +13,6 @@ urlpatterns = [
     path("tarifs", TarifsPageView.as_view(), name="tarifs"),
     path("qui-sommes-nous", SommesNousPageView.as_view(), name="qui_sommes_nous"),
     path("campaing-donation-list", campaing_donation_list, name="campaing_donation_list"),
+    path("reclamation", ReclamationPageView.as_view(), name="reclamation"),
     path('404', ErrorPageView.as_view(), name='404'),
 ]

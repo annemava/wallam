@@ -135,20 +135,6 @@
         </div>
     </div>
 </section>
-<section class="cta" style="margin-top:16px;" style="background-color: #339c90 !important;">
-    <div class="container">
-        <div class="row">
-            <div class="col col-md-5 col-sm-5">
-                <img src="{% static 'images/cta-cartoon.png' %}" alt class="img img-responsive">
-            </div>
-            <div class="col col-md-6 col-md-offset-1 col-sm-7">
-                <div class="cta-details wow fadeInRightSlow">
-                    <a href="#" class="btn theme-btn">Soumettre une réclamation</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 <section class="garantie-wrapper">
     <div class="company">
         <h3>SI VOUS SUSPECTEZ UNE FRAUDE, <span>SIGNALEZ&nbsp;!</span></h3>
@@ -169,6 +155,9 @@
                 <a class="collapsed" data-toggle="collapse" data-parent="#accordion1" href="#collapseSix">Sanctions : Wallam se réserve le droit de suspendre ou de bannir toute cagnotte, toute annonce ou tout utilisateur qui ne respectera pas nos consignes d’utilisations.</a>
             </div>
         </div>
+    </div>
+    <div class="cta-details wow fadeInRightSlow" style="text-align: center;">
+        <a href="{% url 'reclamation' %}" class="btn theme-btn">Soumettre une réclamation</a>
     </div>
 </section>
 {% endblock %}

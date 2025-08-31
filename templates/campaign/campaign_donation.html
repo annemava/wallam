@@ -81,12 +81,59 @@
 </style>
 <div class="campaign-donation-wrapper">
     <div class="campaign-donation-title">Faites un don pour la campagne : {{ campaign.title }}</div>
-    <form action="{% url 'campaign_donate' pk=campaign.pk %}" class="campaign-donation-form" method="post">
-        {% csrf_token %}
-        <input type="number" name="amount" placeholder="Entrez le montant" required>
-        <input type="text" name="donor_fullname" placeholder="Entrez votre nom ou pseudo">
-        <input type="text" name="donor_phone" placeholder="Entrez votre numéro de téléphone">
-        <button type="submit" class="campaign-donation-btn">Valider</button>
-    </form>
+    {% if campaign.description %}
+    <div style="background: #eaf7f5; color: #28786b; border-left: 4px solid #339c90; border-radius: 6px; padding: 14px 18px; font-size: 1.08em; margin-bottom: 22px;">
+        <strong>Description de la campagne :</strong><br>
+        <span style="white-space: pre-line;">{{ campaign.description }}</span>
+    </div>
+    {% endif %}
+        <form action="{% url 'campaign_donate' pk=campaign.pk %}" class="campaign-donation-form" method="post">
+                {% csrf_token %}
+                <input type="number" name="amount" id="amount-input" placeholder="Entrez le montant" required>
+                {% if not user.is_authenticated %}
+                <input type="text" name="donor_fullname" placeholder="Entrez votre nom ou pseudo">
+                <input type="text" name="donor_phone" placeholder="Entrez votre numéro de téléphone">
+                {% endif %}
+                <input type="text" id="wallam-support-amount" placeholder="Montant total à payer" readonly style="background:#e0f4f2; color:#339c90; font-weight:600; margin-bottom:18px;">
+                <div style="margin-bottom: 18px; display: flex; align-items: center; gap: 10px;">
+                    <input type="checkbox" id="support-wallam" name="support_wallam" style="width: 18px; height: 18px;" checked>
+                    <label for="support-wallam" style="margin:0; color:#28786b; font-weight:600; cursor:pointer;">Soutenez Wallam (le soutien dà wallam se fait à hauteur de 10% du montant)</label>
+                </div>
+                <div style="margin-bottom: 18px; display: flex; align-items: center; gap: 10px;">
+                    <input type="checkbox" id="accept-cgu" name="accept_cgu" style="width: 18px; height: 18px;">
+                    <label for="accept-cgu" style="margin:0; color:#28786b; font-weight:600; cursor:pointer;">J'accepte les <a href="{% url 'cgu' %}" target="_blank" style="color:#339c90;text-decoration:underline;">CGU</a></label>
+                </div>
+                <button type="submit" class="campaign-donation-btn" id="validate-btn" disabled>Valider</button>
+        </form>
+        <script>
+            const amountInput = document.getElementById('amount-input');
+            const supportCheckbox = document.getElementById('support-wallam');
+            const supportAmount = document.getElementById('wallam-support-amount');
+                    function updateSupportAmount() {
+                        const amount = parseFloat(amountInput.value);
+                        if (!isNaN(amount) && amount > 0) {
+                            if (supportCheckbox.checked) {
+                                const total = amount + amount * 0.10;
+                                supportAmount.value = total.toFixed(0) + ' FCFA';
+                            } else {
+                                supportAmount.value = amount.toFixed(0) + ' FCFA';
+                            }
+                        } else {
+                            supportAmount.value = '';
+                        }
+                    }
+                    amountInput.addEventListener('input', updateSupportAmount);
+                    supportCheckbox.addEventListener('change', updateSupportAmount);
+                            // Gestion du bouton Valider (CGU)
+                            const cguCheckbox = document.getElementById('accept-cgu');
+                            const validateBtn = document.getElementById('validate-btn');
+                            function updateValidateBtn() {
+                                validateBtn.disabled = !cguCheckbox.checked;
+                            }
+                            cguCheckbox.addEventListener('change', updateValidateBtn);
+                            // Initialiser à l'ouverture
+                            updateSupportAmount();
+                            updateValidateBtn();
+        </script>
 </div>
 {% endblock %}

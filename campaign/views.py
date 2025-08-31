@@ -160,7 +160,10 @@ def campaign_donate(request, pk):
 
 
 def campaign_list(request):
-    campaigns = Campaign.objects.filter(status="encours")
+    if request.user.is_authenticated and request.user.is_superuser:
+        campaigns = Campaign.objects.all()
+    else:
+        campaigns = Campaign.objects.filter(status="encours")
     context = {
         "campaigns": campaigns
     }
