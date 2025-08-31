@@ -12,7 +12,7 @@ def homepage(request):
     if request.user.is_authenticated and request.user.is_superuser:
         campaigns = Campaign.objects.filter(status="encours", urgent=False)
     else:
-        campaigns = Campaign.objects.filter(status="encours", urgent=False, visibility="public")
+        campaigns = Campaign.objects.filter(status="encours", urgent=False)
     urgents = Campaign.objects.filter(status="encours", urgent=True)
     donations = ObjectDonation.objects.filter(active=True)
     context = {
