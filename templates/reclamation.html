@@ -1,0 +1,183 @@
+{% extends 'default.html' %}
+{% load static %}
+{% block title %} Wallam | Créer une cagnotte {% endblock %}
+{% block menu %}
+<ul class="nav navbar-nav">
+    <li>
+        <a href="{% url 'index' %}">Accueil</a>
+    </li>
+    <li class="current">
+        <a href="{% url 'create_campaign' %}">Créer une cagnotte</a>
+    </li>
+    <li><a href="{% url 'announce' %}">Créer une annonce</a></li>
+</ul>
+{% endblock %}
+{% block content %}
+<style>
+    /* Harmonisation visuelle vert turquoise et blanc */
+    section.contact-main-content {
+        background: #fff;
+        padding: 40px 0 60px 0;
+        border-radius: 12px;
+        box-shadow: 0 2px 16px 0 rgba(51,156,144,0.08);
+        margin-bottom: 40px;
+    }
+    .form-inner {
+        background: #339c90;
+        border-radius: 12px;
+        padding: 32px 24px 24px 24px;
+        box-shadow: 0 2px 16px 0 rgba(51,156,144,0.10);
+    }
+    .form-inner h3 {
+        color: #fff;
+        font-weight: 700;
+        margin-bottom: 32px;
+        letter-spacing: 1px;
+    }
+    .form-inner form {
+        margin: 0 auto;
+        max-width: 900px;
+    }
+    .form-inner .form-control,
+    .form-inner select.form-control,
+    .form-inner textarea.form-control {
+        background: #fff;
+        color: #339c90;
+        border: 1.5px solid #339c90;
+        border-radius: 6px !important;
+        margin-bottom: 18px;
+        font-size: 16px;
+        box-shadow: none;
+        transition: border 0.2s;
+    }
+    .form-inner .form-control:focus,
+    .form-inner select.form-control:focus,
+    .form-inner textarea.form-control:focus {
+        border: 2px solid #28786b;
+        outline: none;
+    }
+    .form-inner textarea.form-control {
+        min-height: 90px;
+        resize: vertical;
+    }
+    .form-inner .form-check-label {
+        color: #fff;
+        font-size: 15px;
+        margin-left: 6px;
+    }
+    .form-inner .form-check-input {
+        accent-color: #339c90;
+        margin-right: 8px;
+    }
+    .form-inner button,
+    .form-inner .theme-btn {
+        background: #fff;
+        color: #339c90;
+        border: 2px solid #339c90;
+        border-radius: 6px;
+        font-weight: 700;
+        font-size: 18px;
+        padding: 10px 36px;
+        margin-top: 12px;
+        transition: background 0.2s, color 0.2s;
+        box-shadow: none;
+    }
+    .form-inner button:hover,
+    .form-inner .theme-btn:hover {
+        background: #339c90;
+        color: #fff;
+        border: 2px solid #fff;
+    }
+    .form-inner input[type="file"] {
+        padding: 6px 0;
+        background: #fff;
+        color: #339c90;
+        border: none;
+    }
+    .form-inner select.form-control {
+        cursor: pointer;
+    }
+    .form-inner ::placeholder {
+        color: #b2dfd7;
+        opacity: 1;
+    }
+    @media (max-width: 767px) {
+        .form-inner { padding: 16px 4px; }
+        .form-inner form { max-width: 100%; }
+    }
+</style>
+{% if user.is_authenticated %}
+<!-- start reclamation-main-content -->
+<section class="contact-main-content section-padding">
+    <div class="container">
+        <div class="row contact-info"></div>
+    </div>
+    <div class="row">
+        <div class="col col-xs-12">
+            <div class="contact-form">
+                <div class="container">
+                    <div class="row wow bounceInUp">
+                        <div class="col col-md-10 col-md-offset-1 form-inner">
+                            <h3 style="text-align: center; margin:2%;">Soumettre une réclamation</h3>
+                            <form action="{% url 'reclamation' %}" class="form row" method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="col col-md-6">
+                                    <input class="form-control" type="text" name="nom" placeholder="Votre nom" required style="padding:1%; margin:1%; border-radius:5px !important;">
+                                </div>
+                                <div class="col col-md-6">
+                                    <input class="form-control" type="email" name="email" placeholder="Votre email" required style="padding:1%; margin:1%; border-radius:5px !important;">
+                                </div>
+                                <div class="col col-md-6">
+                                    <input class="form-control" type="text" name="telephone" placeholder="Votre numéro de téléphone" required style="padding:1%; margin:1%; border-radius:5px !important;">
+                                </div>
+                                <div class="col col-md-6">
+                                    <input class="form-control" type="url" name="url_cagnotte" placeholder="URL de la cagnotte concernée" required style="padding:1%; margin:1%; border-radius:5px !important;">
+                                </div>
+                                <div class="col col-md-12">
+                                    <input class="form-control" type="text" name="connaissance_organisateur" placeholder="Comment avez-vous connu l'organisateur de la cagnotte ?" required style="padding:1%; margin:1%; border-radius:5px !important;">
+                                </div>
+                                <div class="col col-md-12">
+                                    <input class="form-control" type="text" name="inquietude" placeholder="Pouvez-vous indiquer ce qui vous inquiète ?" required style="padding:1%; margin:1%; border-radius:5px !important;">
+                                </div>
+                                <div class="col col-md-12">
+                                    <textarea class="form-control" name="description" placeholder="Décrivez votre réclamation" required style="padding:1%; margin:1%; border-radius:5px !important;"></textarea>
+                                </div>
+                                <div class="col col-md-12">
+                                    <input class="form-control" type="file" name="piece_jointe" style="padding:1%; margin:1%; border-radius:5px !important;">
+                                    <small style="color:#fff;">(Optionnel) Joindre une pièce justificative</small>
+                                </div>
+                                <div class="col col-md-12">
+                                    <div class="form-check" style="margin-top:8px;">
+                                        <input class="form-check-input" type="checkbox" name="certif_exactitude" id="certif_exactitude" required style="margin:1%">
+                                        <label class="form-check-label" for="certif_exactitude">Je certifie que les renseignements fournis sont exacts et complets</label>
+                                    </div>
+                                </div>
+                                <div class="col col-md-12" style="margin-top: 10px;">
+                                    <div style="background: #eaf7f5; color: #28786b; border-left: 4px solid #339c90; border-radius: 6px; padding: 10px 16px; font-size: 1.05em; margin-bottom: 12px;">
+                                        <i class="fa fa-info-circle" aria-hidden="true" style="margin-right: 6px;"></i>
+                                        Wallam utilisera les informations données uniquement à des fins de vérification
+                                    </div>
+                                </div>
+                                <div class="col col-md-12" style="text-align: right">
+                                    <button type="submit" class="bnt theme-btn">Envoyer la réclamation</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end contact-main-content -->
+{% else %}
+<section class="contact-main-content section-padding">
+    <div class="container">
+        <div class="row contact-info">
+            <h2>Vous devez avoir un compte Association ou Particulier afin de pouvoir creer une cagnotte</h2>
+            <a href="{% url 'register' %}">Cliquez ici pour créer un compte</a>
+        </div> <!-- end contact info -->
+    </div> <!-- end container -->
+</section>
+{% endif %}
+{% endblock %}

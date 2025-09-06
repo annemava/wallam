@@ -263,7 +263,7 @@
 
             <div class="col col-md-6 col-md-offset-1 col-sm-7">
                 <div class="cta-details wow fadeInRightSlow">
-                    <h2>Rejoignez la communauté de <span>cagnotte</span> WALLAM.</h2>
+                    <h2>Rejoignez la communauté WALLAM.</h2>
                     <p>Le lancement d’une collecte de fonds sur wallam est 100% gratuit.
                         Wallam vous donne les moyens nécessaires pour réunir les fonds dont
                         vous avez besoins en toute sécurité.
@@ -331,7 +331,7 @@
                     </ul>
                 </div>
                 <div class="text">
-                    <p style="text-align: justify;">{{ campaign.description|truncatechars:100 }}</p>
+                    <p style="text-align: justify;">{{ campaign.description|truncatechars:75 }}</p>
                     <a href="{% url 'campaign_donate' pk=campaign.id %}" class="btn theme-btn">Faire un Don</a>
                 </div>
             </div>
