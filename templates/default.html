@@ -172,15 +172,28 @@
                         <div class="widget contact-widget">
                             <h3>Contact</h3>
                             <div>
-                                <form action="#" class="form">
+                                {% if messages %}
                                     <div>
-                                        <input type="text" class="form-control" placeholder="Entrez votre nom" required>
+                                        {% for message in messages %}
+                                            <div style="margin-bottom:8px; border-radius:6px; padding:10px; text-align:center;
+                                                {% if message.tags == 'success' %}background:#339c90; color:#fff;
+                                                {% elif message.tags == 'error' %}background:#e74c3c; color:#fff;
+                                                {% endif %}">
+                                                {{ message }}
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                                <form action="{% url 'contact' %}" class="form" method="post">
+                                    {% csrf_token %}
+                                    <div>
+                                        <input type="text" class="form-control" name="nom" placeholder="Entrez votre nom" required>
                                     </div>
                                     <div>
-                                        <input type="email" class="form-control" placeholder="Entrez votre email" required>
+                                        <input type="email" class="form-control" name="email" placeholder="Entrez votre email" required>
                                     </div>
                                     <div>
-                                        <textarea placeholder="Écrivez votre message"></textarea>
+                                        <textarea name="message" placeholder="Écrivez votre message" required></textarea>
                                     </div>
                                     <div>
                                         <button class="btn theme-btn" type="submit">Envoyer</button>

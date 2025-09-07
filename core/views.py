@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .models import CustomUser, Association, Particulier
+from .models import CustomUser, Association, Particulier, Contact, Reclamation
 from campaign.models import Campaign
 from donation.models import ObjectDonation
 
@@ -155,3 +155,52 @@ def campaing_donation_list(request):
         "campaigns": campaigns
     }
     return render(request, 'campaing_announce.html', context)
+
+
+def contact_view(request):
+    if request.method == "POST":
+        nom = request.POST.get("nom")
+        email = request.POST.get("email")
+        message = request.POST.get("message")
+        # Validation simple
+        if nom and email and message:
+            # Sauvegarde dans le modèle Contact
+            Contact.objects.create(nom_complet=nom, email=email, description=message)
+            messages.success(request, "Votre message a bien été envoyé !")
+            return redirect(request.path)
+        else:
+            messages.error(request, "Veuillez remplir tous les champs.")
+    return render(request, "default.html")
+
+
+def reclamation_view(request):
+    if request.method == "POST":
+        nom = request.POST.get("nom")
+        email = request.POST.get("email")
+        telephone = request.POST.get("telephone")
+        url_cagnotte = request.POST.get("url_cagnotte")
+        connaissance_organisateur = request.POST.get("connaissance_organisateur")
+        inquietude = request.POST.get("inquietude")
+        description = request.POST.get("description")
+        certif_exactitude = request.POST.get("certif_exactitude")
+        piece_jointe = request.FILES.get("piece_jointe")
+
+        # Validation simple
+        if not all([nom, email, telephone, url_cagnotte, connaissance_organisateur, inquietude, description, certif_exactitude]):
+            messages.error(request, "Veuillez remplir tous les champs obligatoires et certifier l'exactitude des informations.")
+        else:
+            reclamation = Reclamation(
+                nom=nom,
+                email=email,
+                telephone=telephone,
+                url_cagnotte=url_cagnotte,
+                connaissance_organisateur=connaissance_organisateur,
+                inquietude=inquietude,
+                description=description,
+                certif_exactitude=True if certif_exactitude else False,
+                piece_jointe=piece_jointe
+            )
+            reclamation.save()
+            messages.success(request, "Votre réclamation a bien été envoyée. Merci pour votre vigilance !")
+            return redirect(request.path)
+    return render(request, "reclamation.html")

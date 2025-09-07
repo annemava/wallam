@@ -47,3 +47,27 @@ class Particulier(Personne):
 
     def __str__(self):
         return self.user.email
+
+
+class Contact(models.Model):
+    nom_complet = models.CharField(max_length=255)
+    email = models.EmailField(max_length=250, null=True, blank=True)
+    description = models.TextField(blank=True, null=True)
+
+    def __str__(self):
+        return self.nom_complet
+
+class Reclamation(models.Model):
+    nom = models.CharField(max_length=100)
+    email = models.EmailField()
+    telephone = models.CharField(max_length=30)
+    url_cagnotte = models.URLField()
+    connaissance_organisateur = models.CharField(max_length=255)
+    inquietude = models.CharField(max_length=255)
+    description = models.TextField()
+    piece_jointe = models.FileField(upload_to='reclamations/', blank=True, null=True)
+    certif_exactitude = models.BooleanField(default=False)
+    date_soumission = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Réclamation de {self.nom} ({self.email})"
