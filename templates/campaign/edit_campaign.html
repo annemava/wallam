@@ -107,7 +107,16 @@
                 <input type="number" step="0.01" name="goal" value="{{ campaign.goal }}" placeholder="Objectif (montant)">
             </div>
             <div class="col-md-6">
+                <textarea name="description" placeholder="Description">{{ campaign.description }}</textarea>
+            </div>
+            <div class="col-md-6">
+                <textarea name="reward" placeholder="Récompense">{{ campaign.reward }}</textarea>
+            </div>
+            <div class="col-md-6">
                 <input type="text" name="code" value="{{ campaign.code }}" placeholder="Code de la campagne">
+            </div>
+            <div class="col-md-6">
+                <input type="number" name="duration" value="{{ campaign.duration }}" placeholder="Durée (jours)">
             </div>
             <div class="col-md-6">
                 <select name="category" required>
@@ -116,15 +125,6 @@
                     <option value="{{ categorie.pk }}">{{ categorie.name }}</option>
                     {% endfor %}
                 </select>
-            </div>
-            <div class="col-md-6">
-                <textarea name="description" placeholder="Description">{{ campaign.description }}</textarea>
-            </div>
-            <div class="col-md-6">
-                <textarea name="reward" placeholder="Récompense">{{ campaign.reward }}</textarea>
-            </div>
-            <div class="col-md-6">
-                <input type="number" name="duration" value="{{ campaign.duration }}" placeholder="Durée (jours)">
             </div>
             <div class="col-md-6">
                 <input type="file" name="uploaded_files">

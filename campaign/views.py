@@ -1,3 +1,6 @@
+from PIL import Image
+from django.core.files.base import ContentFile
+from io import BytesIO
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -30,6 +33,19 @@ def create_campaign_view(request):
 
         if category_id:
             category = Category.objects.get(pk=int(category_id))
+
+        # Traitement de l'image si présente
+        if uploaded_files:
+            try:
+                image = Image.open(uploaded_files)
+                image = image.convert("RGB")
+                image = image.resize((535, 300), Image.Resampling.LANCZOS)
+                buffer = BytesIO()
+                image.save(buffer, format='JPEG')
+                uploaded_files = ContentFile(buffer.getvalue(), name=uploaded_files.name)
+            except Exception as e:
+                messages.error(request, f"Erreur lors du traitement de l'image : {e}")
+                return redirect("create_campaign")
 
         try:
             # Créer la campagne
@@ -84,6 +100,18 @@ def edit_campaign_view(request, pk):
         if not terms_accepted:
             messages.error(request, "Vous devez accepter les conditions générales d'utilisation.")
             return redirect("edit_campaign", pk=pk)
+        
+        if uploaded_files:
+            try:
+                image = Image.open(uploaded_files)
+                image = image.convert("RGB")
+                image = image.resize((535, 300), Image.Resampling.LANCZOS)
+                buffer = BytesIO()
+                image.save(buffer, format='JPEG')
+                uploaded_files = ContentFile(buffer.getvalue(), name=uploaded_files.name)
+            except Exception as e:
+                messages.error(request, f"Erreur lors du traitement de l'image : {e}")
+                return redirect("create_campaign")
 
         try:
             # Mettre à jour la campagne
@@ -125,12 +153,6 @@ def campaign_detail_view(request, pk):
         "campaign": campaign
     }
     return render(request, "campaign/detail_campaign.html", context)
-
-
-"""from datetime import timedelta
-
-expiration_date = campaign.created_at + timedelta(days=campaign.duration)
-is_expired = expiration_date < timezone.now()"""
 
 
 def campaign_donate(request, pk):

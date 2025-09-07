@@ -124,7 +124,19 @@
                 <div class="row  wow bounceInUp">
                     <div class="col col-md-10 col-md-offset-1 form-inner">
                         <h3 style="text-align: center; margin:2%;">Créer une campagne de levée de fonds</h3>
-                        <form action="{% url 'create_campaign' %}" class="form row" method="post">
+                        {% if messages %}
+                            <div>
+                                {% for message in messages %}
+                                    <div style="margin-bottom:8px; border-radius:6px; padding:10px; text-align:center;
+                                        {% if message.tags == 'success' %}background:#339c90; color:#fff;
+                                        {% elif message.tags == 'error' %}background:#e74c3c; color:#fff;
+                                        {% endif %}">
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                        <form action="{% url 'create_campaign' %}" class="form row" method="post" enctype="multipart/form-data">
                             {% csrf_token %}
                             <div class="col col-md-6">
                                 <input class="form-control" type="text" name="title" placeholder="Titre de la campagne" required style="padding:1%; margin:1%; border-radius:5px !important;">

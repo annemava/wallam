@@ -117,7 +117,16 @@
                     <input type="number" step="0.01" name="goal" value="{{ campaign.goal }}" disabled placeholder="Objectif (montant)">
                 </div>
                 <div class="col-md-6">
+                    <textarea name="description" disabled placeholder="Description">{{ campaign.description }}</textarea>
+                </div>
+                <div class="col-md-6">
+                    <textarea name="reward" disabled placeholder="Récompense">{{ campaign.reward }}</textarea>
+                </div>
+                <div class="col-md-6">
                     <input type="text" name="code" value="{{ campaign.code }}" disabled placeholder="Code de la campagne">
+                </div>
+                <div class="col-md-6">
+                    <input type="number" name="duration" value="{{ campaign.duration }}" disabled placeholder="Durée (jours)">
                 </div>
                 <div class="col-md-6">
                     <select name="category" disabled>
@@ -125,16 +134,11 @@
                     </select>
                 </div>
                 <div class="col-md-6">
-                    <textarea name="description" disabled placeholder="Description">{{ campaign.description }}</textarea>
-                </div>
-                <div class="col-md-6">
-                    <textarea name="reward" disabled placeholder="Récompense">{{ campaign.reward }}</textarea>
-                </div>
-                <div class="col-md-6">
-                    <input type="number" name="duration" value="{{ campaign.duration }}" disabled placeholder="Durée (jours)">
-                </div>
-                <div class="col-md-6">
-                    <input type="file" name="uploaded_files" disabled>
+                    {% if campaign.uploaded_files %}
+                        <div style="margin: 20px 0;">
+                            <img src="{{ campaign.uploaded_files.url }}" alt="Image de la campagne" style="max-width:100%; border-radius:10px;">
+                        </div>
+                    {% endif %}
                 </div>
                 <div class="col-md-12">
                     <select name="visibility" disabled>
