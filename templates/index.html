@@ -6,10 +6,21 @@
     <li class="current">
         <a href="{% url 'index' %}">Accueil</a>
     </li>
-    <li class="">
+    <li>
         <a href="{% url 'create_campaign' %}">Créer une cagnotte</a>
     </li>
-    <li><a href="{% url 'announce' %}">Créer une annonce</a></li>
+    <li>
+        <a href="{% url 'announce' %}">Créer une annonce</a>
+    </li>
+</ul>
+<ul class="nav navbar-nav navbar-right" style="margin-right: 0;">
+    {% if user.is_authenticated %}
+    <li>
+        <a href="{% url 'conversations_list' %}" title="Messagerie" style="padding-top:18px;">
+            <i class="fa fa-comments" style="font-size: 2.7em; color: #fff;"></i>
+        </a>
+    </li>
+    {% endif %}
 </ul>
 {% endblock %}
 {% block content %}
@@ -370,25 +381,27 @@
                     <div class="grid">
                         <div class="box">
                             <div class="img-holder">
-                            {% if donation.category.title == 'Objet de construction' %}
-                            <img src="{% static 'images/shop/construction.jpg' %}" alt class="img img-responsive">
-                            {% elif donation.category.title == 'Matériels informatiques' %}
-                                <img src="{% static 'images/shop/informatique.jpg' %}" alt class="img img-responsive">
-                            {% elif donation.category.title == 'Accessoires de bureau' %}
-                            <img src="{% static 'images/shop/mat_bureau.jpg' %}" alt class="img img-responsive">
-                            {% elif donation.category.title == 'Meubles et équipements' %}
-                                <img src="{% static 'images/shop/meubles.jpg' %}" alt class="img img-responsive">
-                            {% elif donation.category.title == 'Produit de conserve' %}
-                                <img src="{% static 'images/shop/conserve.jpg' %}" alt class="img img-responsive">
-                            {% elif donation.category.title == 'Tubercules' %}
-                                <img src="{% static 'images/shop/tubercules.jpg' %}" alt class="img img-responsive">
-                            {% elif donation.category.title == 'Fruits et légumes' %}
-                                <img src="{% static 'images/shop/fruits.jpg' %}" alt class="img img-responsive">
-                            {% elif donation.category.title == 'Produits laitiers' %}
-                                <img src="{% static 'images/shop/laitiers.jpg' %}" alt class="img img-responsive">
-                            {% else %}
-                            <img src="{% static 'images/shop/img-1.jpg' %}" alt class="img img-responsive">
-                            {% endif %}
+                                {% if donation.image1 %}
+                                <img src="{{ donation.image1.url }}" alt class="img img-responsive">
+                                {% elif donation.category.title == 'Objet de construction' %}
+                                <img src="{% static 'images/shop/construction.jpg' %}" alt class="img img-responsive">
+                                {% elif donation.category.title == 'Matériels informatiques' %}
+                                    <img src="{% static 'images/shop/informatique.jpg' %}" alt class="img img-responsive">
+                                {% elif donation.category.title == 'Accessoires de bureau' %}
+                                <img src="{% static 'images/shop/mat_bureau.jpg' %}" alt class="img img-responsive">
+                                {% elif donation.category.title == 'Meubles et équipements' %}
+                                    <img src="{% static 'images/shop/meubles.jpg' %}" alt class="img img-responsive">
+                                {% elif donation.category.title == 'Produit de conserve' %}
+                                    <img src="{% static 'images/shop/conserve.jpg' %}" alt class="img img-responsive">
+                                {% elif donation.category.title == 'Tubercules' %}
+                                    <img src="{% static 'images/shop/tubercules.jpg' %}" alt class="img img-responsive">
+                                {% elif donation.category.title == 'Fruits et légumes' %}
+                                    <img src="{% static 'images/shop/fruits.jpg' %}" alt class="img img-responsive">
+                                {% elif donation.category.title == 'Produits laitiers' %}
+                                    <img src="{% static 'images/shop/laitiers.jpg' %}" alt class="img img-responsive">
+                                {% else %}
+                                <img src="{% static 'images/shop/img-1.jpg' %}" alt class="img img-responsive">
+                                {% endif %}
                             </div>
                             <div class="details" style="background-color: #339c90 !important;">
                                 <h3><a href="{% url 'donation_detail' pk=donation.pk %}">{{ donation.title }}</a></h3>

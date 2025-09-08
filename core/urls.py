@@ -17,4 +17,7 @@ urlpatterns = [
     path('reclamation/', reclamation_view, name='reclamation'),
     path('contact/', contact_view, name='contact'),
     path('404', ErrorPageView.as_view(), name='404'),
+    path("conversations/", conversations_list, name="conversations_list"),
+    path("conversation/<int:conversation_id>/", conversation_detail, name="conversation_detail"),
+    path("conversation/start/<int:pk>/", start_conversation, name="start_conversation"),
 ]

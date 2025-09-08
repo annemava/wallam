@@ -4,13 +4,24 @@
 {% block title %} Wallam | Comment ça marche {% endblock %}
 {% block menu %}
 <ul class="nav navbar-nav">
-        <li>
-                <a href="{% url 'index' %}">Accueil</a>
-        </li>
-        <li class="current">
-                <a href="{% url 'create_campaign' %}">Créer une cagnotte</a>
-        </li>
-        <li><a href="{% url 'announce' %}">Créer une annonce</a></li>
+    <li class="current">
+        <a href="{% url 'index' %}">Accueil</a>
+    </li>
+    <li>
+        <a href="{% url 'create_campaign' %}">Créer une cagnotte</a>
+    </li>
+    <li>
+        <a href="{% url 'announce' %}">Créer une annonce</a>
+    </li>
+</ul>
+<ul class="nav navbar-nav navbar-right" style="margin-right: 0;">
+    {% if user.is_authenticated %}
+    <li>
+        <a href="{% url 'conversations_list' %}" title="Messagerie" style="padding-top:18px;">
+            <i class="fa fa-comments" style="font-size: 2.7em; color: #fff;"></i>
+        </a>
+    </li>
+    {% endif %}
 </ul>
 {% endblock %}
 {% block content %}

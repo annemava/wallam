@@ -102,25 +102,44 @@
 <div class="donation-details-wrapper">
     <div class="row">
         <div class="col-md-6 donation-details-slider">
-            {% if donation.category.title == 'Objet de construction' %}
-            <img src="{% static 'images/shop/construction.jpg' %}" alt class="img img-responsive">
-            {% elif donation.category.title == 'Matériels informatiques' %}
-                <img src="{% static 'images/shop/informatique.jpg' %}" alt class="img img-responsive">
-            {% elif donation.category.title == 'Accessoires de bureau' %}
-            <img src="{% static 'images/shop/mat_bureau.jpg' %}" alt class="img img-responsive">
-            {% elif donation.category.title == 'Meubles et équipements' %}
-                <img src="{% static 'images/shop/meubles.jpg' %}" alt class="img img-responsive">
-            {% elif donation.category.title == 'Produit de conserve' %}
-                <img src="{% static 'images/shop/conserve.jpg' %}" alt class="img img-responsive">
-            {% elif donation.category.title == 'Tubercules' %}
-                <img src="{% static 'images/shop/tubercules.jpg' %}" alt class="img img-responsive">
-            {% elif donation.category.title == 'Fruits et légumes' %}
-                <img src="{% static 'images/shop/fruits.jpg' %}" alt class="img img-responsive">
-            {% elif donation.category.title == 'Produits laitiers' %}
-                <img src="{% static 'images/shop/laitiers.jpg' %}" alt class="img img-responsive">
-            {% else %}
-            <img src="{% static 'images/shop/img-1.jpg' %}" alt class="img img-responsive">
-            {% endif %}
+            <div id="donation-carousel" style="position:relative;">
+                {% if donation.image1 or donation.image2 or donation.image3 %}
+                    <div class="carousel-inner">
+                        {% if donation.image1 %}
+                            <img src="{{ donation.image1.url }}" alt="Image 1" class="img img-responsive donation-carousel-img" style="display:block;">
+                        {% endif %}
+                        {% if donation.image2 %}
+                            <img src="{{ donation.image2.url }}" alt="Image 2" class="img img-responsive donation-carousel-img" style="display:none;">
+                        {% endif %}
+                        {% if donation.image3 %}
+                            <img src="{{ donation.image3.url }}" alt="Image 3" class="img img-responsive donation-carousel-img" style="display:none;">
+                        {% endif %}
+                    </div>
+                    <button type="button" id="carousel-prev" style="position:absolute;top:45%;left:0;background:rgba(51,156,144,0.7);border:none;color:#fff;font-size:2em;padding:0 10px;border-radius:6px 0 0 6px;z-index:2;">&#8592;</button>
+                    <button type="button" id="carousel-next" style="position:absolute;top:45%;right:0;background:rgba(51,156,144,0.7);border:none;color:#fff;font-size:2em;padding:0 10px;border-radius:0 6px 6px 0;z-index:2;">&#8594;</button>
+                {% else %}
+                    <!-- Images par défaut selon la catégorie -->
+                    {% if donation.category.title == 'Objet de construction' %}
+                        <img src="{% static 'images/shop/construction.jpg' %}" alt class="img img-responsive">
+                    {% elif donation.category.title == 'Matériels informatiques' %}
+                        <img src="{% static 'images/shop/informatique.jpg' %}" alt class="img img-responsive">
+                    {% elif donation.category.title == 'Accessoires de bureau' %}
+                        <img src="{% static 'images/shop/mat_bureau.jpg' %}" alt class="img img-responsive">
+                    {% elif donation.category.title == 'Meubles et équipements' %}
+                        <img src="{% static 'images/shop/meubles.jpg' %}" alt class="img img-responsive">
+                    {% elif donation.category.title == 'Produit de conserve' %}
+                        <img src="{% static 'images/shop/conserve.jpg' %}" alt class="img img-responsive">
+                    {% elif donation.category.title == 'Tubercules' %}
+                        <img src="{% static 'images/shop/tubercules.jpg' %}" alt class="img img-responsive">
+                    {% elif donation.category.title == 'Fruits et légumes' %}
+                        <img src="{% static 'images/shop/fruits.jpg' %}" alt class="img img-responsive">
+                    {% elif donation.category.title == 'Produits laitiers' %}
+                        <img src="{% static 'images/shop/laitiers.jpg' %}" alt class="img img-responsive">
+                    {% else %}
+                        <img src="{% static 'images/shop/img-1.jpg' %}" alt class="img img-responsive">
+                    {% endif %}
+                {% endif %}
+            </div>
         </div>
         <div class="col-md-6">
             <div class="donation-details-section">
@@ -133,9 +152,35 @@
                 </div>
                 <div class="donation-details-expiry">Date d'expiration : {{ donation.expiration_date }}</div>
                 <div style="margin-bottom:1.2em;">{{ donation.description }}</div>
-                <a href="#" class="donation-details-btn">Réserver</a>
+                <a href="{% url 'start_conversation' pk=donation.user.pk %}" class="donation-details-btn">Réserver</a>
             </div>
         </div>
     </div>
 </div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const images = document.querySelectorAll('.donation-carousel-img');
+    if(images.length > 1) {
+        let current = 0;
+        function showImage(idx) {
+            images.forEach((img, i) => img.style.display = (i === idx ? 'block' : 'none'));
+        }
+        document.getElementById('carousel-prev').onclick = function() {
+            current = (current - 1 + images.length) % images.length;
+            showImage(current);
+        };
+        document.getElementById('carousel-next').onclick = function() {
+            current = (current + 1) % images.length;
+            showImage(current);
+        };
+        showImage(0);
+    } else {
+        // Cache les boutons si une seule image
+        let prev = document.getElementById('carousel-prev');
+        let next = document.getElementById('carousel-next');
+        if(prev) prev.style.display = 'none';
+        if(next) next.style.display = 'none';
+    }
+});
+</script>
 {% endblock %}

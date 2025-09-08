@@ -43,6 +43,11 @@ class ObjectDonation(models.Model):
     terms_accepted = models.BooleanField(default=False)
     active = models.BooleanField(default=True)
 
+    # Images
+    image1 = models.ImageField(upload_to='donations/', blank=True, null=True)
+    image2 = models.ImageField(upload_to='donations/', blank=True, null=True)
+    image3 = models.ImageField(upload_to='donations/', blank=True, null=True)
+
     # Métadonnées
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

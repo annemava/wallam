@@ -1,11 +1,11 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import TemplateView
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .models import CustomUser, Association, Particulier, Contact, Reclamation
+from .models import CustomUser, Association, Particulier, Contact, Reclamation, Conversation, Message
 from campaign.models import Campaign
 from donation.models import ObjectDonation
-
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def homepage(request):
@@ -204,3 +204,47 @@ def reclamation_view(request):
             messages.success(request, "Votre réclamation a bien été envoyée. Merci pour votre vigilance !")
             return redirect(request.path)
     return render(request, "reclamation.html")
+
+
+@login_required
+def conversations_list(request):
+    try:
+        particulier = Particulier.objects.get(user=request.user)
+    except Particulier.DoesNotExist:
+        messages.error(request, "Vous devez être un particulier pour accéder à la messagerie.")
+        return redirect("index")
+    conversations = particulier.conversations.all()
+    return render(request, "messagerie/conversations_list.html", {"conversations": conversations})
+
+@login_required
+def conversation_detail(request, conversation_id):
+    try:
+        particulier = Particulier.objects.get(user=request.user)
+    except Particulier.DoesNotExist:
+        messages.error(request, "Vous devez être un particulier pour accéder à la messagerie.")
+        return redirect("index")
+    conversation = get_object_or_404(Conversation, id=conversation_id, participants=particulier)
+    if request.method == "POST":
+        content = request.POST.get("content")
+        if content:
+            Message.objects.create(conversation=conversation, sender=particulier, content=content)
+        return redirect("conversation_detail", conversation_id=conversation.id)
+    messages_list = conversation.messages.all()
+    return render(request, "messagerie/conversation_detail.html", {"conversation": conversation, "messages": messages_list})
+
+@login_required
+def start_conversation(request, pk):
+    # user_id est l'id du CustomUser cible
+    other_user = get_object_or_404(CustomUser, pk=pk)
+    try:
+        me = Particulier.objects.get(user=request.user)
+        other_particulier = Particulier.objects.get(user=other_user)
+    except Particulier.DoesNotExist:
+        messages.error(request, "Impossible de démarrer une conversation : utilisateur non trouvé.")
+        return redirect("conversations_list")
+    # Vérifier si une conversation existe déjà
+    conversation = Conversation.objects.filter(participants=me).filter(participants=other_particulier).first()
+    if not conversation:
+        conversation = Conversation.objects.create()
+        conversation.participants.add(me, other_particulier)
+    return redirect("conversation_detail", conversation_id=conversation.id)

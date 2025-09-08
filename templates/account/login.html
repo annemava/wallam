@@ -11,22 +11,9 @@
         {% csrf_token %}
         <input class="form-control" type="text" name="username" placeholder="Email ou numéro de téléphone" required>
         <input class="form-control" type="password" name="password" placeholder="Mot de passe" required>
-        <div style="margin-bottom: 18px; display: flex; align-items: center; gap: 10px;">
-            <input type="checkbox" id="accept-cgu" name="accept_cgu" style="width: 18px; height: 18px;">
-            <label for="accept-cgu" style="margin:0; color:#28786b; font-weight:600; cursor:pointer;">J'accepte les <a href="{% url 'cgu' %}" target="_blank" style="color:#fff;text-decoration:underline;"> CGU</a></label>
-        </div>
         <div class="form-button">
             <button id="submit" type="submit" class="ibtn">Se connecter</button> <a href="#">Mot de passe oublié ?</a>
         </div>
-                <script>
-                    const cguCheckbox = document.getElementById('accept-cgu');
-                    const submitBtn = document.getElementById('submit');
-                    function updateSubmitBtn() {
-                        submitBtn.disabled = !cguCheckbox.checked;
-                    }
-                    cguCheckbox.addEventListener('change', updateSubmitBtn);
-                    updateSubmitBtn();
-                </script>
         </form>
     <div class="other-links">
         <span>Ou se connecter avec </span><a href="#">Google</a>
