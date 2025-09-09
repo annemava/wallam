@@ -1,0 +1,112 @@
+{% extends 'default.html' %}
+{% load static %}
+{% block title %} Wallam | Messagerie {% endblock %}
+{% block menu %}
+<ul class="nav navbar-nav">
+    <li>
+        <a href="{% url 'index' %}">Accueil</a>
+    </li>
+    <li>
+        <a href="{% url 'create_campaign' %}">Créer une cagnotte</a>
+    </li>
+    <li><a href="{% url 'announce' %}">Créer une annonce</a></li>
+</ul>
+{% endblock %}
+{% block content %}
+<style>
+.conversations-list-wrapper {
+    max-width: 700px;
+    margin: 36px auto 0 auto;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 2px 16px rgba(51,156,144,0.10);
+    padding: 0 0 24px 0;
+}
+.conversations-header {
+    background: #339c90;
+    color: #fff;
+    border-radius: 14px 14px 0 0;
+    padding: 22px 32px;
+    font-size: 1.3em;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+.conversations-list {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 0;
+}
+.conversation-item {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 18px 32px;
+    border-bottom: 1px solid #eaf7f5;
+    transition: background 0.15s;
+}
+.conversation-item:last-child {
+    border-bottom: none;
+}
+.conversation-item:hover {
+    background: #eaf7f5;
+}
+.conversation-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #339c90;
+    background: #f8fefd;
+}
+.conversation-link {
+    flex: 1;
+    text-decoration: none;
+    color: #28786b;
+    font-size: 1.08em;
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+}
+.conversation-link span {
+    font-size: 0.98em;
+    color: #888;
+    font-weight: 400;
+}
+@media (max-width: 700px) {
+    .conversations-list-wrapper { max-width: 98vw; }
+    .conversations-header, .conversation-item { padding-left: 10px; padding-right: 10px; }
+}
+</style>
+
+<div class="conversations-list-wrapper">
+    <div class="conversations-header">
+        <i class="fa fa-envelope" style="margin-right:8px;"></i> Mes Conversations
+    </div>
+    <ul class="conversations-list">
+      {% for conv in conversations %}
+        {% comment %}
+        On affiche l'autre participant (différent de l'utilisateur connecté)
+        {% endcomment %}
+        {% for p in conv.participants.all %}
+          {% if p.user.id != request.user.id %}
+            <li class="conversation-item">
+                {% if p.avatar %}
+                    <img src="{{ p.avatar.url }}" alt="Avatar" class="conversation-avatar">
+                {% else %}
+                    <img src="{% static 'images/default-avatar.png' %}" alt="Avatar" class="conversation-avatar">
+                {% endif %}
+                <a href="{% url 'conversation_detail' conv.id %}" class="conversation-link">
+                    {{ p.user.get_full_name|default:p.user.email }}
+                    <span>
+                        Conversation #{{ conv.id }}
+                    </span>
+                </a>
+            </li>
+          {% endif %}
+        {% endfor %}
+      {% empty %}
+        <li style="padding:32px; color:#888; text-align:center;">Aucune conversation pour le moment.</li>
+      {% endfor %}
+    </ul>
+</div>
+{% endblock %}
