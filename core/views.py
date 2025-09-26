@@ -6,6 +6,10 @@ from .models import CustomUser, Association, Particulier, Contact, Reclamation, 
 from campaign.models import Campaign
 from donation.models import ObjectDonation
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.tokens import default_token_generator
+from django.contrib.auth import get_user_model
+from django.core.mail import send_mail
+from django.urls import reverse
 
 # Create your views here.
 def homepage(request):
@@ -162,15 +166,18 @@ def contact_view(request):
         nom = request.POST.get("nom")
         email = request.POST.get("email")
         message = request.POST.get("message")
+        next_url = request.POST.get("next") or request.path
         # Validation simple
         if nom and email and message:
             # Sauvegarde dans le modèle Contact
             Contact.objects.create(nom_complet=nom, email=email, description=message)
             messages.success(request, "Votre message a bien été envoyé !")
-            return redirect(request.path)
+            print("request.path ", next_url)
+            return redirect(next_url)
         else:
             messages.error(request, "Veuillez remplir tous les champs.")
-    return render(request, "default.html")
+            return redirect(next_url)
+    return redirect("index")
 
 
 def reclamation_view(request):
@@ -202,8 +209,8 @@ def reclamation_view(request):
             )
             reclamation.save()
             messages.success(request, "Votre réclamation a bien été envoyée. Merci pour votre vigilance !")
-            return redirect(request.path)
-    return render(request, "reclamation.html")
+            return redirect("index")
+    return redirect("index")
 
 
 @login_required
@@ -211,7 +218,6 @@ def conversations_list(request):
     try:
         particulier = Particulier.objects.get(user=request.user)
     except Particulier.DoesNotExist:
-        messages.error(request, "Vous devez être un particulier pour accéder à la messagerie.")
         return redirect("index")
     conversations = particulier.conversations.all()
     return render(request, "messagerie/conversations_list.html", {"conversations": conversations})
@@ -221,7 +227,6 @@ def conversation_detail(request, conversation_id):
     try:
         particulier = Particulier.objects.get(user=request.user)
     except Particulier.DoesNotExist:
-        messages.error(request, "Vous devez être un particulier pour accéder à la messagerie.")
         return redirect("index")
     conversation = get_object_or_404(Conversation, id=conversation_id, participants=particulier)
     if request.method == "POST":
@@ -232,15 +237,16 @@ def conversation_detail(request, conversation_id):
     messages_list = conversation.messages.all()
     return render(request, "messagerie/conversation_detail.html", {"conversation": conversation, "messages": messages_list})
 
-@login_required
+
 def start_conversation(request, pk):
+    if not request.user.is_authenticated:
+        return redirect("login")
     # user_id est l'id du CustomUser cible
     other_user = get_object_or_404(CustomUser, pk=pk)
     try:
         me = Particulier.objects.get(user=request.user)
         other_particulier = Particulier.objects.get(user=other_user)
     except Particulier.DoesNotExist:
-        messages.error(request, "Impossible de démarrer une conversation : utilisateur non trouvé.")
         return redirect("conversations_list")
     # Vérifier si une conversation existe déjà
     conversation = Conversation.objects.filter(participants=me).filter(participants=other_particulier).first()
@@ -248,3 +254,42 @@ def start_conversation(request, pk):
         conversation = Conversation.objects.create()
         conversation.participants.add(me, other_particulier)
     return redirect("conversation_detail", conversation_id=conversation.id)
+
+def password_reset_view(request):
+    if request.method == "POST":
+        email = request.POST.get("email")
+        User = get_user_model()
+        try:
+            user = User.objects.get(email=email)
+            token = default_token_generator.make_token(user)
+            reset_url = request.build_absolute_uri(
+                reverse('password_reset_confirm', args=[user.pk, token])
+            )
+            send_mail(
+                "Réinitialisation de votre mot de passe",
+                f"Pour réinitialiser votre mot de passe, cliquez sur ce lien : {reset_url}",
+                "no-reply@wallam.com",
+                [email],
+            )
+            messages.success(request, "Un email de réinitialisation a été envoyé si l'adresse existe.")
+        except User.DoesNotExist:
+            messages.error(request, "Aucun utilisateur avec cet email.")
+    return render(request, "account/forgot.html")
+
+def password_reset_confirm_view(request, uid, token):
+    User = get_user_model()
+    try:
+        user = User.objects.get(pk=uid)
+    except User.DoesNotExist:
+        user = None
+    if user and default_token_generator.check_token(user, token):
+        if request.method == "POST":
+            new_password = request.POST.get("new_password")
+            user.set_password(new_password)
+            user.save()
+            messages.success(request, "Mot de passe réinitialisé avec succès.")
+            return redirect("login")
+        return render(request, "account/reset_confirm.html", {"valid": True})
+    else:
+        messages.error(request, "Lien invalide ou expiré.")
+        return render(request, "account/reset_confirm.html", {"valid": False})

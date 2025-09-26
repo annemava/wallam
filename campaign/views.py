@@ -1,6 +1,7 @@
 from PIL import Image
 from django.core.files.base import ContentFile
 from io import BytesIO
+from django.urls import reverse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -64,6 +65,11 @@ def create_campaign_view(request):
                 visibility=visibility,
                 terms_accepted=terms_accepted,
             )
+            # Construit l'URL absolue avec le DNS
+            campaign_url = request.build_absolute_uri(reverse("campaign_detail", kwargs={"pk": campaign.pk}))
+            if visibility == "private":
+                campaign.share_link = campaign_url
+                campaign.save(update_fields=["share_link"])
             return redirect("campaign_detail", pk=campaign.pk)  # Redirige vers la page de détail
         except Exception as e:
             print("erreur ", str(e))
@@ -146,13 +152,13 @@ def edit_campaign_view(request, pk):
     }
     return render(request, "campaign/edit_campaign.html", context)
 
-@login_required
 def campaign_detail_view(request, pk):
     campaign = get_object_or_404(Campaign, pk=pk)
     context = {
         "campaign": campaign
     }
     return render(request, "campaign/detail_campaign.html", context)
+
 
 
 def campaign_donate(request, pk):

@@ -19,7 +19,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from core import urls as core_url
-from core.views import login_view, register_view, logout_view
+from core.views import login_view, register_view, logout_view, password_reset_view, password_reset_confirm_view
 from campaign import urls as campaign_url
 from donation import urls as announce_url
 
@@ -31,6 +31,8 @@ urlpatterns = [
     path('connexion', login_view, name='login'),
     path('deconnexion', logout_view, name='logout'),
     path('enregistrement', register_view, name='register'),
+    path('mot-de-passe-oublie/', password_reset_view, name='password_reset'),
+    path('mot-de-passe-reset/<int:uid>/<str:token>/', password_reset_confirm_view, name='password_reset_confirm'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

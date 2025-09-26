@@ -186,6 +186,7 @@
                                 {% endif %}
                                 <form action="{% url 'contact' %}" class="form" method="post">
                                     {% csrf_token %}
+                                    <input type="hidden" name="next" value="{{ request.get_full_path }}">
                                     <div>
                                         <input type="text" class="form-control" name="nom" placeholder="Entrez votre nom" required>
                                     </div>

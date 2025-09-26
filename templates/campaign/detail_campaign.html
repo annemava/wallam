@@ -102,6 +102,20 @@
         </div>
     {% else %}
         <div class="detail-campaign-title">Visualisation de la campagne de levée de fonds</div>
+        {% if request.user == campaign.create_by %}
+        {% if campaign.visibility == "private" and campaign.share_link %}
+            <div style="margin: 24px 0; text-align: center;">
+                <span style="color: #28786b; font-weight: 500;">Lien privé à partager :</span>
+                <input type="text"
+                       value="{{ campaign.share_link }}"
+                       readonly
+                       onclick="this.select();document.execCommand('copy');"
+                       style="width:90%;max-width:500px;margin:12px auto 0 auto;display:block;padding:10px 14px;border-radius:7px;border:1.5px solid #339c90;font-size:1.08em;background:#f6fcfb;color:#222;text-align:center;cursor:pointer;"
+                       title="Cliquez pour copier le lien">
+                <small style="color:#339c90;">Cliquez sur le champ pour copier le lien</small>
+            </div>
+        {% endif %}
+        {% endif %}
         <form action="#" class="detail-campaign-form" method="post">
             <div class="row">
                 <div class="col-md-6">
@@ -140,20 +154,19 @@
                         </div>
                     {% endif %}
                 </div>
+                {% if request.user == campaign.create_by %}
                 <div class="col-md-12">
                     <select name="visibility" disabled>
                         <option value="{{ campaign.visibility }}">{{ campaign.visibility }}</option>
                     </select>
                 </div>
-                <div class="col-md-12">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="terms_accepted" id="terms" {% if campaign.terms_accepted %} checked {% endif %} disabled>
-                        <label class="form-check-label" for="terms">J'accepte les CGU</label>
-                    </div>
-                </div>
+                {% endif %}
+                
                 <div class="col-md-12" style="text-align: right; margin-top:1% !important;">
-                    <a href="#" class="detail-campaign-btn-green">Liste des campagnes</a>
+                    <a href="{% url 'campaign_list' %}" class="detail-campaign-btn-green">Liste des campagnes</a>
+                    {% if request.user == campaign.create_by %}
                     <a href="{% url 'edit_campaign' pk=campaign.pk %}" class="detail-campaign-btn">Modifier</a>
+                    {% endif %}
                 </div>
             </div>
         </form>

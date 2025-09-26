@@ -1,59 +1,89 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wallan - Mot de passe oublié</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'account/css/bootstrap.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'account/css/fontawesome-all.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'account/css/iofrm-style.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'account/css/iofrm-theme29.css' %}">
-</head>
-<body>
-    <div class="form-body without-side">
-        <div class="website-logo">
-            <a href="{% url 'accueil' %}">
-                <div class="logo">
-                    <img class="logo-size" src="{% static 'wallam/images/logo.jpg' %}" alt="">
-                </div>
-            </a>
-        </div>
-        <div class="iofrm-layout">
-            <div class="img-holder">
-                <div class="bg"></div>
-                <div class="info-holder">
-                    <img src="{% static 'images/graphic3.svg' %}" alt="">
-                </div>
-            </div>
-            <div class="form-holder">
-                <div class="form-content">
-                    <div class="form-items">
-                        <h3>Password Reset</h3>
-                        <p>To reset your password, enter the email address you use to sign in to iofrm</p>
-                        <form>
-                            <input class="form-control" type="text" name="username" placeholder="E-mail Address" required>
-                            <div class="form-button full-width">
-                                <button id="submit" type="submit" class="ibtn btn-forget">Send Reset Link</button>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="form-sent">
-                        <div class="tick-holder">
-                            <div class="tick-icon"></div>
-                        </div>
-                        <h3>Password link sent</h3>
-                        <p>Please check your inbox iofrm@iofrmtemplate.io</p>
-                        <div class="info-holder">
-                            <span>Unsure if that email address was correct?</span> <a href="#">We can help</a>.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+{% extends 'account/default.html' %}
+{% load static %}
+{% block connexion %}
+<style>
+.reset-wrapper {
+    max-width: 420px;
+    margin: 48px auto;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 16px rgba(51,156,144,0.10);
+    padding: 32px 28px 24px 28px;
+}
+.reset-title {
+    color: #339c90;
+    font-size: 1.6em;
+    font-weight: 700;
+    margin-bottom: 12px;
+    text-align: center;
+}
+.reset-desc {
+    color: #28786b;
+    font-size: 1.08em;
+    margin-bottom: 22px;
+    text-align: center;
+}
+.reset-form input[type="email"] {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1.5px solid #339c90;
+    margin-bottom: 18px;
+    font-size: 1em;
+    background: #eaf7f5;
+    color: #28786b;
+}
+.reset-form button {
+    width: 100%;
+    background: #339c90;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 0;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.reset-form button:hover {
+    background: #28786b;
+}
+.reset-message {
+    margin-bottom: 18px;
+    border-radius: 6px;
+    padding: 10px;
+    text-align: center;
+    font-weight: 500;
+}
+.reset-message.success {
+    background: #339c90;
+    color: #fff;
+}
+.reset-message.error {
+    background: #e74c3c;
+    color: #fff;
+}
+@media (max-width: 600px) {
+    .reset-wrapper { max-width: 98vw; padding: 18px 6px; }
+}
+</style>
+<div class="reset-wrapper">
+    <div class="reset-title">
+        Réinitialisation du mot de passe
     </div>
-<script src="{% static 'account/js/jquery.min.js' %}"></script>
-<script src="{% static 'account/js/popper.min.js' %}"></script>
-<script src="{% static 'account/js/bootstrap.bundle.min.js' %}"></script>
-<script src="{% static 'account/js/main.js' %}"></script>
-</body>
-</html>
+    <div class="reset-desc">
+        Saisissez l'adresse email associée à votre compte Wallam.<br>
+        Vous recevrez un lien pour réinitialiser votre mot de passe.
+    </div>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="reset-message {{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+    <form method="post" class="reset-form" action="{% url 'password_reset' %}">
+        {% csrf_token %}
+        <input type="email" name="email" placeholder="Votre email" required>
+        <button type="submit">Envoyer le lien de réinitialisation</button>
+    </form>
+</div>
+{% endblock %}

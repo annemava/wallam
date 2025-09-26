@@ -301,7 +301,7 @@
             <div class="col-12 col-sm-6 col-md-4" style="margin-top:3% !important">
                 <div class="title">
                     <ul>
-                        <li><h3>{{  campaign.title }}</h3></li>
+                        <li><h3><a href="{% url 'campaign_detail' pk=campaign.pk %}">{{  campaign.title }}</a></h3></li>
                         <li><i class="fa fa-map-marker"></i> {{  campaign.category }}</li>
                     </ul>
                 </div>

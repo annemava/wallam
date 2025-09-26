@@ -12,7 +12,7 @@
         <input class="form-control" type="text" name="username" placeholder="Email ou numéro de téléphone" required>
         <input class="form-control" type="password" name="password" placeholder="Mot de passe" required>
         <div class="form-button">
-            <button id="submit" type="submit" class="ibtn">Se connecter</button> <a href="#">Mot de passe oublié ?</a>
+            <button id="submit" type="submit" class="ibtn">Se connecter</button> <a href="{% url 'password_reset' %}">Mot de passe oublié ?</a>
         </div>
         </form>
     <div class="other-links">

@@ -41,9 +41,10 @@ class Campaign(models.Model):
     terms_accepted = models.BooleanField(default=False)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='encours')
     urgent = models.BooleanField(default=False)
-
+    share_link = models.CharField(max_length=1024, blank=True, null=True, help_text="Champ texte facultatif, peut contenir une URL ou une note")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    create_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name="created_campaigns", help_text="Utilisateur ayant enregistré la campagne")
 
     def __str__(self):
         return self.title
