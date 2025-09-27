@@ -3,7 +3,7 @@ from django.views.generic import TemplateView
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .models import CustomUser, Association, Particulier, Contact, Reclamation, Conversation, Message
-from campaign.models import Campaign
+from campaign.models import Campaign, Donation
 from donation.models import ObjectDonation
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.tokens import default_token_generator
@@ -305,10 +305,11 @@ def payment_webhook(request):
         phone = data.get("phoneNumber")
         status = data.get("status")
         # Retrouve le don correspondant
-        donation = Donation.objects.filter(donor_phone=phone, payment_status="PENDING").last()
+        donation = Donation.objects.filter(donor_phone=phone).last()
         if donation and status == "SUCCESS":
-            donation.payment_status = "SUCCESS"
+            pass
+            """donation.payment_status = "SUCCESS"
             donation.payment_id = payment_id
-            donation.save()
+            donation.save()"""
         return JsonResponse({"status": "ok"})
     return JsonResponse({"error": "Invalid request"}, status=400)

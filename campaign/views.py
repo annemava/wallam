@@ -234,9 +234,9 @@ def campaign_donate_view(request, pk):
                     campaign=campaign,
                     amount=amount,
                     donor_phone=phone,
-                    donor_fullname=name,
-                    payment_status="PENDING"
+                    donor_fullname=name
                 )
+                #  payment_status="PENDING"
                 # Affiche le code USSD à l'utilisateur
                 return render(request, "campaign/payment_ussd.html", {
                     "ussdCode": data.get("ussdCode"),
