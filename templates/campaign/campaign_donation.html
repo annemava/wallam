@@ -94,9 +94,9 @@
                 <input type="text" name="donor_fullname" placeholder="Entrez votre nom ou pseudo">
                 <input type="text" name="donor_phone" placeholder="Entrez votre numéro de téléphone">
                 {% endif %}
-                <div style="display:flex;align-items:center;">
-                    <input type="number" name="amount" id="wallam-support-amount" placeholder="Montant total à payer" readonly style="background:#e0f4f2; color:#339c90; font-weight:600; margin-bottom:18px;">
-                    <span style="margin-left:8px;color:#339c90;font-weight:600;">FCFA</span>
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 18px;">
+                    <input type="text" name="amount" id="wallam-support-amount" placeholder="Montant total à payer" readonly style="background:#e0f4f2; color:#339c90; font-weight:600;">
+                    <span style="color:#339c90; font-weight:600;">FCFA</span>
                 </div>
                 <div style="margin-bottom: 18px; display: flex; align-items: center; gap: 10px;">
                     <input type="checkbox" id="support-wallam" name="support_wallam" style="width: 18px; height: 18px;" checked>
@@ -117,9 +117,9 @@
                         if (!isNaN(amount) && amount > 0) {
                             if (supportCheckbox.checked) {
                                 const total = amount + amount * 0.10;
-                                supportAmount.value = total.toFixed(0) + ' FCFA';
+                                supportAmount.value = total.toFixed(0);
                             } else {
-                                supportAmount.value = amount.toFixed(0) + ' FCFA';
+                                supportAmount.value = amount.toFixed(0);
                             }
                         } else {
                             supportAmount.value = '';
