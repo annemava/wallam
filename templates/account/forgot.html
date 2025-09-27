@@ -23,7 +23,9 @@
     margin-bottom: 22px;
     text-align: center;
 }
-.reset-form input[type="email"] {
+.reset-form input[type="email"],
+.reset-form input[type="text"],
+.reset-form input[type="password"] {
     width: 100%;
     padding: 12px;
     border-radius: 8px;
@@ -73,7 +75,7 @@
     </div>
     <div class="reset-desc">
         Saisissez l'adresse email associée à votre compte Wallam.<br>
-        Vous recevrez un lien pour réinitialiser votre mot de passe.
+        Renseignez votre nouveau mot de passe
     </div>
     {% if messages %}
         {% for message in messages %}
@@ -83,7 +85,10 @@
     <form method="post" class="reset-form" action="{% url 'password_reset' %}">
         {% csrf_token %}
         <input type="email" name="email" placeholder="Votre email" required>
-        <button type="submit">Envoyer le lien de réinitialisation</button>
+        <input type="text" name="phone" placeholder="Votre numéro de téléphone" required>
+        <input type="password" name="new_password" placeholder="Nouveau mot de passe" required>
+        <input type="password" name="confirm_password" placeholder="Confirmer le nouveau mot de passe" required>
+        <button type="submit">Réinitialiser</button>
     </form>
 </div>
 {% endblock %}

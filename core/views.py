@@ -262,22 +262,27 @@ def start_conversation(request, pk):
 def password_reset_view(request):
     if request.method == "POST":
         email = request.POST.get("email")
+        phone = request.POST.get("phone")
+        new_password = request.POST.get("new_password")
+        confirm_password = request.POST.get("confirm_password")
         User = get_user_model()
-        try:
-            user = User.objects.get(email=email)
-            token = default_token_generator.make_token(user)
-            reset_url = request.build_absolute_uri(
-                reverse('password_reset_confirm', args=[user.pk, token])
-            )
-            send_mail(
-                "Réinitialisation de votre mot de passe",
-                f"Pour réinitialiser votre mot de passe, cliquez sur ce lien : {reset_url}",
-                f"{settings.EMAIL_HOST_USER}",
-                [email],
-            )
-            messages.success(request, "Un email de réinitialisation a été envoyé si l'adresse existe.")
-        except User.DoesNotExist:
-            messages.error(request, "Aucun utilisateur avec cet email.")
+        user = None
+
+        # Recherche par email ou téléphone
+        if email:
+            user = User.objects.filter(email=email).first()
+        if not user and phone:
+            user = User.objects.filter(phone=phone).first()
+
+        if not user:
+            messages.error(request, "Aucun utilisateur avec cet email ou numéro de téléphone.")
+        elif new_password != confirm_password:
+            messages.error(request, "Les mots de passe ne correspondent pas.")
+        else:
+            user.set_password(new_password)
+            user.save()
+            messages.success(request, "Mot de passe réinitialisé avec succès. Vous pouvez vous connecter.")
+            return redirect("login")
     return render(request, "account/forgot.html")
 
 def password_reset_confirm_view(request, uid, token):
