@@ -10,6 +10,9 @@ from django.contrib.auth.tokens import default_token_generator
 from django.contrib.auth import get_user_model
 from django.core.mail import send_mail
 from django.urls import reverse
+from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
+import json
 
 # Create your views here.
 def homepage(request):
@@ -293,3 +296,19 @@ def password_reset_confirm_view(request, uid, token):
     else:
         messages.error(request, "Lien invalide ou expiré.")
         return render(request, "account/reset_confirm.html", {"valid": False})
+
+@csrf_exempt
+def payment_webhook(request):
+    if request.method == "POST":
+        data = json.loads(request.body)
+        payment_id = data.get("paymentId")
+        phone = data.get("phoneNumber")
+        status = data.get("status")
+        # Retrouve le don correspondant
+        donation = Donation.objects.filter(donor_phone=phone, payment_status="PENDING").last()
+        if donation and status == "SUCCESS":
+            donation.payment_status = "SUCCESS"
+            donation.payment_id = payment_id
+            donation.save()
+        return JsonResponse({"status": "ok"})
+    return JsonResponse({"error": "Invalid request"}, status=400)

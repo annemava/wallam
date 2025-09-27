@@ -8,6 +8,8 @@ from django.contrib.auth.decorators import login_required
 from datetime import timedelta
 from core.models import Personne
 from .models import Campaign, Category, Donation
+import requests
+import uuid
 
 
 def create_campaign_view(request):
@@ -171,6 +173,16 @@ def campaign_donate(request, pk):
         amount = request.POST.get("amount")
         donor_phone = request.POST.get("donor_phone")
 
+        payload = {
+            "apiKey": "Votre-Api-Key",
+            "businessId": "z7TICems6A",
+            "productId": f"campaign-{campaign.pk}",
+            "productName": campaign.title,
+            "productPrice": int(amount),
+            "phoneNumber": donor_phone,
+            "webHookUrl": request.build_absolute_uri(reverse("payment_webhook"))
+        }
+
         try:
             if donor_fullname:
                 Donation.objects.create(campaign=campaign, amount=amount, donor_fullname=donor_fullname,
@@ -185,6 +197,57 @@ def campaign_donate(request, pk):
             return render(request, "campaign/detail_campaign.html", context)
 
     return render(request, "campaign/campaign_donation.html", context)
+
+
+def campaign_donate_view(request, pk):
+    campaign = get_object_or_404(Campaign, pk=pk)
+    if request.method == "POST":
+        amount = float(request.POST.get("amount"))
+        phone = request.POST.get("donor_phone")
+        fullname = request.POST.get("donor_fullname", "")
+        # ... autres champs ...
+        product_id = f"campaign-{campaign.pk}-{uuid.uuid4()}"
+
+        payload = {
+            "apiKey": "Tf8ppUx1Zebe60U9e5VhdmZd",
+            "businessId": "z7TICems6A",
+            "productId": product_id,
+            "productName": campaign.title,
+            "productPrice": int(amount),
+            "phoneNumber": phone,
+            "webHookUrl": request.build_absolute_uri(reverse("payment_webhook"))
+        }
+        print(payload)
+        try:
+            response = requests.post("https://www.dklo.co/api/tara/cmmobile", json=payload, timeout=10)
+            data = response.json()
+            print("data ", data)
+            if data.get("status") == "SUCCESS":
+                # Sauvegarde le don en attente de validation
+                if fullname:
+                    name = fullname
+                elif request.user.is_authenticated:
+                    name = request.user.email
+                else:
+                    name = "Anonyme"
+                donation = Donation.objects.create(
+                    campaign=campaign,
+                    amount=amount,
+                    donor_phone=phone,
+                    donor_fullname=name,
+                    payment_status="PENDING"
+                )
+                # Affiche le code USSD à l'utilisateur
+                return render(request, "campaign/payment_ussd.html", {
+                    "ussdCode": data.get("ussdCode"),
+                    "vendor": data.get("vendor"),
+                    "donation": donation
+                })
+            else:
+                messages.error(request, "Erreur lors de la création du paiement.")
+        except Exception as e:
+            messages.error(request, f"Erreur de connexion au service de paiement : {e}")
+    return render(request, "campaign/campaign_donation.html", {"campaign": campaign})
 
 
 def campaign_list(request):

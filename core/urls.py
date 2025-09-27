@@ -14,10 +14,11 @@ urlpatterns = [
     path("qui-sommes-nous", SommesNousPageView.as_view(), name="qui_sommes_nous"),
     path("campaing-donation-list", campaing_donation_list, name="campaing_donation_list"),
     path("reclamation", ReclamationPageView.as_view(), name="reclamation"),
-    path('reclamation/', reclamation_view, name='reclamation'),
+    path('reclamation/', reclamation_view, name='save-reclamation'),
     path('contact/', contact_view, name='contact'),
     path('404', ErrorPageView.as_view(), name='404'),
     path("conversations/", conversations_list, name="conversations_list"),
     path("conversation/<int:conversation_id>/", conversation_detail, name="conversation_detail"),
     path("conversation/start/<int:pk>/", start_conversation, name="start_conversation"),
+    path('webhook/payment/', payment_webhook, name='payment_webhook'),
 ]
