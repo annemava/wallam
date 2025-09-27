@@ -49,6 +49,24 @@
         font-size: 0.98em;
         margin-top: 18px;
     }
+    .ussd-notif-btn {
+        display: inline-block;
+        margin-top: 24px;
+        background: #339c90;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        padding: 12px 32px;
+        font-size: 1.08em;
+        font-weight: 600;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background 0.2s;
+    }
+    .ussd-notif-btn:hover {
+        background: #28786b;
+        color: #fff;
+    }
     @media (max-width: 600px) {
         .ussd-notif-wrapper { max-width: 98vw; padding: 18px 6px; }
         .ussd-notif-title { font-size: 1.1em; }
@@ -64,4 +82,10 @@
         <div class="ussd-notif-code" title="Cliquez pour copier" onclick="navigator.clipboard.writeText(this.innerText)">{{ ussdCode }}</div>
         <div class="ussd-notif-vendor">Opérateur : {{ vendor }}</div>
         <div class="ussd-notif-footer">Après validation sur votre mobile, votre don sera enregistré automatiquement.<br>Merci pour votre générosité !</div>
+        <a href="{% url 'index' %}" class="ussd-notif-btn">Retour à l'accueil</a>
 </div>
+<script>
+    setTimeout(function() {
+        window.location.href = "{% url 'index' %}";
+    }, 30000);
+</script>

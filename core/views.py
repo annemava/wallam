@@ -305,11 +305,10 @@ def payment_webhook(request):
         phone = data.get("phoneNumber")
         status = data.get("status")
         # Retrouve le don correspondant
-        donation = Donation.objects.filter(donor_phone=phone).last()
+        donation = Donation.objects.filter(donor_phone=phone, payment_status="PENDING").last()
         if donation and status == "SUCCESS":
-            pass
-            """donation.payment_status = "SUCCESS"
+            donation.payment_status = "SUCCESS"
             donation.payment_id = payment_id
-            donation.save()"""
+            donation.save()
         return JsonResponse({"status": "ok"})
     return JsonResponse({"error": "Invalid request"}, status=400)

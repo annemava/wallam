@@ -93,12 +93,21 @@ class Campaign(models.Model):
 
 
 class Donation(models.Model):
+    PAYMENT_STATUS_CHOICES = [
+        ('PENDING', 'En attente'),
+        ('SUCCESS', 'Réussi'),
+        ('FAILURE', 'Échoué'),
+        ('CANCELLED', 'Annulé'),
+    ]
     campaign = models.ForeignKey(Campaign, on_delete=models.CASCADE, related_name="donations")
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name="donations")
     donor_fullname = models.CharField(max_length=255, blank=True, null=True)  # Pour les donateurs non inscrits
     donor_phone = models.CharField(max_length=255, blank=True, null=True)  # Facultatif pour les donateurs non inscrits
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     date = models.DateTimeField(auto_now_add=True)
+    payment_status = models.CharField(max_length=20, choices=PAYMENT_STATUS_CHOICES, default='PENDING')
+    payment_id = models.CharField(max_length=255, blank=True, null=True, help_text="Identifiant du paiement externe")
+
 
     def __str__(self):
         return f"Don de {self.amount} pour {self.campaign.title}"
