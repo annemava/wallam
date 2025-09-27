@@ -89,12 +89,12 @@
     {% endif %}
         <form action="{% url 'campaign_donate' pk=campaign.pk %}" class="campaign-donation-form" method="post">
                 {% csrf_token %}
-                <input type="number" name="amount" id="amount-input" placeholder="Entrez le montant" required>
+                <input type="number" name="amount-user" id="amount-input" placeholder="Entrez le montant" required>
                 {% if not user.is_authenticated %}
                 <input type="text" name="donor_fullname" placeholder="Entrez votre nom ou pseudo">
                 <input type="text" name="donor_phone" placeholder="Entrez votre numéro de téléphone">
                 {% endif %}
-                <input type="text" id="wallam-support-amount" placeholder="Montant total à payer" readonly style="background:#e0f4f2; color:#339c90; font-weight:600; margin-bottom:18px;">
+                <input type="text" name="amount" id="wallam-support-amount" placeholder="Montant total à payer" readonly style="background:#e0f4f2; color:#339c90; font-weight:600; margin-bottom:18px;">
                 <div style="margin-bottom: 18px; display: flex; align-items: center; gap: 10px;">
                     <input type="checkbox" id="support-wallam" name="support_wallam" style="width: 18px; height: 18px;" checked>
                     <label for="support-wallam" style="margin:0; color:#28786b; font-weight:600; cursor:pointer;">Soutenez Wallam en laissant un pourboir</label>
