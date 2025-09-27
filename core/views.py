@@ -13,6 +13,7 @@ from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 import json
+from django.conf import settings 
 
 # Create your views here.
 def homepage(request):
@@ -271,7 +272,7 @@ def password_reset_view(request):
             send_mail(
                 "Réinitialisation de votre mot de passe",
                 f"Pour réinitialiser votre mot de passe, cliquez sur ce lien : {reset_url}",
-                "no-reply@wallam.com",
+                f"{settings.EMAIL_HOST_USER}",
                 [email],
             )
             messages.success(request, "Un email de réinitialisation a été envoyé si l'adresse existe.")
