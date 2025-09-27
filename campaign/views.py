@@ -66,6 +66,7 @@ def create_campaign_view(request):
                 uploaded_files=uploaded_files if uploaded_files else None,
                 visibility=visibility,
                 terms_accepted=terms_accepted,
+                create_by=request.user
             )
             # Construit l'URL absolue avec le DNS
             campaign_url = request.build_absolute_uri(reverse("campaign_detail", kwargs={"pk": campaign.pk}))
